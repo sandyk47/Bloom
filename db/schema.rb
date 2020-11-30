@@ -10,10 +10,73 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_055326) do
+ActiveRecord::Schema.define(version: 2020_11_30_063548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "brands", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "ingredient_reviews", force: :cascade do |t|
+    t.integer "safety_rating"
+    t.integer "efficacy_rating"
+    t.string "title"
+    t.string "content"
+    t.string "supporting_evidence"
+    t.bigint "user_id", null: false
+    t.bigint "ingredient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id"], name: "index_ingredient_reviews_on_ingredient_id"
+    t.index ["user_id"], name: "index_ingredient_reviews_on_user_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.integer "average_safety_rating"
+    t.integer "average_efficacy_rating"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "product_ingredients", force: :cascade do |t|
+    t.bigint "ingredient_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id"], name: "index_product_ingredients_on_ingredient_id"
+    t.index ["product_id"], name: "index_product_ingredients_on_product_id"
+  end
+
+  create_table "product_reviews", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.integer "product_rating"
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_product_reviews_on_product_id"
+    t.index ["user_id"], name: "index_product_reviews_on_user_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "title"
+    t.bigint "brand_id", null: false
+    t.string "description"
+    t.integer "average_product_rating_stars"
+    t.integer "average_safety_rating_bar"
+    t.integer "average_efficacy_rating_bar"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_products_on_brand_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +90,11 @@ ActiveRecord::Schema.define(version: 2020_11_30_055326) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "ingredient_reviews", "ingredients"
+  add_foreign_key "ingredient_reviews", "users"
+  add_foreign_key "product_ingredients", "ingredients"
+  add_foreign_key "product_ingredients", "products"
+  add_foreign_key "product_reviews", "products"
+  add_foreign_key "product_reviews", "users"
+  add_foreign_key "products", "brands"
 end
