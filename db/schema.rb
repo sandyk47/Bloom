@@ -81,6 +81,13 @@ ActiveRecord::Schema.define(version: 2020_11_30_063548) do
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "username", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
+    t.integer "age", default: 0, null: false
+    t.string "gender", default: "", null: false
+    t.boolean "verified", default: false, null: false
+    t.string "photo_url", default: "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
