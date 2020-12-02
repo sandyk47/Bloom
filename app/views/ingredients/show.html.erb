@@ -1,0 +1,32 @@
+<div class="container">
+  <h1> <%= @ingredient.name %> </h1>
+
+  <div class="container">
+    <p> description: <%= @ingredient.description %> </p>
+    <ul>
+      <li> safety rating: <%= @ingredient.average_safety_rating %> </li>
+      <li> efficacy rating: <%= @ingredient.average_efficacy_rating %> </li>
+    </ul>
+  </div>
+
+  <div class="container">
+    <% @ingredient.ingredient_reviews.each do |ingredient_review| %>
+      <h3> review title: <%= ingredient_review.title %> </h3>
+      <p> review content: <%= ingredient_review.content %> </p>
+    <% end %>
+  </div>
+
+
+ <!-- t.integer :safety_rating
+      t.integer :efficacy_rating
+      t.string :title
+      t.string :content
+      t.string :supporting_evidence
+      t.references :user, null: false, foreign_key: true
+      t.references :ingredient, null: false, foreign_key: true
+ -->
+
+
+
+</div>
+
