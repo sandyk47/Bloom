@@ -1,0 +1,17 @@
+<div class ="container">
+  <h2 class ="h2">Cosmetic Main Listing</h2>
+</div>
+
+<div class="main-container">
+  <div class="cards">
+    <% @products.each do |product| %>
+      <div class="card-product">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product-infos">
+            <h2><%= link_to "#{product.title} - #{product.brand.name}", product_path(product), class: 'card-link'%></h2>
+            <p><%= product.description%></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
