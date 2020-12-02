@@ -11,7 +11,7 @@ user_1 = User.create!(
   age: 40,
   password: "password",
   verified: true,
-  gender: "female",
+  gender: "Female",
   photo_url: 'https://i.picsum.photos/id/1009/5000/7502.jpg?hmac=Uj6crVILzsKbyZreBjHuMiaq_-n30qoHjqP0i7r30r8'
   )
 
@@ -23,7 +23,7 @@ user_2 = User.create!(
   age: 45,
   password: "password",
   verified: true,
-  gender: "female",
+  gender: "Female",
   photo_url: 'https://i.picsum.photos/id/1009/5000/7502.jpg?hmac=Uj6crVILzsKbyZreBjHuMiaq_-n30qoHjqP0i7r30r8'
   )
 
@@ -32,10 +32,10 @@ user_3 = User.create!(
   email: "example3@bloom.com",
   first_name: "James",
   last_name: "Lames",
-  age: 45,
+  age: 20,
   password: "password",
   verified: true,
-  gender: "male",
+  gender: "Genderqueer/Non-Binary",
   photo_url: 'https://i.picsum.photos/id/1009/5000/7502.jpg?hmac=Uj6crVILzsKbyZreBjHuMiaq_-n30qoHjqP0i7r30r8'
   )
 
