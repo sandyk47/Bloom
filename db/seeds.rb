@@ -12,7 +12,8 @@ user_1 = User.create!(
   password: "password",
   verified: true,
   gender: "Female",
-  photo_url: 'https://i.picsum.photos/id/1009/5000/7502.jpg?hmac=Uj6crVILzsKbyZreBjHuMiaq_-n30qoHjqP0i7r30r8'
+  photo_url: 'https://i.picsum.photos/id/1009/5000/7502.jpg?hmac=Uj6crVILzsKbyZreBjHuMiaq_-n30qoHjqP0i7r30r8',
+  skin_type: "Oily"
   )
 
 user_2 = User.create!(
@@ -24,7 +25,8 @@ user_2 = User.create!(
   password: "password",
   verified: true,
   gender: "Female",
-  photo_url: 'https://i.picsum.photos/id/1009/5000/7502.jpg?hmac=Uj6crVILzsKbyZreBjHuMiaq_-n30qoHjqP0i7r30r8'
+  photo_url: 'https://i.picsum.photos/id/1009/5000/7502.jpg?hmac=Uj6crVILzsKbyZreBjHuMiaq_-n30qoHjqP0i7r30r8',
+  skin_type: "Dry"
   )
 
 user_3 = User.create!(
@@ -36,7 +38,8 @@ user_3 = User.create!(
   password: "password",
   verified: true,
   gender: "Genderqueer/Non-Binary",
-  photo_url: 'https://i.picsum.photos/id/1009/5000/7502.jpg?hmac=Uj6crVILzsKbyZreBjHuMiaq_-n30qoHjqP0i7r30r8'
+  photo_url: 'https://i.picsum.photos/id/1009/5000/7502.jpg?hmac=Uj6crVILzsKbyZreBjHuMiaq_-n30qoHjqP0i7r30r8',
+  skin_type: "Normal"
   )
 
 puts "Creating your ingredients..."
@@ -86,17 +89,17 @@ ingredient_6 = Ingredient.create!(
 puts "Creating your brands..."
 
 brand_1 = Brand.create!(
-  name: "AESOP"
+  name: "AESOP",
   description: "Very expensive and fancy"
   )
 
 brand_2 = Brand.create!(
-  name: "Avene"
+  name: "Avene",
   description: "Somewhat expensive, more mainstream"
   )
 
 brand_3 = Brand.create!(
-  name: "NIVEA"
+  name: "NIVEA",
   description: "Cheapy everyday products"
   )
 puts "Creating your products..."
@@ -252,3 +255,4 @@ puts "Creating reviews..."
     supporting_evidence: "Link to article"
     )
 
+puts "Seeding done!!!"
