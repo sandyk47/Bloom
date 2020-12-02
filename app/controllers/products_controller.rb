@@ -8,5 +8,7 @@ class ProductsController < ApplicationController
   end
   def efficacy_rating
 
+  def index
+    @products = Product.all
   end
 end
