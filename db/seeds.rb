@@ -11,7 +11,7 @@ user_1 = User.create!(
   age: 40,
   password: "password",
   verified: true,
-  gender: "female",
+  gender: "Female",
   photo_url: 'https://i.picsum.photos/id/1009/5000/7502.jpg?hmac=Uj6crVILzsKbyZreBjHuMiaq_-n30qoHjqP0i7r30r8'
   )
 
@@ -23,7 +23,7 @@ user_2 = User.create!(
   age: 45,
   password: "password",
   verified: true,
-  gender: "female",
+  gender: "Female",
   photo_url: 'https://i.picsum.photos/id/1009/5000/7502.jpg?hmac=Uj6crVILzsKbyZreBjHuMiaq_-n30qoHjqP0i7r30r8'
   )
 
@@ -32,10 +32,10 @@ user_3 = User.create!(
   email: "example3@bloom.com",
   first_name: "James",
   last_name: "Lames",
-  age: 45,
+  age: 20,
   password: "password",
   verified: true,
-  gender: "male",
+  gender: "Genderqueer/Non-Binary",
   photo_url: 'https://i.picsum.photos/id/1009/5000/7502.jpg?hmac=Uj6crVILzsKbyZreBjHuMiaq_-n30qoHjqP0i7r30r8'
   )
 
@@ -87,14 +87,17 @@ puts "Creating your brands..."
 
 brand_1 = Brand.create!(
   name: "AESOP"
+  description: "Very expensive and fancy"
   )
 
 brand_2 = Brand.create!(
   name: "Avene"
+  description: "Somewhat expensive, more mainstream"
   )
 
 brand_3 = Brand.create!(
   name: "NIVEA"
+  description: "Cheapy everyday products"
   )
 puts "Creating your products..."
 
@@ -104,7 +107,7 @@ puts "Creating your products..."
     description: "Clean and smells nice",
     average_product_rating_stars: 1,
     average_safety_rating_bar: 2,
-    average_safety_rating_bar: 3
+    average_efficacy_rating_bar: 3
     )
 
   product_2 = Product.create!(
@@ -113,7 +116,7 @@ puts "Creating your products..."
     description: "scrub, scrub",
     average_product_rating_stars: 3,
     average_safety_rating_bar: 4,
-    average_safety_rating_bar: 4
+    average_efficacy_rating_bar: 4
     )
 
   product_3 = Product.create!(
@@ -122,7 +125,7 @@ puts "Creating your products..."
     description: "so hot",
     average_product_rating_stars: 5,
     average_safety_rating_bar: 2,
-    average_safety_rating_bar: 1
+    average_efficacy_rating_bar: 1
     )
 
   product_4 = Product.create!(
@@ -131,7 +134,7 @@ puts "Creating your products..."
     description: "rusty-boy",
     average_product_rating_stars: 4,
     average_safety_rating_bar: 4,
-    average_safety_rating_bar: 2
+    average_efficacy_rating_bar: 2
     )
 
   product_5 = Product.create!(
@@ -140,7 +143,7 @@ puts "Creating your products..."
     description: "light-up",
     average_product_rating_stars: 3,
     average_safety_rating_bar: 1,
-    average_safety_rating_bar: 3
+    average_efficacy_rating_bar: 3
     )
 
 puts "Creating product ingredients..."
@@ -216,7 +219,7 @@ puts "Creating reviews..."
     content: "Lorem ipsum dolor sit amet",
     safety_rating: 3,
     efficacy_rating: 3,
-    supporting_evidence: ""
+    supporting_evidence: "Link to article"
     )
 
   ing_rev_2 = IngredientReview.create!(
@@ -226,7 +229,7 @@ puts "Creating reviews..."
     content: "Lorem ipsum dolor sit amet",
     safety_rating: 5,
     efficacy_rating: 5,
-    supporting_evidence: ""
+    supporting_evidence: "Link to article"
     )
 
   ing_rev_3 = IngredientReview.create!(
@@ -236,7 +239,7 @@ puts "Creating reviews..."
     content: "Lorem ipsum dolor sit amet",
     safety_rating: 4,
     efficacy_rating: 5,
-    supporting_evidence: ""
+    supporting_evidence: "Link to article"
     )
 
   ing_rev_4 = IngredientReview.create!(
@@ -246,6 +249,6 @@ puts "Creating reviews..."
     content: "Lorem ipsum dolor sit amet",
     safety_rating: 4,
     efficacy_rating: 5,
-    supporting_evidence: ""
+    supporting_evidence: "Link to article"
     )
 
