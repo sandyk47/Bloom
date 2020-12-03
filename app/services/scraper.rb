@@ -10,33 +10,31 @@ module Scraper
     def call
       results = get_urls.map do |url|
         get_product_info(url)
-      binding.pry
       end
 
       results.each do |result|
         Brand.create(name: result[:brand])
       end
 
-      results[:ingredients].each do |result|
-        Ingredient.create(name: result[index])
+      results.each do |result|
+        brand = Brand.find_by(name: result[:brand])
+        product = Product.create( brand_id: brand.id, title: result[:product], benefits: result[:benefits], oneliner: result[:oneliner], img: result[:img], description: result[:description], category: result[:category], sub_category: result[:sub_category])
+        results.each_with_index.map do |result, index|
+          ingredient = Ingredient.where(name: result[:ingredients][index].to_s.strip).first_or_create
+          ProductIngredient.create(product_id: product.id, ingredient_id: ingredient.id)
+        end
       end
 
-      results.each do |result|
-        Product.create(name: result[:product])
-        Product.create(benefits: result[:benefits])
-        Product.create(oneliner: result[:oneliner])
-        Product.create(img: result[:img])
-        Product.create(description: result[:description])
-        Product.create(category: result[:category])
-        Product.create(sub_category: result[:sub_category])
-      end    
     end
     
     private
     
     def get_urls
+      # browser = Watir::Browser.new
+      # browser.goto 'https://www.mecca.com.au/skin-care/#start=36&sz=36'
+      # sleep(15.seconds)  
+      # html_doc = Nokogiri::HTML.parse(browser.html)
       html_file = open('https://www.mecca.com.au/skin-care/#start=36&sz=36').read
-      sleep(15.seconds)
       html_doc = Nokogiri::HTML(html_file)
       category_elements = html_doc.search('.grid-product')
       urls = category_elements.map do |card|
