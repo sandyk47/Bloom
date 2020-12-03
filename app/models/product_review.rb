@@ -1,4 +1,6 @@
 class ProductReview < ApplicationRecord
+  SKIN_CONCERNS = [ "Sun damage", "Pigmentation", "Fine lines and wrinkles", "Sensitivity", "Breakouts/Acne", "Dullness", "Elasticity", "Rosacea", "Enlarged Pores", "Excessive Oiliness", "Dryness", "Eczema", "Allergies", "Psoriasis", "Hives", "Dermatitis"]
+
   belongs_to :user
   belongs_to :product
 
