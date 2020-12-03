@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :brand
   has_many :ingredients, through: :product_ingredients
+  has_many :product_reviews
 
   validates :title, presence: true, uniqueness: true
   validates :description, presence: true

@@ -16,19 +16,12 @@
     <% end %>
   </div>
 
+<% if current_user.verified  %>
   <div class="container">
     <%= render partial: 'ingredient_reviews/form' %>
   </div>
 
-
- <!-- t.integer :safety_rating
-      t.integer :efficacy_rating
-      t.string :title
-      t.string :content
-      t.string :supporting_evidence
-      t.references :user, null: false, foreign_key: true
-      t.references :ingredient, null: false, foreign_key: true
- -->
+  <% end %>
 
 <%= link_to "Take me home", root_path, class:"btn-primary" %>
 <%= link_to "back to product search", products_path, class:"btn-primary" %>
