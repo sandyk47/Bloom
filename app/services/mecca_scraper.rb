@@ -12,8 +12,6 @@ module Scraper
         get_product_info(url)
       end
 
-      @product = {brand: brand, product: product, price: price, benefits: benefits, oneliner: oneliner, img: img, ingredients: @ingredients_array, description: description, category: category, sub_category: sub_category}
-
       results.each do |result|
         Brand.create(name: result[:brand])
       end

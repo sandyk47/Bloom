@@ -45,7 +45,5 @@ scraper_array.each do |page|
   end
 end
 
-p results_array.count
-p results_array.last
 
 
