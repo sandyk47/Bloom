@@ -135,11 +135,8 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (1.2.3)
-<<<<<<< HEAD
-=======
     pg (1.2.3-x64-mingw32)
     pg (1.2.3-x86-mingw32)
->>>>>>> updated Gemfile.lock
     pg_search (2.3.5)
       activerecord (>= 5.2)
       activesupport (>= 5.2)
