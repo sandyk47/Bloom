@@ -8,4 +8,14 @@ class Product < ApplicationRecord
   validates :average_product_rating_stars, presence: true, numericality: true, inclusion: { in: 0..5 }
   validates :average_safety_rating_bar, presence: true, numericality: true, inclusion: { in: 0..5 }
   validates :average_efficacy_rating_bar, presence: true, numericality: true, inclusion: { in: 0..5 }
+
+  include PgSearch::Model
+  pg_search_scope :product_and_brand_search,
+    against: [ :title, :description ],
+    associated_against: {
+      brand: [ :name, :description ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 end
