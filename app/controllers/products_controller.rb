@@ -1,14 +1,15 @@
 class ProductsController < ApplicationController
-  def show
-    @product = Product.find(params[:id])
-  end
-  def safety_rating
-    @product = Product.find(params[:id])
-    @safety_rating = Product.Find_by(safety_rating:@product.average_safety_rating_bar)
-  end
-  def efficacy_rating
-  end
   def index
-    @products = Product.all
+    if params[:query].present?
+      @products = Product.product_and_brand_search(params[:query])
+    else
+      @products = Product.all
+    end
   end
+
+   def show
+    @product = Product.find(params[:id])
+    @product_review = ProductReview.new
+  end
+
 end

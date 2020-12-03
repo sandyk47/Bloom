@@ -1,12 +1,18 @@
 class Product < ApplicationRecord
   belongs_to :brand
   has_many :ingredients, through: :product_ingredients
+<<<<<<< HEAD
+=======
+  has_many :product_reviews
+
+>>>>>>> master
   validates :title, presence: true, uniqueness: true
   validates :description, presence: true
   validates :average_product_rating_stars, presence: true, numericality: true, inclusion: { in: 0..5 }
   validates :average_safety_rating_bar, presence: true, numericality: true, inclusion: { in: 0..5 }
   validates :average_efficacy_rating_bar, presence: true, numericality: true, inclusion: { in: 0..5 }
 
+<<<<<<< HEAD
   def safety_rating
     product_ingredients = ProductIngredient.where(product: self)
 
@@ -30,4 +36,15 @@ class Product < ApplicationRecord
     product_efficacy_rating = (all_ingredients_efficacy_rating_total.sum.fdiv(count)) * 100
   end
 
+=======
+  include PgSearch::Model
+  pg_search_scope :product_and_brand_search,
+    against: [ :title, :description ],
+    associated_against: {
+      brand: [ :name, :description ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
+>>>>>>> master
 end

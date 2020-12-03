@@ -23,7 +23,7 @@ user_2 = User.create!(
   last_name: "Stylez",
   age: 45,
   password: "password",
-  verified: true,
+  verified: false,
   gender: "Female",
   photo_url: 'https://i.picsum.photos/id/1009/5000/7502.jpg?hmac=Uj6crVILzsKbyZreBjHuMiaq_-n30qoHjqP0i7r30r8',
   skin_type: "Dry"
@@ -36,7 +36,7 @@ user_3 = User.create!(
   last_name: "Lames",
   age: 20,
   password: "password",
-  verified: true,
+  verified: false,
   gender: "Genderqueer/Non-Binary",
   photo_url: 'https://i.picsum.photos/id/1009/5000/7502.jpg?hmac=Uj6crVILzsKbyZreBjHuMiaq_-n30qoHjqP0i7r30r8',
   skin_type: "Normal"
