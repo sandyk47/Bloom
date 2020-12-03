@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_063548) do
+ActiveRecord::Schema.define(version: 2020_12_02_062712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_063548) do
     t.bigint "ingredient_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "skin_concern"
     t.index ["ingredient_id"], name: "index_ingredient_reviews_on_ingredient_id"
     t.index ["user_id"], name: "index_ingredient_reviews_on_user_id"
   end
@@ -55,13 +56,15 @@ ActiveRecord::Schema.define(version: 2020_11_30_063548) do
   end
 
   create_table "product_reviews", force: :cascade do |t|
-    t.string "title"
+    t.string "title", default: "untitled"
     t.string "content"
     t.integer "product_rating"
     t.bigint "user_id", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "recommended"
+    t.string "skin_concern"
     t.index ["product_id"], name: "index_product_reviews_on_product_id"
     t.index ["user_id"], name: "index_product_reviews_on_user_id"
   end
@@ -93,6 +96,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_063548) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "skin_type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
