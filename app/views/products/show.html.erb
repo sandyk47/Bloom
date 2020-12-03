@@ -1,8 +1,17 @@
-<<<<<<< HEAD
 
-<p>Safety Rating:<%= @product.safety_rating %></p>
-<p>Efficacy Rating:<%= @product.efficacy_rating %></p>
-=======
+
+<div class="container">
+  <h1><%= @product.title %> </h1>
+
+  <div class="container card">
+    <p> description: <%= @product.description %> </p>
+    <p> brand: <%= @product.brand.name %> </p>
+    <ul>
+      <li> safety rating: <%= @product.safety_rating %> </li> <!-- calling instance method from Ingredient model, look inside model-->
+      <li> efficacy rating: <%= @product.efficacy_rating %> </li> <!-- calling instance method from Ingredient model-->
+    </ul>
+  </div>
+
 <div class="container">
 
 <% @product.product_reviews.each do |product_review| %>
@@ -23,4 +32,3 @@
 <% end %>
 </div>
 
->>>>>>> master
