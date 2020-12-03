@@ -2,7 +2,7 @@ class IngredientsController < ApplicationController
 
   def index
     if params[:query].present?
-      @ingredients = Ingredient.where(name: params[:query])
+      @ingredients = Ingredient.search_by_name_and_description(params[:query])
     else
       @ingredients = Ingredient.all
     end
