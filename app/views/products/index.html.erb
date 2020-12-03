@@ -1,24 +1,55 @@
 <div class ="container">
-  <h2 class ="h2">Cosmetic Main Listing</h2>
-  <%= render 'shared/productsearchbarform' %>
-
-</div>
-
-<div class="main-container">
-  <div class="cards">
-    <% @products.each do |product| %>
-      <div class="card-product">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-        <div class="card-product-infos">
-            <h2><%= link_to "#{product.title} - #{product.brand.name}", product_path(product), class: 'card-link'%></h2>
-            <p><%= product.description%></p>
-        </div>
-      </div>
-    <% end %>
+  <div class="product-top-nav">
+    <h2>Cosmetic Main Listing</h2>
+    <%= render 'shared/productsearchbarform' %>
   </div>
+
+  <div id="product-search-flex">
+
+    <div id="products-index-sidebar">
+      <h2>brand</h2>
+        <p> search by brand </p>
+      <h2>conditions</h2>
+        <p> search by conditions (i.e. coeliac) </p>  
+      <h2>ingredients</h2>
+         <h3>includes</h3> 
+            <p> Rosehip oil </p>
+         <h3>doesn't include</h3> 
+            <p> Rosehip oil </p>
+      <h2>Accreditations</h2>
+        <p> search by Accreditations </p>
+      <h2>Top Rated By</h2>
+        <h3>skin concern</h3>
+          <p> i.e. blackheads </p>   
+        <h3>skin type</h3>
+          <p> i.e. blackheads </p>
+      <h2>Categories</h2>
+        <h3>major category</h3>
+          <p> i.e. masks </p>   
+        <h3>sub-category</h3>
+          <p> i.e. cleansing masks </p>                          
+    </div>
+
+    <div class="main-container">
+      <div class="cards">
+        <% @products.each do |product| %>
+          <div class="ingredient-details">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" style="width: 300px" />
+            <div class="card-product-infos">
+                <h2><%= link_to "#{product.title} - #{product.brand.name}", product_path(product), class: 'card-link'%></h2>
+                <p><%= product.description%></p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <%= link_to "Take me home", root_path, class:"btn-primary" %>
+    <%= link_to "back to ingredient search", ingredients_path, class:"btn-primary" %>
+  </div>
+
 </div>
 
-<div>
-  <%= link_to "Take me home", root_path, class:"btn-primary" %>
-  <%= link_to "back to ingredient search", ingredients_path, class:"btn-primary" %>
-</div>
+
