@@ -1,5 +1,7 @@
 <div class ="container">
   <h2 class ="h2">Cosmetic Main Listing</h2>
+  <%= render 'shared/productsearchbarform' %>
+
 </div>
 
 <div class="main-container">
@@ -17,5 +19,6 @@
 </div>
 
 <div>
-<%= link_to "Take me home", root_path, class:"btn-primary" %>
+  <%= link_to "Take me home", root_path, class:"btn-primary" %>
+  <%= link_to "back to ingredient search", ingredients_path, class:"btn-primary" %>
 </div>

@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_12_02_062712) do
   end
 
   create_table "product_reviews", force: :cascade do |t|
-    t.string "title", default: "untitled"
+    t.string "title"
     t.string "content"
     t.integer "product_rating"
     t.bigint "user_id", null: false
