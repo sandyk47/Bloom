@@ -42,146 +42,13 @@ user_3 = User.create!(
   skin_type: "Normal"
   )
 
-puts "Creating your ingredients..."
-
-ingredient_1 = Ingredient.create!(
-  name: "water",
-  description: "solvent",
-  average_safety_rating: 0,
-  average_efficacy_rating: 3
-  )
-
-ingredient_2 = Ingredient.create!(
-  name: "alcohol",
-  description: "solvent",
-  average_safety_rating: 1,
-  average_efficacy_rating: 1
-  )
-
-ingredient_3 = Ingredient.create!(
-  name: "benzos",
-  description: "calming",
-  average_safety_rating: 4,
-  average_efficacy_rating: 2
-  )
-
-ingredient_4 = Ingredient.create!(
-  name: "propane",
-  description: "good for everything",
-  average_safety_rating: 1,
-  average_efficacy_rating: 5
-  )
-
-ingredient_5 = Ingredient.create!(
-  name: "parabens",
-  description: "pra voce",
-  average_safety_rating: 5,
-  average_efficacy_rating: 5
-  )
-
-ingredient_6 = Ingredient.create!(
-  name: "sulfuric acid",
-  description: "gets rid of everything",
-  average_safety_rating: 1,
-  average_efficacy_rating: 5
-  )
-
-puts "Creating your brands..."
-
-brand_1 = Brand.create!(
-  name: "AESOP",
-  description: "Very expensive and fancy"
-  )
-
-brand_2 = Brand.create!(
-  name: "Avene",
-  description: "Somewhat expensive, more mainstream"
-  )
-
-brand_3 = Brand.create!(
-  name: "NIVEA",
-  description: "Cheapy everyday products"
-  )
-puts "Creating your products..."
-
-  product_1 = Product.create!(
-    brand: brand_1,
-    title: 'Geranium facial cleanser',
-    description: "Clean and smells nice",
-    average_product_rating_stars: 1,
-    average_safety_rating_bar: 2,
-    average_efficacy_rating_bar: 3
-    )
-
-  product_2 = Product.create!(
-    brand: brand_1,
-    title: 'Exfoliating rose scrub',
-    description: "scrub, scrub",
-    average_product_rating_stars: 3,
-    average_safety_rating_bar: 4,
-    average_efficacy_rating_bar: 4
-    )
-
-  product_3 = Product.create!(
-    brand: brand_2,
-    title: 'Hot-Red concealear',
-    description: "so hot",
-    average_product_rating_stars: 5,
-    average_safety_rating_bar: 2,
-    average_efficacy_rating_bar: 1
-    )
-
-  product_4 = Product.create!(
-    brand: brand_2,
-    title: 'Rusty bronzer',
-    description: "rusty-boy",
-    average_product_rating_stars: 4,
-    average_safety_rating_bar: 4,
-    average_efficacy_rating_bar: 2
-    )
-
-  product_5 = Product.create!(
-    brand: brand_3,
-    title: 'Fluro-highlighter',
-    description: "light-up",
-    average_product_rating_stars: 3,
-    average_safety_rating_bar: 1,
-    average_efficacy_rating_bar: 3
-    )
-
-puts "Creating product ingredients..."
-
-  pro_ing_1 = ProductIngredient.create!(
-    ingredient: ingredient_1,
-    product: product_1
-  )
-
-  pro_ing_2 = ProductIngredient.create!(
-    ingredient: ingredient_6,
-    product: product_1
-  )
-
-  pro_ing_3 = ProductIngredient.create!(
-    ingredient: ingredient_3,
-    product: product_2
-  )
-
-  pro_ing_4 = ProductIngredient.create!(
-    ingredient: ingredient_4,
-    product: product_2
-  )
-
-  pro_ing_5 = ProductIngredient.create!(
-    ingredient: ingredient_5,
-    product: product_3
-  )
-
-  pro_ing_6 = ProductIngredient.create!(
-    ingredient: ingredient_6,
-    product: product_5
-  )
+puts "Creating your index..."
+results = Scraper::MeccaProducts.new.call
 
 puts "Creating reviews..."
+  product_1 = Product.first
+  product_3 = Product.third
+  product_5 = Product.fifth
 
   pro_rev_1 = ProductReview.create!(
     user: user_1,
@@ -214,6 +81,10 @@ puts "Creating reviews..."
     content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     product_rating: 4,
   )
+  
+  ingredient_1 = Ingredient.first
+  ingredient_3 = Ingredient.third
+  ingredient_5 = Ingredient.fifth
 
   ing_rev_1 = IngredientReview.create!(
     user: user_1,
@@ -247,7 +118,7 @@ puts "Creating reviews..."
 
   ing_rev_4 = IngredientReview.create!(
     user: user_1,
-    ingredient: ingredient_6,
+    ingredient: ingredient_5,
     title: "do not use if you have skin",
     content: "Lorem ipsum dolor sit amet",
     safety_rating: 4,
