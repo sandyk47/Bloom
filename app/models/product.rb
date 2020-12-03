@@ -9,9 +9,12 @@ class Product < ApplicationRecord
   validates :average_efficacy_rating_bar, presence: true, numericality: true, inclusion: { in: 0..5 }
 
   include PgSearch::Model
-  pg_search_scope :search_by_name,
-    against: [ :name ],
+  pg_search_scope :product_and_brand_search,
+    against: [ :title, :description ],
+    associated_against: {
+      brand: [ :name, :description ]
+    },
     using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+      tsearch: { prefix: true }
     }
 end

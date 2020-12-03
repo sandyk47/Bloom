@@ -1,7 +1,7 @@
 
 <div class="container">
     
-    <%= render 'shared/searchbarform' %>
+    <%= render 'shared/ingredientsearchbarform' %>
     
     <div class="centre-container mt-5">    
         <h2>Search by Ingredient</h2>
@@ -25,5 +25,7 @@
     </div>
     <div>
         <%= link_to "Take me home", root_path, class:"btn-primary" %>
+        <%= link_to "back to product search", products_path, class:"btn-primary" %>
+        <%= link_to "back to ingredient search", ingredients_path, class:"btn-primary" %>
     <div>
 </div>
