@@ -8,10 +8,13 @@
   <p>Skin concern: <%= product_review.skin_concern %></p>
   <p>Rating: <%= product_review.product_rating %></p>
   <p>Review by: <%= product_review.user.username %></p>
-
 </div>
 <% end %>
 
+<% if current_user %>
   <div class="container">
     <%= render partial: 'product_reviews/form' %>
   </div>
+<% end %>
+</div>
+
