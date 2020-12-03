@@ -1,15 +1,19 @@
 class ProductsController < ApplicationController
-
+  before_action :set_product, only: [:show, :safety_rating]
   def show
     @product = Product.find(params[:id])
   end
-  def safety_rating
-    @product = Product.find(params[:id])
-    @safety_rating = Product.Find_by(safety_rating:@product.average_safety_rating_bar)
-  end
+
+
+
   def efficacy_rating
   end
   def index
     @products = Product.all
+  end
+  private
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 end
