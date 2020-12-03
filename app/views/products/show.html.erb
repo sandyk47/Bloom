@@ -1,0 +1,13 @@
+<div class="container">
+
+<% @product.product_reviews.each do |product_review| %>
+<div class="container">
+  <%= product_review.content %>
+
+</div>
+<% end %>
+
+  <div class="container">
+    <%= render partial: 'product_reviews/form' %>
+  </div>
+
