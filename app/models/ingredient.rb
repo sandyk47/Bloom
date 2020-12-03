@@ -4,7 +4,17 @@ class Ingredient < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
-  validates :average_safety_rating, presence: true, numericality: true, inclusion: { in: 0..10 }
-  validates :average_efficacy_rating, presence: true, numericality: true, inclusion: { in: 0..10 }
+  def safety_rating
+    ingredient_review = IngredientReview.where(ingredient: self)
+    safety_rating = ingredient_review.average(:safety_rating)
+    self.update(average_safety_rating: safety_rating)
+    self.average_safety_rating
+  end
+  def efficacy_rating
+    ingredient_review = IngredientReview.where(ingredient: self)
+    efficacy_rating = ingredient_review.average(:efficacy_rating)
+    self.update(average_efficacy_rating: efficacy_rating)
+    self.average_efficacy_rating
+  end
 
 end
