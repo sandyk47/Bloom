@@ -1,0 +1,27 @@
+
+<div class="container">
+    
+    <%= render 'shared/searchbarform' %>
+    
+    <div class="centre-container mt-5">    
+        <h2>Search by Ingredient</h2>
+        <div id="search-and-results">
+            <h2>search Q</h2>
+            <h2>count</h2>
+        </div>
+        <div id="ingredient-card-container">
+            <% @ingredients.each do |ingredient| %>
+                <div class="ingredient-details">
+                    <img class="ingredient-index-img" style="width: 300px" src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+                    <div class="ingredient-card-infos">
+                        <h2> <%= link_to "#{ingredient.name}" %></h2>
+                        <p>Lorem ipsum dolor sit amet, cum id everti euismod constituam, atqui appareat qui ei. Eripuit intellegebat mel ea, erroribus reformidans an his, ei sed enim munere. Ad usu tantas noster, no accumsan maluisset nam. Ne dictas eligendi similique vis. </p>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+    <div>
+        <%= link_to "Take me home", root_path, class:"btn-primary" %>
+    <div>
+</div>

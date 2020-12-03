@@ -8,3 +8,4 @@ Rails.application.routes.draw do
     resources :ingredient_reviews, only: [ :create ]
   end
 end
+ 
