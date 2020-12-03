@@ -1,6 +1,11 @@
 class Product < ApplicationRecord
   belongs_to :brand
   has_many :ingredients, through: :product_ingredients
+  validates :title, presence: true, uniqueness: true
+  validates :description, presence: true
+  validates :average_product_rating_stars, presence: true, numericality: true, inclusion: { in: 0..5 }
+  validates :average_safety_rating_bar, presence: true, numericality: true, inclusion: { in: 0..5 }
+  validates :average_efficacy_rating_bar, presence: true, numericality: true, inclusion: { in: 0..5 }
 
   def safety_rating
     safety_rating = self.average_safety_rating_bar
@@ -19,5 +24,6 @@ class Product < ApplicationRecord
     #calculate safety_rating out of 100%
     #store the value back to the database
   end
+
 
 end
