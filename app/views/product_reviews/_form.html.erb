@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Leave a review</h1>
-<%   skin_concerns = [ "Sun damage", "Pigmentation", "Fine lines and wrinkles", "Sensitivity", "Breakouts/Acne", "Dullness", "Elasticity", "Rosacea", "Enlarged Pores", "Excessive Oiliness", "Dryness", "Eczema", "Allergies", "Psoriasis", "Hives", "Dermatitis"] %>
+<%   skin_concerns = %w(Blemishes Dark\ circles Dehydration Dullness Fine\ lines Loss\ of\ firmness Pigmentation Puffiness Redness Sun\ damage Uneven\ skin\ texture Uneven\ skin\ tone Visible\ pores Wrinkles) %>
 
 <%= simple_form_for([@product, @product_review]) do |f| %>
       <%= f.input :title %>
