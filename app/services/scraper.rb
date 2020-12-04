@@ -20,7 +20,6 @@ module Scraper
         brand = Brand.find_by(name: result[:brand])
         product = Product.create( brand_id: brand.id, title: result[:product], benefits: result[:benefits], oneliner: result[:oneliner], img: result[:img], description: result[:description], category: result[:category], sub_category: result[:sub_category])
         results.each_with_index.map do |result, index|
-          binding.pry
           ingredient = Ingredient.where(name: result[:ingredients][index]).first_or_create
           ProductIngredient.create(product_id: product.id, ingredient_id: ingredient.id)
         end
