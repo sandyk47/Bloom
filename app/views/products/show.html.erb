@@ -4,12 +4,18 @@
   <h1><%= @product.title %> </h1>
 
   <div class="container card">
-    <p> description: <%= @product.description %> </p>
+    <img src= "<%=@product.img %>" style="width: 300px" />
     <p> brand: <%= @product.brand.name %> </p>
+    <p> description: <%= @product.description %> </p>
     <ul>
       <li> safety rating: <%= @product.safety_rating %> </li> <!-- calling instance method from Ingredient model, look inside model-->
       <li> efficacy rating: <%= @product.efficacy_rating %> </li> <!-- calling instance method from Ingredient model-->
     </ul>
+    <% @product_ingredients.each do |product_ingredient| %>
+      <ul>
+        <li> <%= product_ingredient.ingredient.name %>  </li>
+      </ul>
+    <% end %>
   </div>
 
 <div class="container">
