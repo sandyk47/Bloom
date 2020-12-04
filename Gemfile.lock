@@ -244,9 +244,6 @@ GEM
       tzinfo (>= 1.0.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    watir (6.17.0)
-      regexp_parser (~> 1.2)
-      selenium-webdriver (~> 3.6)
     web-console (4.1.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -301,7 +298,6 @@ DEPENDENCIES
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
   tzinfo-data
-  watir
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
