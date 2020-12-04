@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
    def show
     @product = Product.find(params[:id])
     @product_review = ProductReview.new
+    @product_ingredients = ProductIngredient.where(product_id:params[:id])
   end
 
 end

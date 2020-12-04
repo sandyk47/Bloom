@@ -11,33 +11,34 @@ class Product < ApplicationRecord
 
     all_ingredients_safety_rating_total = []
     count = 0
-
-    if  product_ingredients.nil?
-      product_safety_rating = 0
-    else
-      product_ingredients.each do |product_ingredient|
-        all_ingredients_safety_rating_total << product_ingredient.ingredient.average_safety_rating
-        product_ingredient.ingredient.average_safety_rating.nil? ? product_safety_rating = 0 : count += 10
+    product_safety_rating = 0
+    product_ingredients.each do |product_ingredient|
+      if  product_ingredient.nil? || product_ingredient.ingredient.average_safety_rating.nil?
+        product_safety_rating += 0
+      else
+          all_ingredients_safety_rating_total << product_ingredient.ingredient.average_safety_rating
+          product_ingredient.ingredient.average_safety_rating.nil? ? product_safety_rating = 0 : count += 10
+          product_safety_rating = (all_ingredients_safety_rating_total.sum.fdiv(count)) * 100 if count > 0
       end
-        product_safety_rating = (all_ingredients_safety_rating_total.sum.fdiv(count)) * 100 if count > 0
     end
     product_safety_rating
   end
 
  def efficacy_rating
-   product_ingredients = ProductIngredient.where(product: self)
+    product_ingredients = ProductIngredient.where(product: self)
 
     all_ingredients_efficacy_rating_total = []
     count = 0
+    product_efficacy_rating = 0
 
-    if  product_ingredients.nil?
-      product_efficacy_rating = 0
-    else
-      product_ingredients.each do |product_ingredient|
-        all_ingredients_efficacy_rating_total << product_ingredient.ingredient.average_efficacy_rating
-        product_ingredient.ingredient.average_efficacy_rating.nil? ? product_efficacy_rating = 0 : count += 10
+    product_ingredients.each do |product_ingredient|
+      if  product_ingredients.nil? || product_ingredient.ingredient.average_safety_rating.nil?
+        product_efficacy_rating += 0
+      else
+          all_ingredients_efficacy_rating_total << product_ingredient.ingredient.average_efficacy_rating
+          product_ingredient.ingredient.average_efficacy_rating.nil? ? product_efficacy_rating = 0 : count += 10
+          product_efficacy_rating = (all_ingredients_efficacy_rating_total.sum.fdiv(count)) * 100 if count > 0
       end
-        product_efficacy_rating = (all_ingredients_efficacy_rating_total.sum.fdiv(count)) * 100 if count > 0
     end
     product_efficacy_rating
   end
