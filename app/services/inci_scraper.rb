@@ -36,7 +36,7 @@ class InciScraper
 end
 
 scraper = InciScraper.new
-scraper_array = (1..2).to_a
+scraper_array = (1..10).to_a
 results_array = []
 scraper_array.each do |page|
   scraper.get_urls(page).each do |url|
