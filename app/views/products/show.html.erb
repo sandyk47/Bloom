@@ -11,6 +11,11 @@
       <li> safety rating: <%= @product.safety_rating %> </li> <!-- calling instance method from Ingredient model, look inside model-->
       <li> efficacy rating: <%= @product.efficacy_rating %> </li> <!-- calling instance method from Ingredient model-->
     </ul>
+    <% @product_ingredients.each do |product_ingredient| %>
+      <ul>
+        <li> <%= product_ingredient.ingredient.name %>  </li>
+      </ul>
+    <% end %>
   </div>
 
 <div class="container">
