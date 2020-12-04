@@ -1,5 +1,13 @@
 require "open-uri"
 
+IngredientReview.delete_all
+ProductReview.delete_all
+ProductIngredient.delete_all
+Ingredient.delete_all
+Product.delete_all
+Brand.delete_all
+User.delete_all
+
 puts "Preparing your app..."
 puts "Creating users..."
 
@@ -43,12 +51,67 @@ user_3 = User.create!(
   )
 
 puts "Creating your index..."
-results = Scraper::MeccaProducts.new.call
+
+brand = Brand.create!(name: "Fancy Product")
+
+product_1 = Product.create!(
+  title: "Facial Green Tease",
+  brand: Brand.first,
+  description: "A nutrient-rich spritz that hydrates, cools and in...",
+  average_product_rating_stars: nil,
+  average_safety_rating_bar: nil,
+  average_efficacy_rating_bar: nil,
+  benefits: "HydratingBrightening",
+  oneliner: "Cool and refresh with an antioxidant boost.",
+  img: "https://www.mecca.com.au/on/demandware.static/-/Si...",
+  category: "Cleanser & Toner",
+  sub_category: "Toner"
+)
+
+product_2 = Product.create!(
+  title: "Yasss Toner",
+  brand: Brand.first,
+  description: "A nutrient-rich spritz that hydrates, cools and in...",
+  average_product_rating_stars: nil,
+  average_safety_rating_bar: nil,
+  average_efficacy_rating_bar: nil,
+  benefits: "HydratingBrightening",
+  oneliner: "Cool and refresh with an antioxidant boost.",
+  img: "https://www.mecca.com.au/on/demandware.static/-/Si...",
+  category: "Cleanser & Toner",
+  sub_category: "Toner")
+
+product_3 = Product.create!(
+  title: "Facial CLEANSERRRR",
+  brand: Brand.first,
+  description: "A nutrient-rich spritz that hydrates, cools and in...",
+  average_product_rating_stars: nil,
+  average_safety_rating_bar: nil,
+  average_efficacy_rating_bar: nil,
+  benefits: "HydratingBrightening",
+  oneliner: "Cool and refresh with an antioxidant boost.",
+  img: "https://www.mecca.com.au/on/demandware.static/-/Si...",
+  category: "Cleanser & Toner",
+  sub_category: "Toner")
+
+puts "Creating ingredients..."
+
+ingredient_1 = Ingredient.create!(name: 'yas')
+ingredient_3 = Ingredient.create!(name: 'yas1')
+ingredient_5 = Ingredient.create!(name: 'yas2')
+
+
+
+puts "Creating product ingredients"
+ProductIngredient.create!(ingredient: Ingredient.first, product: Product.first)
+ProductIngredient.create!(ingredient: Ingredient.first, product: Product.second)
+ProductIngredient.create!(ingredient: Ingredient.first, product: Product.last)
+
 
 puts "Creating reviews..."
   product_1 = Product.first
-  product_3 = Product.third
-  product_5 = Product.fifth
+  product_3 = Product.second
+  product_5 = Product.last
 
   pro_rev_1 = ProductReview.create!(
     user: user_1,
@@ -81,10 +144,10 @@ puts "Creating reviews..."
     content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     product_rating: 4,
   )
-  
+
   ingredient_1 = Ingredient.first
-  ingredient_3 = Ingredient.third
-  ingredient_5 = Ingredient.fifth
+  ingredient_3 = Ingredient.second
+  ingredient_5 = Ingredient.last
 
   ing_rev_1 = IngredientReview.create!(
     user: user_1,
