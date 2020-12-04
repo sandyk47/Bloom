@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_062712) do
+ActiveRecord::Schema.define(version: 2020_12_03_051708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "brands", force: :cascade do |t|
     t.string "name"
-    t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -56,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_12_02_062712) do
   end
 
   create_table "product_reviews", force: :cascade do |t|
-    t.string "title"
+    t.string "title", default: "untitled"
     t.string "content"
     t.integer "product_rating"
     t.bigint "user_id", null: false
@@ -76,6 +75,11 @@ ActiveRecord::Schema.define(version: 2020_12_02_062712) do
     t.float "average_product_rating_stars"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "benefits"
+    t.string "oneliner"
+    t.string "img"
+    t.string "category"
+    t.string "sub_category"
     t.index ["brand_id"], name: "index_products_on_brand_id"
   end
 
