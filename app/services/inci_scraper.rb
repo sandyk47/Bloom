@@ -1,6 +1,5 @@
-require 'open-uri'
-require 'nokogiri'
-require 'pry-byebug'
+# require 'open-uri'
+# require 'nokogiri'
 
 class InciScraper
   def initialize
