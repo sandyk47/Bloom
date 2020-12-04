@@ -31,9 +31,9 @@ class Product < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :product_and_brand_search,
-    against: [ :title, :description ],
+    against: [ :title, :description, :oneliner, :category, :sub_category ],
     associated_against: {
-      brand: [ :name, :description ]
+      brand: [ :name ]
     },
     using: {
       tsearch: { prefix: true }
