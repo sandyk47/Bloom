@@ -4,8 +4,8 @@
   <div class="container card">
     <p> description: <%= @ingredient.description %> </p>
     <ul>
-      <li> safety rating: <%= @ingredient.average_safety_rating %> </li>
-      <li> efficacy rating: <%= @ingredient.average_efficacy_rating %> </li>
+      <li> safety rating: <%= @ingredient.safety_rating %> </li> <!-- calling instance method from Ingredient model, look inside model-->
+      <li> efficacy rating: <%= @ingredient.efficacy_rating %> </li> <!-- calling instance method from Ingredient model-->
     </ul>
   </div>
 
@@ -13,6 +13,8 @@
     <% @ingredient.ingredient_reviews.each do |ingredient_review| %>
       <h3> review title: <%= ingredient_review.title %> </h3>
       <p> review content: <%= ingredient_review.content %> </p>
+      <p> efficacy_rating: <%= ingredient_review.efficacy_rating %> </p>
+      <p> safety_rating: <%= ingredient_review.safety_rating %> </p>
     <% end %>
   </div>
 
