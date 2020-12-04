@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_051708) do
   end
 
   create_table "product_reviews", force: :cascade do |t|
-    t.string "title", default: "untitled"
+    t.string "title"
     t.string "content"
     t.integer "product_rating"
     t.bigint "user_id", null: false
@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(version: 2020_12_03_051708) do
     t.bigint "brand_id", null: false
     t.string "description"
     t.float "average_product_rating_stars"
+    t.float "average_safety_rating_bar"
+    t.float "average_efficacy_rating_bar"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "benefits"
