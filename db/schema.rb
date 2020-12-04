@@ -74,8 +74,6 @@ ActiveRecord::Schema.define(version: 2020_12_02_062712) do
     t.bigint "brand_id", null: false
     t.string "description"
     t.float "average_product_rating_stars"
-    t.float "average_safety_rating_bar"
-    t.float "average_efficacy_rating_bar"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
