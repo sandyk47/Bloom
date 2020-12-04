@@ -1,8 +1,8 @@
 class Product < ApplicationRecord
   belongs_to :brand, dependent: :destroy
-  has_many :product_ingredients
+  has_many :product_ingredients, dependent: :destroy
   has_many :ingredients, through: :product_ingredients
-  has_many :product_reviews
+  has_many :product_reviews, dependent: :destroy
 
   validates :title, presence: true, uniqueness: true
 
