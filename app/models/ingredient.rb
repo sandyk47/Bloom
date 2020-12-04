@@ -1,4 +1,5 @@
 class Ingredient < ApplicationRecord
+  acts_as_taggable_on :tags
   has_many :product_ingredients
   has_many :ingredient_reviews
 
