@@ -1,11 +1,76 @@
 <div class="banner">
 </div>
-  
-  <div class="container">
-    <h2>Summertime is always in <strong>BLOOM</strong> </h2>
-    <p> Helping you make informed cosmetic purchasing decisions</p>
-    <div class="link-container" style="display: flex, justify-content: space-between">    
-      <%= link_to "Search by product", products_path, class:"btn-primary" %>
-      <%= link_to "Search by ingredient", ingredients_path, class:"btn-primary" %>
+
+<div class="home-container">
+  <div class="top-flex-container warm-background">
+    <div class="flex-object">
+      <div class="home-content-box">
+        <h2>Bloom</h2>
+        <h3>Self-care just got a little easier</h3>
+        <p>We analyse the the safety and efficacy of your favourite skincare products so that you don’t have to.</p>
+        <%= render 'shared/productsearchbarform' %>
+      </div>
     </div>
+    <img alt="Le Wagon" src="https://res.cloudinary.com/dv27nsze8/image/upload/v1607129841/bloom_imagery/park-street-KYUiTYOaE9M-unsplash_cvtayt.jpg" />
+  </div>
+
+  <div class="fold-container">
+    <div class="content-container">
+      <div class="image-container">
+          <img alt="Le Wagon" src="https://res.cloudinary.com/dv27nsze8/image/upload/v1607129841/bloom_imagery/Product_uhki8f.jpg" />
+      </div>
+    </div>
+    <div class="home-content-box">
+        <h3>Search by Product</h3>
+        <p>We analyse the the safety and efficacy of your favourite skincare products so that you don’t have to.</p>
+        <%= link_to "Search by Product", "shared/productsearchbarform", class: "btn-ghost" %>
+      </div>
+  </div>
+
+  <div class="fold-container-right gray-background">
+    <div class="home-content-box">
+        <h3>Search by Health or Skin Condition</h3>
+        <p>Do you have an underlying health or skin problems which makes purchasing cosmetics difficult? We’re here for you.</p>
+        <%= link_to "Condition Search", "shared/productsearchbarform", class: "btn-ghost" %>
+      </div>
+    <div class="content-container">
+      <div class="image-container">
+          <img alt="Le Wagon" src="https://res.cloudinary.com/dv27nsze8/image/upload/v1607129841/bloom_imagery/romina-farias-B5LZDN_t_fc-unsplash_zqvmne.jpg" />
+      </div>
+    </div>
+  </div>
+
+  <div class="fold-container">
+    <div class="content-container">
+      <div class="image-container">
+          <img alt="Le Wagon" src="https://res.cloudinary.com/dv27nsze8/image/upload/v1607129840/bloom_imagery/frank-dudek-Tg8HCInX4gY-unsplash_e29ujo.jpg" />
+      </div>
+    </div>
+    <div class="home-content-box">
+        <h3>Search by Ingredient</h3>
+        <p>Analysing ingredients is complicated. We analyse the the safety of your favourite products so that you don’t have to.</p>
+        <%= link_to "Search by Ingredient", "shared/productsearchbarform", class: "btn-ghost" %>
+      </div>
+  </div>
+
+<div class="fold-container-right warm-background">
+    <div class="home-content-box">
+        <h3>Search by Accreditation</h3>
+        <p>.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <%= link_to "Condition Search", "shared/productsearchbarform", class: "btn-ghost" %>
+      </div>
+    <div class="content-container">
+      <div class="image-container">
+          <img alt="Le Wagon" src="https://res.cloudinary.com/dv27nsze8/image/upload/v1607129844/bloom_imagery/sean-mcgee-jdfjsniIJ7M-unsplash_svhds6.jpg" />
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+  <div class="link-container" style="display: flex, justify-content: space-between">    
+    <%= link_to "Search by product", products_path, class:"btn-primary p-3" %>
+    <%= link_to "Search by ingredient", ingredients_path, class:"btn-primary p-3" %>
   </div>

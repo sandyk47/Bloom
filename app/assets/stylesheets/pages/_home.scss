@@ -10,8 +10,95 @@
   font-weight: bold;
 }
 
+.home-container {
+  width: full;
+  text-align: center;
+}
+
 .container p {
   font-size: 20px;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+// here are all the components for the top section above the fold
+
+.top-flex-container {
+  display: flex;
+  height: 100vh;
+  // width: 100%;
+  // position: relative;    /* so .content can use position: absolute */
+
+  img {
+    // position: absolute;
+    width: 50vh;
+    flex-grow: 1;
+    object-fit: cover;
+  }
+
+}
+
+.flex-object {
+  display: flex;
+  align-items: center;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.home-content-box {
+  width: 400px;
+  text-align: left;
+  padding-left: 40px;
+  padding-right: 40px;
+  // position: absolute;
+}
+
+// here are all the components for the subsequent sections
+
+.fold-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+}
+
+.fold-container-right {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.content-container {
+  display: flex;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.image-container {
+  padding-left: 0;
+  width: 60vw;
+  height: 55vh;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    flex-grow: 1;
+    object-fit: cover;
+    position: inherit;
+    width: 100%;
+    height: auto;
+    // height: 300px;
+    // object-fit: cover;
+  }
+}
+
+.gray-background {
+  background-color: $light-grey-2;
+}
+
+.warm-background {
+  background-color: $warm-orange
 }
