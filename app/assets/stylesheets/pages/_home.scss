@@ -21,6 +21,11 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
+.flex-container-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 // here are all the components for the top section above the fold
 
 .top-flex-container {
