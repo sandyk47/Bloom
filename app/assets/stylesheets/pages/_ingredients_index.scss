@@ -2,3 +2,19 @@
     display: flex;
     justify-content: space-between;
 }
+
+#ingredient-top-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ingredients-grid {
+    display: grid;
+    grid-template-columns: 1ft 1fr 1fr;
+    grid-gap: 16px;
+    background-color: #fae9da;
+}
+
+.ingredient-details {
+    
+}
