@@ -1,10 +1,40 @@
 
-#product-search-flex {
-    display: flex;
-    justify-content: space-evenly;
+#product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
 }
 
 #products-index-sidebar {
-    min-width: 300px;
+    max-width: 350px;
     height: full;
+}
+
+.product-top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.body-container {
+    display: flex;
+}
+
+.search-results-container {
+    background-color: $serenade;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.product-card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
+}
+
+.product-text-container {
+    text-align: left;
+    margin-left: 10px;
 }

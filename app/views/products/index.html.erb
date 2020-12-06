@@ -1,35 +1,37 @@
 <div class ="container">
   <div class="product-top-nav">
-    <h2>Cosmetic Main Listing</h2>
+    <h2>Search for Products</h2>
     <%= render 'shared/productsearchbarform' %>
   </div>
-
-  <div id="product-search-flex">
-
+  <div class="body-container">
     <div id="products-index-sidebar">
         <%= render partial: 'shared/filterform' %>
     </div>
-
-    <div class="main-container">
-      <div class="cards">
-        <% @products.each do |product| %>
-          <div class="ingredient-details">
-            <img src= "<%=product.img %>" style="width: 300px" />
-            <div class="card-product-infos">
-                <h2><%= link_to "#{product.title} - #{product.brand.name}", product_path(product), class: 'card-link'%></h2>
-                <p><%= product.oneliner%></p> 
+    <div class="search-results-container">
+      <div class="product-text-container">
+        <p> search for XX products </p>
+      </div>
+      <div class="product-card-grid">
+          <% @products.each do |product| %>
+            <div class="ingredient-details">
+              <img src= "<%=product.img %>" style="width: 300px" />
+              <div class="card-product-infos">
+                  <h2><%= link_to "#{product.title} - #{product.brand.name}", product_path(product), class: 'card-link'%></h2>
+                  <p><%= product.oneliner%></p> 
+              </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
       </div>
     </div>
   </div>
+</div>
+
 
   <div>
     <%= link_to "Take me home", root_path, class:"btn-primary" %>
     <%= link_to "back to ingredient search", ingredients_path, class:"btn-primary" %>
   </div>
 
-</div>
+
 
 
