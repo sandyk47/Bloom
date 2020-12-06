@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # gem 'watir'
 gem 'devise'
 
+gem 'acts_as_favoritor'
+
 gem 'pg_search', '~> 2.3.0'
 
 gem 'autoprefixer-rails'
