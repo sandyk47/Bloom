@@ -16,6 +16,10 @@ class Product < ApplicationRecord
 
   validates :title, presence: true, uniqueness: true
 
+  def self.categories
+    distinct.pluck(:category)
+  end
+
   def safety_rating
     product_ingredients = ProductIngredient.where(product: self)
 

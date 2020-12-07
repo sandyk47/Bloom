@@ -1,0 +1,7 @@
+<% if params[type.to_sym]&.include?(name) %>
+  <span class="text-danger">
+    <%= name %>
+  </span>
+<% else %>
+  <%= link_to name, products_path(type => name), class: "filter-element", "data-type": type %>
+<% end %>

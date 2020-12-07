@@ -6,28 +6,28 @@
 
 <h2>Ingredient preferences</h2>
 <% ingredient_preferences.each do |tag|  %>
-<%= link_to tag, products_path(tag: tag), class: "filter-element", "data-type": "tag" %>
+<%= render 'filter_elements/link', name: tag, type: "tag" %>
 <% end %>
 
 <h2>Skin concerns</h2>
 <% skin_concerns.each do |tag|  %>
-<%= link_to tag, products_path(tag: tag), class: "filter-element", "data-type": "tag" %>
+<%= render 'filter_elements/link', name: tag, type: "tag" %>
 <% end %>
 
 <h2>Skin types</h2>
 <% skin_types.each do |tag|  %>
-<%= link_to tag, products_path(tag: tag), class: "filter-element", "data-type": "tag" %>
+<%= render 'filter_elements/link', name: tag, type: "tag" %>
 <% end %>
 
 
 <h2>Form</h2>
 <% form.each do |tag|  %>
-<%= link_to tag, products_path(tag: tag), class: "filter-element", "data-type": "tag" %>
+<%= render 'filter_elements/link', name: tag, type: "tag" %>
 <% end %>
 
 <h2>Categories</h2>
-<% ["Skin Care Packs"].each do |category|  %>
-<%= link_to category, products_path(category: category), class: "filter-element", "data-type": "category" %>
+<% Product.categories.each do |category|  %>
+<%= render 'filter_elements/link', name: category, type: "category" %>
 <% end %>
 
 <script>
