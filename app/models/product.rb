@@ -53,6 +53,12 @@ class Product < ApplicationRecord
     product_efficacy_rating
   end
 
+  def user_rating
+    user_rating = ProductReview.average(:product_rating)
+    self.update(average_safety_rating: safety_rating)
+    self.average_safety_rating
+  end
+
   include PgSearch::Model
   pg_search_scope :product_and_brand_search,
     against: [ :title, :description, :oneliner, :category, :sub_category ],
