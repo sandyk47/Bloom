@@ -1,13 +1,13 @@
 class ProductsController < ApplicationController
+PRODUCTS_PER_PAGE = 12
 
   def index
-    @products = Product.all
-
-    @products = @products.product_and_brand_search(params[:query]) if params[:query].present?
-
+    @page = params.fetch(:page, 0).to_i
+    @products = Product.offset(@page*PRODUCTS_PER_PAGE).limit(PRODUCTS_PER_PAGE)
+    @products = @products.product_search(params[:query]) if params[:query].present?
     @products = @products.tagged_with(params[:tag]) if params[:tag].present?
-
     @products = @products.where(category: params[:category]) if params[:category].present?
+    @products = @products.where(brand_id: params[:brand_id]) if params[:brand_id].present?
   end
 
    def show

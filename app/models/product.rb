@@ -20,6 +20,10 @@ class Product < ApplicationRecord
     distinct.pluck(:category)
   end
 
+  def self.brands
+    distinct.pluck(:brand_id)
+  end
+
   def safety_rating
     product_ingredients = ProductIngredient.where(product: self)
 

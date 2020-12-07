@@ -22,6 +22,18 @@
           </div>
         <% end %>
       </div>
+
+      <div>
+   <ul class="pager">
+      <li class="previous <%= @page == 0 ? 'disabled' : '' %>">
+          <%= link_to_if @page > 0, "<< Previous", products_path(page: @page - 1) %>
+      </li>
+
+      <li class="next <%= @page >= (Product.count/12) ? 'disabled' : '' %>">
+          <%= link_to_if @page <= (Product.count/12), "Next >>", products_path(page: @page + 1) %>
+      </li>
+   </ul>
+</div>
     </div>
   </div>
 
