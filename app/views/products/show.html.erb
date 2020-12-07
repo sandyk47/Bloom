@@ -34,9 +34,20 @@
       <h3>Trusted Ingredients (95%+ Ratings)</h3>
         <div class="container">
           <% @product_ingredients.each do |product_ingredient| %>
-            <ul>
-              <li> <%= product_ingredient.ingredient.name %>  </li>
-            </ul>
+            <div class="ingredient-index-card">
+              <%= image_tag  "https://res.cloudinary.com/dv27nsze8/image/upload/v1607129840/bloom_imagery/frank-dudek-Tg8HCInX4gY-unsplash_e29ujo.jpg" %>
+              <h3> <%= product_ingredient.ingredient.name %> </h3>
+              <div class="ingredients-card-rating">
+                <div class="card-rating-container">
+                  <h3>[actual Safety rating here]</h3>
+                  <h3>Safety rating</h3>                
+                </div>
+                <div class="card-rating-container">
+                  <h3>[actual Safety rating here]</h3>
+                  <h3>Safety rating</h3>                
+                </div>
+              </div>
+            </div>
           <% end %>
         </div>
       <hr>
