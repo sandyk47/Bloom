@@ -20,9 +20,15 @@
     <div class="product-bio-image">
       <img src= "<%=@product.img %>" style="width: 300px" />
      <div>
-        <%= link_to "Favorite", product_favorite_path(@product), class: 'btn-primary', method: :patch, remote: true %>
-        <%= link_to "Unfavorite", product_unfavorite_path(@product), class: 'btn-primary', method: :delete, remote: true %>
-        <%= @product.favorited_by?(current_user) %>
+        <% if user_signed_in? %>
+          <% if @product.favorited_by?(current_user) %>
+            <%= link_to "Unfavorite", product_unfavorite_path(@product), class: 'btn-primary', method: :delete, remote: true %>
+          <% else %>
+            <%= link_to "Favorite", product_favorite_path(@product), class: 'btn-primary', method: :patch, remote: true %>
+          <% end %>
+        <% else %>
+          <%= link_to "Favorite", new_user_session_path, class: 'btn-primary' %>
+        <% end %>
       </div>
       <p>User Consensus: <%= @product.user_rating %>/5</p>
     </div>
