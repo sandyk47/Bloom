@@ -1,22 +1,16 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon flex-between">
+<div class="navbar-expand-sm navbar-bloom">
   
   <div class="nav-breadcrumb">
     <%= render 'shared/breadcrumbs' %>
   </div>
   
-  <div class="nav-logo">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://puu.sh/GTZCd/7c534feca1.png" %>
-      <% end %>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <div class="navigation-logo">
+    <%= image_tag "https://res.cloudinary.com/dv27nsze8/image/upload/v1607340922/bloom_imagery/logo_small_rpno80.png" %> 
   </div>
 
-  <div class="user-menu">
+  <div class="user-menu" style="margin-right: 30px">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+      <ul style="list-style: none">
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to "Home", root_path %>
