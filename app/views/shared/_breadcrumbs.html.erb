@@ -1,0 +1,15 @@
+<nav aria-label="breadcrumb">
+  <ol class="bloom-breadcrumb">
+    <li class="bloom-breadcrumb-item"><a href="/">Home</a></li>
+    <% @breadcrumbs.each do |breadcrumb| %>
+        <% if breadcrumb[:current] %>
+            <li class="bloom-breadcrumb-item active" aria-current="page">
+                <%= breadcrumb[:label] %>
+            </li>
+        <% else %>
+            <li class="bloom-breadcrumb-item">
+                <%= link_to breadcrumb[:label], breadcrumb[:path] %>
+        <% end %>
+    <% end %>
+  </ol>
+</nav>

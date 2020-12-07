@@ -8,13 +8,31 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
+    add_breadcrumb('/  Products', products_path, true)
   end
+
+  def new
+    # we need @booking in our `simple_form_for`
+    @product = Product.new
+  end
+
+  def create
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to products_path
+    else
+      render :new
+    end
+  end 
 
    def show
     @product = Product.find(params[:id])
     @product_review = ProductReview.new
     @product_ingredients = ProductIngredient.where(product: @product)
+    add_breadcrumb("/  Products", products_path, false)
+    add_breadcrumb("/  #{@product.title}", nil, true)
   end
+
   def favorite
     @product = Product.find(params[:id])
     @user = current_user
