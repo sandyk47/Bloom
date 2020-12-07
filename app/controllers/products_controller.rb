@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
+    add_breadcrumb('/  Products', products_path, true)
   end
 
   def new
@@ -28,6 +29,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product_review = ProductReview.new
     @product_ingredients = ProductIngredient.where(product: @product)
+    add_breadcrumb("/  Products", products_path, false)
+    add_breadcrumb("/  #{@product.title}", nil, true)
   end
 
   def favorite
