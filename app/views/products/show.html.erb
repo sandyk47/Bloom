@@ -19,8 +19,12 @@
     </div>
     <div class="product-bio-image">
       <img src= "<%=@product.img %>" style="width: 300px" />
-      <p>Need to add average user ratings here</p>
-      <p>User Consensus: 4.3 /5</p>
+     <div>
+        <%= link_to "Favorite", product_favorite_path(@product), class: 'btn-primary', method: :patch %>
+        <%= link_to "Unfavorite", product_unfavorite_path(@product), class: 'btn-primary', method: :delete %>
+        <%= @product.favorited_by?(current_user) %>
+      </div>
+      <p>User Consensus: <%= @product.user_rating %>/5</p>
     </div>
   </div>
 </div>
@@ -64,7 +68,7 @@
         </ul>
       </div>
       <div class="product-ratings-right">
-        <h2>Overall Consensus: 4.3/5</h2>
+        <h2>Overall Consensus: <%= @product.user_rating %></h2>
         <h3>Stars in here</h3>
         <%= link_to "Leave a review", products_path, class: "btn-ghost" %>
       </div>
@@ -92,7 +96,7 @@
             <p style="margin-left: 10px"><b>Recommended?</b> <%= product_review.recommended %></p>
           </div>
           <hr>
-        </div> 
+        </div>
       </div>
       <% end %>
     </div>

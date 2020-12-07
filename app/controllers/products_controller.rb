@@ -15,8 +15,22 @@ class ProductsController < ApplicationController
     @product_review = ProductReview.new
     @product_ingredients = ProductIngredient.where(product: @product)
   end
+  def favorite
+    @product = Product.find(params[:id])
+    @user = current_user
+    @user.favorite(@product)
+    redirect_to @product
+  end
+
+  def unfavorite
+    @product = Product.find(params[:id])
+    @user = current_user
+    @user.unfavorite(@product)
+    redirect_to @product
+  end
 
   private
+
 
   def product_params
     params.require(:product).permit(:title, :brand_id, :description, :average_product_rating_stars, :average_efficacy_rating_bar, :average_safety_rating_bar, tag_list: [])

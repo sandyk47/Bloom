@@ -6,9 +6,11 @@ class Product < ApplicationRecord
   acts_as_taggable_on :skin_types
   acts_as_taggable_on :accreditations
 
+  acts_as_favoritable
+
   belongs_to :brand
   has_many :product_ingredients
-  
+
   has_many :ingredients, through: :product_ingredients
   has_many :product_reviews
 
@@ -49,6 +51,12 @@ class Product < ApplicationRecord
       end
     end
     product_efficacy_rating
+  end
+
+  def user_rating
+    user_rating = ProductReview.average(:product_rating)
+    self.update(average_product_rating_stars: user_rating)
+    self.average_product_rating_stars
   end
 
   include PgSearch::Model
