@@ -6,6 +6,8 @@ SKIN_TYPES = ["Extra Oily", "Oily", "Combination", "Dry", "Extra Dry", "Sensitiv
   has_many :product_reviews
   has_many :ingredient_reviews
 
+  acts_as_favoritor
+
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true

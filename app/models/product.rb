@@ -6,9 +6,11 @@ class Product < ApplicationRecord
   acts_as_taggable_on :skin_types
   acts_as_taggable_on :accreditations
 
+  acts_as_favoritable
+
   belongs_to :brand
   has_many :product_ingredients
-  
+
   has_many :ingredients, through: :product_ingredients
   has_many :product_reviews
 
