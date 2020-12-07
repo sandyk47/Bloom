@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # gem 'watir'
 gem 'devise'
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 gem 'acts_as_favoritor'
 
 gem 'pg_search', '~> 2.3.0'
@@ -41,7 +43,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'dotenv-rails'
+  # gem 'dotenv-rails'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
