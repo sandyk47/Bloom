@@ -6,38 +6,47 @@
 
 <h2>Ingredient preferences</h2>
 <% ingredient_preferences.each do |tag|  %>
-<%= link_to tag, products_path(tag: tag), class: "tag" %>
+<%= link_to tag, products_path(tag: tag), class: "filter-element", "data-type": "tag" %>
 <% end %>
 
 <h2>Skin concerns</h2>
 <% skin_concerns.each do |tag|  %>
-<%= link_to tag, products_path(tag: tag), class: "tag" %>
+<%= link_to tag, products_path(tag: tag), class: "filter-element", "data-type": "tag" %>
 <% end %>
 
 <h2>Skin types</h2>
 <% skin_types.each do |tag|  %>
-<%= link_to tag, products_path(tag: tag), class: "tag" %>
+<%= link_to tag, products_path(tag: tag), class: "filter-element", "data-type": "tag" %>
 <% end %>
 
 
 <h2>Form</h2>
 <% form.each do |tag|  %>
-<%= link_to tag, products_path(tag: tag), class: "tag" %>
+<%= link_to tag, products_path(tag: tag), class: "filter-element", "data-type": "tag" %>
+<% end %>
+
+<h2>Categories</h2>
+<% ["Skin Care Packs"].each do |category|  %>
+<%= link_to category, products_path(category: category), class: "filter-element", "data-type": "category" %>
 <% end %>
 
 <script>
-  const tags = document.querySelectorAll(".tag");
-  Array.from(tags).forEach((tag) => {
-    tag.addEventListener('click', (e) => {
+document.addEventListener('turbolinks:load', () => {
+  let filterElements = document.querySelectorAll(".filter-element");
+  Array.from(filterElements).forEach((element) => {
+    element.addEventListener('click', (e) => {
       e.preventDefault();
-      var tagName = e.currentTarget.innerHTML;
+      var elementType = e.currentTarget.dataset.type;
+      var elementName = e.currentTarget.innerHTML;
       var url = window.location.href;
       var urlObject = new URL(url.toString());
-      urlObject.searchParams.append("tag[]", tagName);
+      urlObject.searchParams.append(`${elementType}[]`, elementName);
       console.log(urlObject);
       // window.history.pushState({}, '', urlObject.href);
-      window.location.href = urlObject.href;
+      window.location.href = urlObject;
     });
   });
+});
 </script>
+
 

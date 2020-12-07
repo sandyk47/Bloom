@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  # scope :by_category, -> { where ("category = ?" category) }
+
+
   acts_as_taggable_on :tags
   acts_as_taggable_on :conditions
   acts_as_taggable_on :ingredient_preferences
