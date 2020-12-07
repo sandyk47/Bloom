@@ -55,8 +55,8 @@ class Product < ApplicationRecord
 
   def user_rating
     user_rating = ProductReview.average(:product_rating)
-    self.update(average_safety_rating: safety_rating)
-    self.average_safety_rating
+    self.update(average_product_rating_stars: user_rating)
+    self.average_product_rating_stars
   end
 
   include PgSearch::Model
