@@ -11,7 +11,6 @@
 
   <div class="container card">
     <% @ingredient.ingredient_reviews.each do |ingredient_review| %>
-    raise
       <h3> review title: <%= ingredient_review.title %> </h3>
       <p> review content: <%= ingredient_review.content %> </p>
       <p> efficacy_rating: <%= ingredient_review.efficacy_rating %> </p>
