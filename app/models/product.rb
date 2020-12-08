@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
-  # scope :by_category, -> { where ("category = ?" category) }
-
+  scope :by_category, ->(n = []) { where("category IN (?)", n) }
+  scope :by_brand, ->(n = []) { where("brand_id IN (?)", n) }
 
   acts_as_taggable_on :tags
   acts_as_taggable_on :conditions
@@ -21,7 +21,7 @@ class Product < ApplicationRecord
   end
 
   def self.brands
-    distinct.pluck(:brand_id)
+    @brands = Brand.all.distinct
   end
 
   def safety_rating

@@ -3,55 +3,19 @@
 <% skin_types = ["All", "Extra Oily", "Oily", "Combination", "Dry", "Extra Dry", "Sensitive", "Normal"] %>
 <% form = %w(Balm Cream Gel Lotion Powder Sheet) %>
 
+<%= simple_form_for :product_search, method: "get" do |f| %>
+<%= f.input :tag, label: "Accreditations", as: :check_boxes, collection: accreditations, include_hidden: false %>
+<%= f.input :tag, label: "Skin Concerns", as: :check_boxes, collection: skin_concerns, include_hidden: false %>
+<%= f.input :tag, label: "Skin Types", as: :check_boxes, collection: skin_types, include_hidden: false %>
+<%= f.input :tag, label: "Form", as: :check_boxes, collection: form, include_hidden: false %>
+<%= f.input :category, label: "Categories", as: :check_boxes, collection: Product.categories, include_hidden: false %>
+<%= f.input :brand, label: "Brands", as: :check_boxes, collection: Product.brands, include_hidden: false %>
 
-<h2>Accreditations</h2>
-<% accreditations.each do |tag|  %>
-<%= render 'filter_elements/link', name: tag, type: "tag" %>
+<%= f.submit %>
 <% end %>
 
 
-<h2>Brand</h2>
-<% Product.brands.each do |brand|  %>
-<%= render 'filter_elements/link', name: brand, type: "brand_id" %>
-<% end %>
-
-<h2>Skin concerns</h2>
-<% skin_concerns.each do |tag|  %>
-<%= render 'filter_elements/link', name: tag, type: "tag" %>
-<% end %>
-
-<h2>Skin types</h2>
-<% skin_types.each do |tag|  %>
-<%= render 'filter_elements/link', name: tag, type: "tag" %>
-<% end %>
 
 
-<h2>Form</h2>
-<% form.each do |tag|  %>
-<%= render 'filter_elements/link', name: tag, type: "tag" %>
-<% end %>
-
-<h2>Categories</h2>
-<% Product.categories.each do |category|  %>
-<%= render 'filter_elements/link', name: category, type: "category" %>
-<% end %>
-
-<script>
-document.addEventListener('turbolinks:load', () => {
-  let filterElements = document.querySelectorAll(".filter-element");
-  Array.from(filterElements).forEach((element) => {
-    element.addEventListener('click', (e) => {
-      e.preventDefault();
-      var elementType = e.currentTarget.dataset.type;
-      var elementName = e.currentTarget.innerHTML;
-      var url = window.location.href;
-      var urlObject = new URL(url.toString());
-      urlObject.searchParams.append(`${elementType}[]`, elementName);
-      // window.history.pushState({}, '', urlObject.href);
-      window.location.href = urlObject;
-    });
-  });
-});
-</script>
 
 
