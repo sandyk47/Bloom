@@ -92,6 +92,17 @@ skin_type: "Normal"
 puts "Creating your index..."
 %x[rake load_csv:products]
 
+puts "Creating Ingredient description"
+ingredient_1 = Ingredient.find(250)
+ingredient_2 = Ingredient.find(965)
+ingredient_3 = Ingredient.find(583)
+
+ingredient_1.update(description: "Avena Sativa (Oat) kernel flour is the flour produced from the seeds of the Avena Sativa plant and otherwise known as the oat plant. Wild oats were used for skin care purposed by the Egyptians and the Arabs since at least 2000 BC. More recently oatmeal baths have often been used to treat skin inflammatory conditions. Oat bran is a good source of B complex vitamins, vitamin E, protein, fat, and minerals. Additionally, it is rich in beta-glucan which is heart-healthy soluble fiber in particular. Today’s the formulations of colloidal oatmeal are offered in various forms such as bath treatments, cleansing bars, body washes, shampoos, lotions, creams, and shaving gels.")
+
+ingredient_2.update(description: "Yeast extracts consist of the cell contents of yeast without the cell walls;they are used as food additives or flavorings, or as nutrients for bacterial culture media. They are often used to create savory flavors and umami taste sensations, and can be found in a large variety of packaged food, including frozen meals, crackers, snack foods, gravy, stock and more. They are rich in B vitamins (but not B12), and so are of particular importance to vegans and vegetarians. Yeast extracts and fermented foods contain glutamic acid (free glutamates), an amino acid which adds an umami flavor. Glutamic acid is found in meat, cheese, fungi (mushrooms), and vegetables—such as broccoli, and tomatoes.")
+
+ingredient_3.update(description: "Also known as rice bran extract, rice bran oil, Oryza Sativa (Rice Bran) Oil, is the oil extracted from the germ and inner husk of rice. It’s similar to peanut oil, with high percentages of fatty acids—which, by the way, makes it a perfect skin moisturizer! Rice bran oil contains many natural antioxidant phenols, flavonoids, tocopherols, and tocotrienols1. A later study found rice bran oil to contain powerful antioxidants derivatives of ferulic acid, caffeic acid, and vanillic acid2. These antioxidants displayed free strong radical scavenging activity. Vanillic acid and ferulic acid as found in rice bran oil have been shown to have good penetration capabilities for the epidermis and dermis upon topical application. Rice bran oil has also found to be a better source of tocopherol (Vitamin E) and free fatty acids than sunflower oil, safflower oil, and groundnut oil. Rice bran oil contains a higher proportion of short-chain fatty acids than the other oils studied. These are natural emollients and provide good hydration for the skin as well as protecting the skin.")
+
 puts "Creating reviews..."
 product_1 = Product.find(10)
 product_2 = Product.find(35)
@@ -117,7 +128,7 @@ pro_rev_2 = ProductReview.create!(
 user: user_2,
 product: product_2,
 title: "A tad expensive, but worth it!",
-content: "Left my face feeling firmed up and ready for summer, highly recommend, wouldn't use it everyday though, tad pricey.",
+content: "Left my face feeling firmed up and ready for summer, highly recommended, wouldn't use it everyday though, tad pricey.",
 product_rating: 4,
 )
   
@@ -136,10 +147,6 @@ title: "Not my first choice, but a very close second",
 content: "A beautiful mix that left my skin feeling moisturized, firm and even-toned. As an all in one solution for someone on a budget, you can't go wrong with this! ",
 product_rating: 4,
 )
-      
-ingredient_1 = Ingredient.find(250)
-ingredient_2 = Ingredient.find(965)
-ingredient_3 = Ingredient.find(583)
 
 ing_rev_1 = IngredientReview.create!(
 user: user_4,
@@ -155,7 +162,7 @@ ing_rev_2 = IngredientReview.create!(
 user: user_5,
 ingredient: ingredient_2,
 title: "Antioxidant, Moisturizer and Soothener",
-content: "Yeast extract is a mixture of flavonoids, sugars, vitamins, and amino acids. This unique derivative of fungi also contains a high concentration of antioxidants, which acapable of neutralizing harmful free-radicals that are present in the environment. The protective mechanism not only helps to maintain the skin’s overall quality and appearancbut also allows additional skin care advantages such as increased moisturizing and soothing properties. However, skincare companies do not have to divulge the source of their yeast extract, so coeliacs should keep that in mind.",
+content: "Yeast extract is a mixture of flavonoids, sugars, vitamins, and amino acids. This unique derivative of fungi also contains a high concentration of antioxidants, which are capable of neutralizing harmful free-radicals that are present in the environment. The protective mechanism not only helps to maintain the skin’s overall quality and appearance but also allows additional skin care advantages such as increased moisturizing and soothing properties. However, skincare companies do not have to divulge the source of their yeast extract, so coeliacs should keep that in mind.",
 safety_rating: 9,
 efficacy_rating: 10,
 supporting_evidence: "Lods, L. M. et al. The future of enzymes in cosmetics. International journal of cosmetic science 22.2, 85-94 (2000)"
