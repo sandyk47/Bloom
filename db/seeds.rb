@@ -90,18 +90,12 @@ skin_type: "Normal"
 )
 
 puts "Creating your index..."
-Scraper::MeccaProducts.new.call
-
-puts "Creating product ingredients"
-ProductIngredient.create!(ingredient: Ingredient.first, product: Product.first)
-ProductIngredient.create!(ingredient: Ingredient.first, product: Product.second)
-ProductIngredient.create!(ingredient: Ingredient.first, product: Product.last)
-
+%x[rake load_csv:products]
 
 puts "Creating reviews..."
-product_1 = Product.find(12)
+product_1 = Product.find(10)
 product_2 = Product.find(35)
-product_3 = Product.find(32)
+product_3 = Product.find(25)
 
 pro_rev_1 = ProductReview.create!(
 user: user_2,
@@ -138,14 +132,14 @@ product_rating: 5,
 pro_rev_4 = ProductReview.create!(
 user: user_2,
 product: product_3,
-title: "Light up higher!",
-content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempoincididunt ut labore et dolore magna aliqua.",
+title: "Not my first choice, but a very close second",
+content: "A beautiful mix that left my skin feeling moisturized, firm and even-toned. As an all in one solution for someone on a budget, you can't go wrong with this! ",
 product_rating: 4,
 )
       
-ingredient_1 = Ingredient.find(330)
-ingredient_2 = Ingredient.find(1069)
-ingredient_3 = Ingredient.find(1026)
+ingredient_1 = Ingredient.find(250)
+ingredient_2 = Ingredient.find(965)
+ingredient_3 = Ingredient.find(583)
 
 ing_rev_1 = IngredientReview.create!(
 user: user_4,
@@ -159,7 +153,7 @@ supporting_evidence: "Journal of Zhejiang University Science B, 2013, issue 2, p
 
 ing_rev_2 = IngredientReview.create!(
 user: user_5,
-ingredient: ingredient_1,
+ingredient: ingredient_2,
 title: "Antioxidant, Moisturizer and Soothener",
 content: "Yeast extract is a mixture of flavonoids, sugars, vitamins, and amino acids. This unique derivative of fungi also contains a high concentration of antioxidants, which acapable of neutralizing harmful free-radicals that are present in the environment. The protective mechanism not only helps to maintain the skin’s overall quality and appearancbut also allows additional skin care advantages such as increased moisturizing and soothing properties. However, skincare companies do not have to divulge the source of their yeast extract, so coeliacs should keep that in mind.",
 safety_rating: 9,

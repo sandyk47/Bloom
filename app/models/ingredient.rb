@@ -3,8 +3,8 @@ class Ingredient < ApplicationRecord
   has_many :product_ingredients
   has_many :ingredient_reviews
 
-  validates :name, presence: true, uniqueness: true
-
+  validates :name, presence: true
+  
   def safety_rating
     ingredient_review = IngredientReview.where(ingredient: self)
     safety_rating = ingredient_review.average(:safety_rating)
