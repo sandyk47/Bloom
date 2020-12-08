@@ -1,0 +1,13 @@
+<div class="container">
+    <%= simple_form_for(@product) do |f| %>
+        <%= f.input :title %>
+        <%= f.input :brand_id %>
+        <%= f.input :photo, as: :file %>
+        <%= f.input :oneliner %>
+        <%= f.input :description %>
+        <%= f.input :benefits %>
+        <%#= f.input :category, as: :check_boxes, collection: Product::CATEGORY, wrapper: :vertical_collection_inline %>
+        <%#= f.input :category, as: :check_boxes, collection: Product::SUB_CATEGORY, wrapper: :vertical_collection_inline %>
+        <%= f.submit %>
+    <% end %>
+</div>

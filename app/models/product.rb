@@ -15,7 +15,7 @@ class Product < ApplicationRecord
   has_many :product_reviews
 
   validates :title, presence: true, uniqueness: true
-
+  
   def safety_rating
     product_ingredients = ProductIngredient.where(product: self)
 
@@ -68,4 +68,11 @@ class Product < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
+  private 
+
+  def user_params
+    params.require(:product).permit(:title, :description, :benefits, :oneliner, :img, :category, :subcategory, :brand_id)
+  end
+
 end
