@@ -31,24 +31,22 @@
       <% @ingredient.ingredient_reviews.each do |ingredient_review| %>
       <div class="ingredient-review-card">
         <div class="ingredient-review-header">
-          <%= image_tag "https://res.cloudinary.com/dv27nsze8/image/upload/v1607162657/bloom_imagery/zach-vessels-WxRd7byFxs4-unsplash_cxhdbu.jpg", class:"avatar-large" %>
+          <%= image_tag "#{ingredient_review.user.photo_url}", class:"avatar-large" %>
           <div class="ingredient-reviewer-name">
-            <H4><b>Dr. Barbera Nicholas</b></H2>
-            <p><i>Dermatologist</i></p>          
+            <H4><b><%= "#{ingredient_review.user.first_name} #{ingredient_review.user.last_name}"%></b></H2>      
           </div>
         </div>
         <div class="ingredient-review-body">
           <h4> <%= ingredient_review.title %> </h3>
           <p> <%= ingredient_review.content %> </p>
+          <p> <%= ingredient_review.supporting_evidence %> </p>
         </div>
         <div class="ingredient-review-ratings">
           <div class="ratings-consensus-flex">
-            <p> <%= ingredient_review.safety_rating %> </p>
-            <p> Safety</p>
+            <p> Safety: <%= ingredient_review.safety_rating %> </p>
           </div>
           <div class="ratings-consensus-flex">
-            <p> <%= ingredient_review.efficacy_rating %> </p>
-            <p> Efficacy</p>
+            <p> Efficacy: <%= ingredient_review.efficacy_rating %> </p>
           </div>           
         </div>
       </div>

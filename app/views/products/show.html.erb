@@ -22,12 +22,12 @@
      <div>
         <% if user_signed_in? %>
           <% if @product.favorited_by?(current_user) %>
-            <%= link_to "Unfavorite", product_unfavorite_path(@product), class: 'btn-primary', method: :delete, remote: true %>
+            <%= link_to "Unfavourite", product_unfavorite_path(@product), class: 'btn-primary', method: :delete, remote: true %>
           <% else %>
-            <%= link_to "Favorite", product_favorite_path(@product), class: 'btn-primary', method: :patch, remote: true %>
+            <%= link_to "Favourite", product_favorite_path(@product), class: 'btn-primary', method: :patch, remote: true %>
           <% end %>
         <% else %>
-          <%= link_to "Favorite", new_user_session_path, class: 'btn-primary' %>
+          <%= link_to "Favourite", new_user_session_path, class: 'btn-primary' %>
         <% end %>
       </div>
       <p>User Consensus: <%= @product.user_rating %>/5</p>
@@ -86,7 +86,7 @@
       <div class="product-review-card">
         <div class="avatar-placeholder">
           <div style="border-radius: 50%">
-            <%= image_tag "https://res.cloudinary.com/dv27nsze8/image/upload/v1607162657/bloom_imagery/zach-vessels-WxRd7byFxs4-unsplash_cxhdbu.jpg" %>
+            <%= image_tag "#{product_review.user.photo_url}" %>
           </div>
         </div>
         <div class="review-body">
@@ -95,6 +95,7 @@
             <p style="color: $mid-gray; margin-left: 7px">-5 days ago</p>
           </div>
           <p><%= product_review.content %></p>
+          <p>User: <%= product_review.user.username %></p>
           <p><b>Skin type:</b>
           <p><b>Skin concern:</b> <%= product_review.skin_concern %></p>
           <div class="reviews-and-ratings">
