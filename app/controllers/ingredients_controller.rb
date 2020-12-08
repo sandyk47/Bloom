@@ -13,7 +13,7 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.find(params[:id])
     @ingredient_review = IngredientReview.new
     add_breadcrumb('/  Ingredients', products_path, false)
-    add_breadcrumb(`/  #{@ingredient.name}`, nil, true)
+    add_breadcrumb("/  #{@ingredient.name}", nil, true)
   end
 
 end
