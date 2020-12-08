@@ -1,43 +1,21 @@
-<% ingredient_preferences = %w(Alcohol-free Fragance-free Gluten-free Hypoallergenic Naturally\ derived Oil-free Parabens-free Phthalate-free Silicone-free Suplhate-free Vegan) %>
+<% accreditations = %w(Alcohol-free Fragrance-free Gluten-free Oil-free Parabens-free Sulphate-free Vegan) %>
 <% skin_concerns = %w(Blemishes Dark\ circles Dehydration Dullness Fine\ lines Loss\ of\ firmness Pigmentation Puffiness Redness Sun\ damage Uneven\ skin\ texture Uneven\ skin\ tone Visible\ pores Wrinkles) %>
 <% skin_types = ["All", "Extra Oily", "Oily", "Combination", "Dry", "Extra Dry", "Sensitive", "Normal"] %>
 <% form = %w(Balm Cream Gel Lotion Powder Sheet) %>
 
+<%= simple_form_for :product_search, method: "get" do |f| %>
+<%= f.input :tag, label: "Accreditations", as: :check_boxes, collection: accreditations, include_hidden: false %>
+<%= f.input :tag, label: "Skin Concerns", as: :check_boxes, collection: skin_concerns, include_hidden: false %>
+<%= f.input :tag, label: "Skin Types", as: :check_boxes, collection: skin_types, include_hidden: false %>
+<%= f.input :tag, label: "Form", as: :check_boxes, collection: form, include_hidden: false %>
+<%= f.input :category, label: "Categories", as: :check_boxes, collection: Product.categories, include_hidden: false %>
+<%= f.input :brand, label: "Brands", as: :check_boxes, collection: Product.brands, include_hidden: false %>
 
-<h2>Ingredient preferences</h2>
-<% ingredient_preferences.each do |tag|  %>
-<%= link_to tag, products_path(tag: tag), class: "tag" %>
-<% end %>
-
-<h2>Skin concerns</h2>
-<% skin_concerns.each do |tag|  %>
-<%= link_to tag, products_path(tag: tag), class: "tag" %>
-<% end %>
-
-<h2>Skin types</h2>
-<% skin_types.each do |tag|  %>
-<%= link_to tag, products_path(tag: tag), class: "tag" %>
+<%= f.submit %>
 <% end %>
 
 
-<h2>Form</h2>
-<% form.each do |tag|  %>
-<%= link_to tag, products_path(tag: tag), class: "tag" %>
-<% end %>
 
-<script>
-  const tags = document.querySelectorAll(".tag");
-  Array.from(tags).forEach((tag) => {
-    tag.addEventListener('click', (e) => {
-      e.preventDefault();
-      var tagName = e.currentTarget.innerHTML;
-      var url = window.location.href;
-      var urlObject = new URL(url.toString());
-      urlObject.searchParams.append("tag[]", tagName);
-      console.log(urlObject);
-      // window.history.pushState({}, '', urlObject.href);
-      window.location.href = urlObject.href;
-    });
-  });
-</script>
+
+
 
