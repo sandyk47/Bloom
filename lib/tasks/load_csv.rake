@@ -1,5 +1,3 @@
-require 'pry-byebug'
-
 namespace :load_csv do
   desc "TODO"
   task products: :environment do
