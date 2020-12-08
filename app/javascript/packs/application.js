@@ -32,3 +32,6 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 });
+
+import { drawProgressCircles } from "../components/progress-circle";
+drawProgressCircles();
