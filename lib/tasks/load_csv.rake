@@ -1,3 +1,5 @@
+require 'csv'
+
 namespace :load_csv do
   desc "TODO"
   task products: :environment do
