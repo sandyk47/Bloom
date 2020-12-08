@@ -24,14 +24,17 @@
       </div>
 
       <div>
-        <ul>
+        <%#= raise %>
+        <% if params[:product_search].nil? %>
+          <ul>
             <li>
                 <%= link_to_if @page > 0, "<< Previous", products_path(page: @page - 1) %>
             </li>
             <li>
                 <%= link_to_if @page < ((Product.count/12) - 1) , "Next >>", products_path(page: @page + 1) %>
             </li>
-        </ul>
+          </ul>
+          <% end %>
       </div>
 
     </div>

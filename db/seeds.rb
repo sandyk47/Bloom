@@ -230,7 +230,7 @@ title: "A tad expensive, but worth it!",
 content: "Left my face feeling firmed up and ready for summer, highly recommended, wouldn't use it everyday though, tad pricey.",
 product_rating: 4,
 )
-  
+
 pro_rev_3 = ProductReview.create!(
 user: user_3,
 product: product_25,
@@ -238,7 +238,7 @@ title: "YASSSS DIS SOME GOOD SHIT!!!!",
 content: "Goopgenes is da bomb! Left my face feeling amazingly refreshed, and best of all, NO REACTION! Coeliac tested and approved!",
 product_rating: 5,
 )
-  
+
 pro_rev_4 = ProductReview.create!(
 user: user_2,
 product: product_25,
@@ -246,6 +246,9 @@ title: "Not my first choice, but a very close second",
 content: "A beautiful mix that left my skin feeling moisturized, firm and even-toned. As an all in one solution for someone on a budget, you can't go wrong with this! ",
 product_rating: 4,
 )
+ingredient_1 = Ingredient.find(250)
+ingredient_2 = Ingredient.find(965)
+ingredient_3 = Ingredient.find(583)
 
 ing_rev_1 = IngredientReview.create!(
 user: user_4,
