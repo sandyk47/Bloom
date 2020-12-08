@@ -28,6 +28,10 @@ PRODUCTS_PER_PAGE = 12
       @products = Product.by_brand(params[:product_search]['brand'])
     end
     add_breadcrumb('/  Products', products_path, true)
+    respond_to do |format|
+    format.html
+    format.js
+    end
   end
 
   def new

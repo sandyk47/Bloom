@@ -1,0 +1,12 @@
+function replaceProducts (innerHTML) {
+  const products = document.querySelectorAll('.form-check .form-check-label');
+  products.forEach(
+  function(currentValue, currentIndex, listObj) {
+    console.log(currentValue + ', ' + currentIndex + ', ' + this);
+  },
+  products.innerHTML = innerHTML;
+
+}
+replaceProducts("<%= j render 'product', products: @products %>");
+
+

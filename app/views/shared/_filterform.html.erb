@@ -3,7 +3,7 @@
 <% skin_types = ["All", "Extra Oily", "Oily", "Combination", "Dry", "Extra Dry", "Sensitive", "Normal"] %>
 <% form = %w(Balm Cream Gel Lotion Powder Sheet) %>
 
-<%= simple_form_for :product_search, method: "get" do |f| %>
+<%= simple_form_for :product_search, method: "get", remote: true do |f| %>
 <%= f.input :tag, label: "Accreditations", as: :check_boxes, collection: accreditations, include_hidden: false %>
 <%= f.input :tag, label: "Skin Concerns", as: :check_boxes, collection: skin_concerns, include_hidden: false %>
 <%= f.input :tag, label: "Skin Types", as: :check_boxes, collection: skin_types, include_hidden: false %>
