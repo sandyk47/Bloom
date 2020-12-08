@@ -45,7 +45,7 @@
         <div class="container">
           <% @product_ingredients.each do |product_ingredient| %>
             <ul>
-              <li> <%= product_ingredient.ingredient.name %>  </li>
+              <li><%= link_to "#{product_ingredient.ingredient.name}",  ingredient_path(product_ingredient.ingredient.id) %></li>
             </ul>
           <% end %>
         </div>
