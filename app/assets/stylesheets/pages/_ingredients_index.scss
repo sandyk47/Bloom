@@ -2,3 +2,41 @@
     display: flex;
     justify-content: space-between;
 }
+
+#ingredient-top-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.ingredients-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+    padding: 16px;
+    background-color: $serenade;
+    border-radius: 5px;
+}
+
+.ingredient-index-card {
+    overflow: hidden;
+    background: $white;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+
+    img {
+        width: 100%;
+        object-fit: cover;
+        height: 150px;
+    }
+}
+
+.ingredient-card-rating {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card-rating-container {
+    text-align: center;
+}

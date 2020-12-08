@@ -28,14 +28,47 @@ PRODUCTS_PER_PAGE = 12
     elsif params[:product_search][:brand].present?
       @products = Product.by_brand(params[:product_search]['brand'])
     end
+    add_breadcrumb('/  Products', products_path, true)
   end
 
-  def show
+  def new
+    # we need @booking in our `simple_form_for`
+    @product = Product.new
+  end
+
+  def create
+    @product = Product.new(product_params)
+    if @product.save
+      redirect_to products_path
+    else
+      render :new
+    end
+  end
+
+   def show
     @product = Product.find(params[:id])
     @product_review = ProductReview.new
+    @product_ingredients = ProductIngredient.where(product: @product)
+    add_breadcrumb("/  Products", products_path, false)
+    add_breadcrumb("/  #{@product.title}", nil, true)
+  end
+
+  def favorite
+    @product = Product.find(params[:id])
+    @user = current_user
+    @user.favorite(@product)
+    redirect_to @product
+  end
+
+  def unfavorite
+    @product = Product.find(params[:id])
+    @user = current_user
+    @user.unfavorite(@product)
+    redirect_to @product
   end
 
   private
+
 
   def product_params
     params.require(:product).permit(:remove_tag, :title, :brand_id, :description, :average_product_rating_stars, :average_efficacy_rating_bar, :average_safety_rating_bar, tag_list: [])

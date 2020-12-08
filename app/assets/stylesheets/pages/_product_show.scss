@@ -1,0 +1,42 @@
+.product-rating-flex {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.product-bio {
+    text-align: left;
+}
+
+.ratings-flex {
+    display: flex;
+}
+
+.salmon-container {
+    background-color: $serenade;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.container-aligned-left {
+    text-align: left;
+}
+
+.product-review-card {
+    display: flex;
+}
+
+.product-ratings-right {
+    display:flex;
+    flex-flow:column;
+    justify-content:space-around;
+}
+
+.product-review-header {
+    display: flex;
+    align-items: baseline;
+}
+
+.reviews-and-ratings {
+    display: flex;
+}

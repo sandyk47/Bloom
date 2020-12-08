@@ -1,6 +1,5 @@
 require 'open-uri'
 require 'nokogiri'
-require 'pry-byebug'
 
 module Scraper
   class MeccaProducts
@@ -12,16 +11,21 @@ module Scraper
         get_product_info(url)
       end
 
+      puts "Creating Brands"
       results.each do |result|
         Brand.create(name: result[:brand])
       end
 
+      puts "Creating Ingredients and Products"
       results.each do |result|
         brand = Brand.find_by(name: result[:brand])
-        product = Product.create( brand_id: brand.id, title: result[:product], benefits: result[:benefits], oneliner: result[:oneliner], img: result[:img], description: result[:description], category: result[:category], sub_category: result[:sub_category])
-        results.each_with_index.map do |result, index|
-          ingredient = Ingredient.where(name: result[:ingredients][index]).first_or_create
-          ProductIngredient.create(product_id: product.id, ingredient_id: ingredient.id)
+        product = Product.where(title: result[:product]).first_or_create!( brand_id: brand.id, benefits: result[:benefits], oneliner: result[:oneliner], img: result[:img], description: result[:description], category: result[:category], sub_category: result[:sub_category] )
+        puts "Product Created #{product.title}"
+        result[:ingredients].each do |ingredient|
+          unless ingredient.nil?
+            new_ingredient = Ingredient.where(name: ingredient).first_or_create!
+            ProductIngredient.create!(product_id: product.id, ingredient_id: new_ingredient.id)
+          end
         end
       end
 
