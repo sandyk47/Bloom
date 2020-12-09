@@ -65,9 +65,42 @@
         <h3>Ratings Overview</h3>
         <p>Select ro filter results</p>
         <ul id="prod-reviews">
-          <%= @product.star_5 %>
-          <li><span class="bar star-5"></span><p>5 Stars</p></li>
-          <li><span class="bar star-4"></span><p>4 Stars</p></li>
+          <% total_reviews =  @product.product_reviews.count%>
+          <% star_reviews_5 = @product.star_5 %>
+          <% star_reviews_5_percentage = (star_reviews_5).fdiv(total_reviews) * 100%>
+          <% star_reviews_4 = @product.star_4 %>
+          <% star_reviews_4_percentage = (star_reviews_4).fdiv(total_reviews) * 100%>
+          <% star_reviews_3 = @product.star_3 %>
+          <% star_reviews_3_percentage = (star_reviews_3).fdiv(total_reviews) * 100%>
+          <% star_reviews_2 = @product.star_2 %>
+          <% star_reviews_2_percentage = (star_reviews_2).fdiv(total_reviews) * 100%>
+          <% star_reviews_1 = @product.star_1 %>
+          <% star_reviews_1_percentage = (star_reviews_1).fdiv(total_reviews) * 100%>
+          <% #5-Star-Bar %>
+          <% if star_reviews_5_percentage > 70 && star_reviews_5_percentage <= 100 %>
+            <li><span class="bar width-100"></span><p>5 Stars</p></li>
+          <% elsif star_reviews_5_percentage > 0 && star_reviews_5_percentage <= 30 %>
+            <li><span class="bar width-30"></span><p>5 Stars</p></li>
+          <% elsif star_reviews_5_percentage > 30 && star_reviews_5_percentage <= 50 %>
+            <li><span class="bar width-50"></span><p>5 Stars</p></li>
+          <% elsif star_reviews_5_percentage > 50 && star_reviews_5_percentage <= 70 %>
+            <li><span class="bar width-70"></span><p>5 Stars</p></li>
+          <% else %>
+            <li><span class="bar width-0"></span><p>5 Stars</p></li>
+          <% end %>
+
+           <% #4-Star-Bar %>
+          <% if star_reviews_4_percentage > 70 && star_reviews_4_percentage <= 100 %>
+            <li><span class="bar width-100"></span><p>5 Stars</p></li>
+          <% elsif star_reviews_4_percentage > 0 && star_reviews_4_percentage <= 30 %>
+            <li><span class="bar width-30"></span><p>5 Stars</p></li>
+          <% elsif star_reviews_4_percentage > 30 && star_reviews_4_percentage <= 50 %>
+            <li><span class="bar width-50"></span><p>5 Stars</p></li>
+          <% elsif star_reviews_4_percentage > 50 && star_reviews_4_percentage <= 70 %>
+            <li><span class="bar width-70"></span><p>5 Stars</p></li>
+          <% else %>
+            <li><span class="bar width-0"></span><p>5 Stars</p></li>
+          <% end %>
           <li><span class="bar star-3"></span><p>3 Stars</p></li>
           <li><span class="bar star-2"></span><p>2 Stars</p></li>
           <li><span class="bar star-1"></span><p>1 Stars</p></li>

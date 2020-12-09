@@ -84,19 +84,19 @@ class Product < ApplicationRecord
 
   def star_3
     product_reviews = ProductReview.where(product: self)
-    stars_3 = product_reviews.where(product_rating == 3)
+    stars_3 = product_reviews.where(product_rating: 3)
     starts_3_total = stars_3.count
   end
 
   def star_2
     product_reviews = ProductReview.where(product: self)
-    stars_2 = product_reviews.where(product_rating == 2)
+    stars_2 = product_reviews.where(product_rating: 2)
     starts_2_total = stars_2.count
   end
 
   def star_1
     product_reviews = ProductReview.where(product: self)
-    stars_1 = product_reviews.where(product_rating == 1)
+    stars_1 = product_reviews.where(product_rating: 1)
     starts_1_total = stars_1.count
   end
 
