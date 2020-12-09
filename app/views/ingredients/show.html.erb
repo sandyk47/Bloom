@@ -3,115 +3,138 @@
     <div class="ingredient-show-details">
       <h1> <%= @ingredient.name %> </h1>
       <hr>
-      <p> description: <%= @ingredient.description %> </p>
+      <p> <%= @ingredient.description %> </p>
     </div> 
-    <div class="ingredient-image-container">
-      <%= image_tag "https://res.cloudinary.com/dv27nsze8/image/upload/v1607129840/bloom_imagery/frank-dudek-Tg8HCInX4gY-unsplash_e29ujo.jpg" %>
+    <div class="ingredient-ratings-container">
+        <div class="card-rating-container-show-flex">
+            <% rating = @ingredient.safety_rating %>
+            <% if rating != nil %>
+                <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
+                <h3>Safety <br> Consensus </h3> 
+            <% end %>
+        </div>
+        <div class="card-rating-container-show-flex">
+            <% rating = @ingredient.efficacy_rating %>
+            <% if rating != nil %>
+                <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
+                <h3>Efficacy <br> Consensus </h3>
+            <% end %>                    
+        </div>       
     </div>
   </div>
 </div>
 
+<!--Product Review Carousel-->
 <div class="light-grey-container">
   <div class="container">
     <div class="ingredient-reviews-header">
       <h2>Reviews</h2>
-      <div class="ingredient-ratings-container">
-          <div class="card-rating-container-flex">                        
-              <% rating = @ingredient.safety_rating %>
-              <% if rating != nil %>
-                  <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
-                  <p>Safety</p> 
-              <% end %>
-          </div>
-          <div class="card-rating-container-flex">
-              <% rating = @ingredient.efficacy_rating %>
-              <% if rating != nil %>
-                  <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
-                  <p>Efficacy</p>
-              <% end %>                    
-          </div>       
-      </div>
     </div>
 
-    <div class="ingredient-evaluations-grid">
-      <% @ingredient.ingredient_reviews.each do |ingredient_review| %>
-      <div class="ingredient-review-card">
-        <div class="ingredient-review-header">
-          <%= image_tag "#{ingredient_review.user.photo_url}", class:"avatar-large" %>
-          <div class="ingredient-reviewer-name">
-            <H4><b><%= "#{ingredient_review.user.first_name} #{ingredient_review.user.last_name}"%></b></H2>      
-          </div>
-        </div>
-        <div class="ingredient-review-body">
-          <h4> <%= ingredient_review.title %> </h3>
-          <p> <%= ingredient_review.content %> </p>
-          <p> <%= ingredient_review.supporting_evidence %> </p>
-        </div>
-        <div class="ingredient-review-ratings">
-          <div class="card-rating-container-flex">          
-              <% rating = ingredient_review.safety_rating %>
-              <% if rating != nil %>
-                  <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
-                  <p>Safety</p> 
+    <!--Carousel Wrapper-->
+    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+        <% @ingredient.ingredient_reviews.each_slice(2).with_index do |review_slice, index| %>
+          <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
+            <div class="row">
+              <% review_slice.each do |ingredient_review| %>
+                <div class="col-6">
+                  <div class="ingredient-review-card">
+                    <div class="ingredient-review-header">
+                      <%= image_tag "#{ingredient_review.user.photo_url}", class:"avatar-large" %>
+                      <div class="ingredient-reviewer-name">
+                        <H4><b><%= "#{ingredient_review.user.first_name} #{ingredient_review.user.last_name}"%></b></H2>      
+                      </div>
+                    </div>
+                    <div class="ingredient-review-body">
+                      <h4> <%= ingredient_review.title %> </h3>
+                      <p> <%= ingredient_review.content %> </p>
+                      <p> <%= ingredient_review.supporting_evidence %> </p>
+                    </div>
+                    <div class="ingredient-review-ratings">
+                      <div class="card-rating-container-flex">          
+                          <% rating = ingredient_review.safety_rating %>
+                          <% if rating != nil %>
+                              <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
+                              <p>Safety</p> 
+                          <% end %>
+                      </div>
+                      <div class="card-rating-container-flex">
+                          <% rating = ingredient_review.efficacy_rating %>
+                          <% if rating != nil %>
+                              <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
+                              <p>Efficacy</p>
+                          <% end %>                    
+                      </div>          
+                    </div>
+                  </div>
+                </div>
               <% end %>
+            </div>
           </div>
-          <div class="card-rating-container-flex">
-              <% rating = ingredient_review.efficacy_rating %>
-              <% if rating != nil %>
-                  <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
-                  <p>Efficacy</p>
-              <% end %>                    
-          </div>          
-        </div>
+        <% end %>  
       </div>
-      <% end %>
+      <!--/.Slides-->
+      <div class="d-flex py-5">
+         <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+         <ol class="carousel-indicators flex-grow-1"> 
+          <% ((@ingredient.ingredient_reviews.size / 2) + 1).times do |index|  %>
+            <li data-target="#multi-item-example" data-slide-to="<%=index%>" class="<%= index.zero? ? 'active' : '' %>"></li>
+          <% end %>
+        </ol>
+        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>    
+      </div>
     </div>
+    <!--/.Carousel Wrapper-->
     <div class="container" style="margin-top: 20px">
       <%= link_to "Write a review", products_path, class: "btn-ghost" %>
     </div>
   </div>
 </div>
 
-
+<!-- Alternative ProductsCarousel Wrapper-->
 <div class="dark-blue-container">
   <div class="container">
-    <h3 style="text-align: left">Things that Contain <%= @ingredient.name %></h3>
-    <div class="product-alternative-flex">
-      <div class="product-details">
-        <img src= "https://res.cloudinary.com/dv27nsze8/image/upload/v1607129841/bloom_imagery/Product_uhki8f.jpg" style="width: 300px" />
-        <div class="card-product-infos">
-            <h2>Product Name</h2>
-            <p>Rating</p> 
-            <p>Efficacy and safety rating</p> 
-        </div>
-      </div>  
-      <div class="product-details">
-        <img src= "https://res.cloudinary.com/dv27nsze8/image/upload/v1607129841/bloom_imagery/Product_uhki8f.jpg" style="width: 300px" />
-        <div class="card-product-infos">
-            <h2>Product Name</h2>
-            <p>Rating</p> 
-            <p>Efficacy and safety rating</p> 
-        </div>
-      </div>   
-      <div class="product-details">
-        <img src= "https://res.cloudinary.com/dv27nsze8/image/upload/v1607129841/bloom_imagery/Product_uhki8f.jpg" style="width: 300px" />
-        <div class="card-product-infos">
-            <h2>Product Name</h2>
-            <p>Rating</p> 
-            <p>Efficacy and safety rating</p> 
-        </div>
-      </div>            
+    <div class="ingredient-reviews-header">
+      <h2 id="white-me"><%= "Products that contain #{@ingredient.name}" %></h2>  
     </div>
+
+    <!--Carousel Wrapper-->
+    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+        <% @ingredient.products.each_slice(3).with_index do |product_slice, index| %>
+          <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
+            <div class="product-grid">
+              <%= render product_slice %>
+            </div>
+          </div>
+        <% end %>  
+      </div>
+      <!--/.Slides-->
+      <div class="d-flex py-5">
+         <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+         <ol class="carousel-indicators flex-grow-1"> 
+          <% ((@ingredient.ingredient_reviews.size / 2) + 1).times do |index|  %>
+            <li data-target="#multi-item-example" data-slide-to="<%=index%>" class="<%= index.zero? ? 'active' : '' %>"></li>
+          <% end %>
+        </ol>
+        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>    
+      </div>
+    </div>
+    <!--/.Carousel Wrapper-->
   </div>
 </div>
 
 <div class="container" style="padding-top: 20px, padding-bottom: 30px">
   <h2>Popular Resources</h2>
   <ul style="text-align: left">
-    <li>link 1</li>
-    <li>link 1</li>
-    <li>link 1</li>
-    <li>link 1</li>
+    <% @ingredient.ingredient_reviews.each do |review| %>
+    <li><%= "#{review.supporting_evidence}" %></li>
+    <% end %>
   </ul>
 </div>
 
@@ -124,9 +147,6 @@
   <% end %>
 <% end %>
 
-<%= link_to "Take me home", root_path, class:"btn-primary" %>
-<%= link_to "back to product search", products_path, class:"btn-primary" %>
-<%= link_to "back to ingredient search", ingredients_path, class:"btn-primary" %>
 
 
 

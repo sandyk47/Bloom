@@ -11,11 +11,19 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body>
+  <body class="Site">
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+<<<<<<< HEAD
 
     <%= yield %>
 
+=======
+    <main class ="Site-content">
+      <%= yield %>
+    </main>
+    <%= render 'shared/footers' %>
+    <%#=<script src="src/index.js"></script>%>
+>>>>>>> origin
   </body>
 </html>

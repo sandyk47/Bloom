@@ -2,7 +2,6 @@
   <h2 style="text-align: left" >Search for Ingredients</h2>
     <div id="ingredient-top-nav">
       <%= render 'shared/ingredientsearchbarform' %>
-      <h3>X results</h3>
     </div>
     <div class="ingredients-grid">
         <% @ingredients.each do |ingredient| %>
@@ -31,15 +30,15 @@
 </div>
 
 <div>
-    <% if params[:query].nil? %>
-    <ul>
-        <li>
-        <%= link_to_if @page > 0, "<< Previous", ingredients_path(page: @page - 1) %>
-        </li>
-        <li>
-        <%= link_to_if @page < ((Ingredient.count/12) - 1) , "Next >>", ingredients_path(page: @page + 1) %>
-        </li>
-    </ul>
-    <% end %>
+  <% if params[:query].nil? %>
+  <div class="container">
+    <%= link_to ingredients_path(page: @page - 1) do %>
+      <i class="fas fa-backward"></i> Previous
+    <% end if @page > 0 %>
+    <%= link_to ingredients_path(page: @page + 1) do %>
+      Next <i class="fas fa-forward"></i>
+    <% end if @page < ((Ingredient.count/36) - 1) %>
+  </div>
+  <% end %>
 </div>
 
