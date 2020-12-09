@@ -10,6 +10,7 @@
 
 .ratings-flex {
     display: flex;
+    justify-content: space-evenly;
 }
 
 .salmon-container {
@@ -39,4 +40,14 @@
 
 .reviews-and-ratings {
     display: flex;
+}
+
+.product-show-rating-container {
+    display: flex;
+    align-items: center;
+}
+
+.h3-box {
+    text-align: left;
+    padding-left: 15px;
 }
