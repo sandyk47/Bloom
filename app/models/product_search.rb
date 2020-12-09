@@ -24,8 +24,9 @@ class ProductSearch
   end
 
   def query
-    @products = @products.product_and_brand_search(params[:query]) if params[:query].present?
-    if params[:product_search].nil?
+    if params[:query].present?
+      @products = @products.product_and_brand_search(params[:query])
+    elsif params[:product_search].nil?
       @products = Product.offset(page * Product::PRODUCTS_PER_PAGE).limit(Product::PRODUCTS_PER_PAGE)
     elsif params[:product_search][:tag].present? && params[:product_search]['category'].present? && params[:product_search]['brand'].present?
       @products =  @products.by_brand(params[:product_search]['brand'])
