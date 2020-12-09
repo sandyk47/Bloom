@@ -69,7 +69,7 @@ class Product < ApplicationRecord
     product_reviews = ProductReview.where(product: self)
     user_rating = product_reviews.average(:product_rating)
     self.update(average_product_rating_stars: user_rating)
-    self.average_product_rating_stars
+    self.average_product_rating_stars.round(2) unless self.average_product_rating_stars.nil?
   end
 
   def star_5
