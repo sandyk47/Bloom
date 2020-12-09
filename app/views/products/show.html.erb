@@ -32,15 +32,20 @@
      <div>
         <% if user_signed_in? %>
           <% if @product.favorited_by?(current_user) %>
-            <%= link_to "Unfavourite", product_unfavorite_path(@product), class: 'btn-primary', method: :delete, remote: true %>
+
+              <%= link_to product_unfavorite_path(@product), method: :delete, remote: true do %>
+                  <i class="fas fa-bookmark"></i>
+                <% end %>
           <% else %>
-            <%= link_to "Favourite", product_favorite_path(@product), class: 'btn-primary', method: :patch, remote: true %>
+            <%= link_to product_favorite_path(@product), method: :patch, remote: true  do %>
+                    <i class="far fa-bookmark"></i>
+              <% end %>
           <% end %>
         <% else %>
           <%= link_to "Favourite", new_user_session_path, class: 'btn-primary' %>
         <% end %>
       </div>
-      <p>User Consensus: <%= @product.user_rating %>/5</p>
+      <p> <%= @product.user_rating %>/5</p>
     </div>
   </div>
 </div>
@@ -154,7 +159,7 @@
         </ul>
       </div>
       <div class="product-ratings-right">
-        <h2><span class="fa fa-star checked"></span> <%= @product.user_rating%>(<%= total_reviews %> Reviews)</h2>
+        <h2><span class="fa fa-star checked"></span> <%= @product.user_rating%> (<%= total_reviews %> Reviews)</h2>
         <h3>Stars in here</h3>
         <!-- Trigger/Open The Modal -->
         <button id="myBtn" class="btn-ghost">Leave A Review</button>
