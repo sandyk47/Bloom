@@ -1,7 +1,19 @@
+//heading stuff //
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, .333fr));
+    grid-gap: 16px;
+}
+
 .ingredient-show-flex {
     display: flex;
     justify-content: space-between;
-    height: 50vh;
+}
+
+.ingredient-show-details {
+    text-align: left;
+    padding-right: 20px;
 }
 
 .light-grey-container {
@@ -17,27 +29,13 @@
     height: 200px;
 }
 
-.ingredient-image-container {
-    // position: relative;
-    width: 300px;
-    height: 300px;
-    overflow: hidden;
-    margin: 10px;
-
-    img {
-        // position: absolute;
-        object-fit: cover;
-    }
-}
-
 .ingredient-reviews-header {
     display: flex;
     justify-content: space-between;
 }
 
 .ingredient-ratings-container {
-    display: flex;
-    justify-content: space-evenly;
+    align-items: left;
 }
 
 .ratings-consensus-flex {
@@ -79,6 +77,13 @@
     background-color: $serenade;
 }
 
+.card-rating-container-show-flex {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
 // Here are all the components for the 'things that contain ingredient section
 
 .dark-blue-container {
@@ -101,3 +106,7 @@
     background-color: white;
     border-radius: 5px;
 }
+
+//// Carousel ///
+
+

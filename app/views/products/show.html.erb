@@ -32,12 +32,18 @@
      <div>
         <% if user_signed_in? %>
           <% if @product.favorited_by?(current_user) %>
-            <%= link_to "Unfavourite", product_unfavorite_path(@product), class: 'btn-primary', method: :delete, remote: true %>
+            <div class="favorite-button">
+              <%= link_to "Unfavourite", product_unfavorite_path(@product), class: 'btn-ghost-small', method: :delete, remote: true %>
+            </div>
           <% else %>
-            <%= link_to "Favourite", product_favorite_path(@product), class: 'btn-primary', method: :patch, remote: true %>
+            <div class="favorite-button">
+              <%= link_to "Favourite", product_favorite_path(@product), class: 'btn-ghost-small', method: :patch, remote: true %>
+            </div>  
           <% end %>
         <% else %>
-          <%= link_to "Favourite", new_user_session_path, class: 'btn-primary' %>
+          <div class="favorite-button">
+            <%= link_to "Favourite", new_user_session_path, class: 'btn-ghost-small' %>
+          </div>  
         <% end %>
       </div>
       <p>User Consensus: <%= @product.user_rating %>/5</p>
@@ -49,19 +55,16 @@
   <div class="container">
     <div class="container-aligned-left">
       <h2>What's In It?</h2>
-      <p>Filter by: <strong>safety</strong></p>
       <hr>
-      <h3>Trusted Ingredients (95%+ Ratings)</h3>
-        <div class="container">
+      <h3>Ingredients</h3>
+      <div class="row">
           <% @product_ingredients.each do |product_ingredient| %>
-            <ul>
-              <li><%= link_to "#{product_ingredient.ingredient.name}",  ingredient_path(product_ingredient.ingredient.id) %></li>
-            </ul>
+            <div class="col-md-4">
+              <%= link_to "#{product_ingredient.ingredient.name}",  ingredient_path(product_ingredient.ingredient.id) %>
+            </div>
           <% end %>
-        </div>
-      <hr>
-      <h3>Other Ingredients</h3>
-      <p>Lorem ipsum...</p>
+      </div>
+    <hr>
     </div>
   </div>
 </div>
@@ -73,7 +76,7 @@
     <div class="product-rating-flex">
       <div class="product-ratings-left">
         <h3>Ratings Overview</h3>
-        <p>Select ro filter results</p>
+        <p>Select or filter results</p>
         <ul id="prod-reviews">
           <% total_reviews =  @product.product_reviews.count%>
           <% star_reviews_5 = @product.star_5 %>
