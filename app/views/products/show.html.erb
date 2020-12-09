@@ -34,12 +34,12 @@
           <% if @product.favorited_by?(current_user) %>
 
               <%= link_to product_unfavorite_path(@product), method: :delete, remote: true do %>
-                  <i class="fas fa-bookmark"></i>
+                  <i class="fas fa-heart"></i>
                   Unfavourite
                 <% end %>
           <% else %>
             <%= link_to product_favorite_path(@product), method: :patch, remote: true  do %>
-                    <i class="far fa-bookmark"></i>
+                    <i class="far fa-heart"></i>
                     Favourite
               <% end %>
           <% end %>
