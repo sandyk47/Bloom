@@ -1,0 +1,13 @@
+<% percentage = (locals["value"])*10 %>
+
+<div class="progress mx-auto" data-value='<%= percentage %>' >
+    <span class="progress-left">
+        <span class="progress-bar border-primary"></span>
+    </span>
+    <span class="progress-right">
+        <span class="progress-bar border-primary"></span>
+    </span>
+    <div class="progress-text">
+        <h2><%= locals["value"] %></sup></h2>
+    </div>
+</div>

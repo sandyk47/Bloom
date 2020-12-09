@@ -11,27 +11,36 @@
       <div class="product-text-container">
         <p> search for XX products </p>
       </div>
-      <div class="product-card-grid">
-          <% @products.each do |product| %>
-            <div class="product-details">
-              <img src= "<%=product.img %>" style="width: 300px" />
-              <div class="card-product-infos">
-                  <h2><%= link_to "#{product.title} - #{product.brand.name}", product_path(product), class: 'card-link'%></h2>
-                  <p><%= product.oneliner%></p> 
-              </div>
-            </div>
+      <%= render 'products', products: @products %>
+      <div>
+        <% if params[:product_search].nil? %>
+          <ul>
+            <li>
+                <%= link_to_if @page > 0, "<< Previous", products_path(page: @page - 1) %>
+            </li>
+            <li>
+                <%= link_to_if @page < (Product.count/12)  , "Next >>", products_path(page: @page + 1) %>
+            </li>
+          </ul>
           <% end %>
       </div>
     </div>
   </div>
-</div>
-
-
   <div>
     <%= link_to "Take me home", root_path, class:"btn-primary" %>
     <%= link_to "back to ingredient search", ingredients_path, class:"btn-primary" %>
   </div>
+</div>
 
+<script type="text/javascript">
+  var checkBoxes = document.querySelectorAll(".form-check-input");
+  var form = document.querySelector('form');
 
+  for (const check of checkBoxes) {
+  check.addEventListener( 'change', function() {
+    Rails.fire(form, 'submit');
+  });
+  }
+</script>
 
 

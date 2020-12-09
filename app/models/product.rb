@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  scope :by_category, ->(n = []) { where("category IN (?)", n) }
+  scope :by_brand, ->(n = []) { where("brand_id IN (?)", n) }
+
   acts_as_taggable_on :tags
   acts_as_taggable_on :conditions
   acts_as_taggable_on :ingredient_preferences
@@ -15,7 +18,15 @@ class Product < ApplicationRecord
   has_many :product_reviews
 
   validates :title, presence: true, uniqueness: true
-  
+
+  def self.categories
+    distinct.pluck(:category)
+  end
+
+  def self.brands
+    @brands = Brand.all.distinct
+  end
+
   def safety_rating
     product_ingredients = ProductIngredient.where(product: self)
 
@@ -69,7 +80,7 @@ class Product < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-  private 
+  private
 
   def user_params
     params.require(:product).permit(:title, :description, :benefits, :oneliner, :img, :category, :subcategory, :brand_id)
