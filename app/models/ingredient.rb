@@ -2,6 +2,7 @@ class Ingredient < ApplicationRecord
   acts_as_taggable_on :tags
   has_many :product_ingredients
   has_many :ingredient_reviews
+  has_many :products, through: :product_ingredients
 
   validates :name, presence: true
   
