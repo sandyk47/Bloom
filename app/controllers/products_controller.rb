@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
     @page = params.fetch(:page, 0).to_i
     @products = Product.offset(@page * Product::PRODUCTS_PER_PAGE).limit(Product::PRODUCTS_PER_PAGE)
     @products = ProductSearch.new(@products, params).query
-    add_breadcrumb('/  Products', products_path, true)
+    add_breadcrumb('Products', products_path, true)
     @product_search = ProductSearch.new(@products, params)
     # respond_to do |format|
     # format.html
@@ -32,8 +32,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product_review = ProductReview.new
     @product_ingredients = ProductIngredient.where(product: @product)
-    add_breadcrumb("/  Products", products_path, false)
-    add_breadcrumb("/  #{@product.title}", nil, true)
+    add_breadcrumb("Products", products_path, false)
+    add_breadcrumb("#{@product.title}", nil, true)
   end
 
   def favorite
