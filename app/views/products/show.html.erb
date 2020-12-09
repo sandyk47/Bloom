@@ -161,7 +161,11 @@
       </div>
       <div class="product-ratings-right">
         <h2><span class="fa fa-star checked"></span> <%= @product.user_rating%> (<%= total_reviews %> Reviews)</h2>
-        <span class= "star-rating" data-score= <%= 3%> >Stars in here</span>
+        <div class = "inline">
+          <% @product.user_rating.to_i.times do%>
+          <i class="fa fa-star checked"></i>
+          <% end %>
+        </div>
         <div class=”review-rating” data-score = “<%= 3 %>”></div>
         <!-- Trigger/Open The Modal -->
         <button id="myBtn" class="btn-ghost">Leave A Review</button>
