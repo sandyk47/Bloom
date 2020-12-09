@@ -1,0 +1,27 @@
+<div class ="container">
+  <div class="product-top-nav">
+    <h2>Your Favorited Products:</h2>
+  </div>
+  <div class="body-container">
+    <div class="search-results-container">
+      <div class="product-text-container">
+        <p> <%="You have #{@user.count} products favorited!"  %> </p>
+      </div>
+      <div class="ingredients-grid">
+        <% @user.each do |user| %>
+            <div class="ingredient-index-card">
+              <%= image_tag "#{user["img"]}" %>
+              <h3> <%= link_to user["title"], product_path(user["id"].to_i) %> </h3>                        
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div>
+    <%= link_to "Take me home", root_path, class:"btn-primary" %>
+    <%= link_to "back to ingredient search", ingredients_path, class:"btn-primary" %>
+  </div>
+</div>
+
+
+
