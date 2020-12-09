@@ -1,5 +1,4 @@
 <div class="product-text-container">
-  <p> search for XX products </p>
 </div>
 
 <div class="product-card-grid">
@@ -8,13 +7,13 @@
 
 <div>
   <% if params[:product_search].nil? %>
-    <ul>
-      <li>
-          <%= link_to_if @page > 0, "<< Previous", products_path(page: @page - 1) %>
-      </li>
-      <li>
-          <%= link_to_if @page < (Product.count/12)  , "Next >>", products_path(page: @page + 1) %>
-      </li>
-    </ul>
+  <div class="prev-next">
+    <%= link_to products_path(page: @page - 1) do %>
+      <i class="fas fa-backward"></i> Previous
+    <% end if @page > 0%>
+    <%= link_to products_path(page: @page + 1) do %>
+      Next <i class="fas fa-forward"></i>
+    <% end if @page < (Product.count/12) %>
+  </div>
   <% end %>
 </div>

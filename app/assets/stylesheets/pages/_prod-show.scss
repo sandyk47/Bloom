@@ -17,7 +17,7 @@
 	background-image: -o-linear-gradient(top, #e1ddd9, #e9e5e2);
 	background-image: linear-gradient(top, #e1ddd9, #e9e5e2);
 	height:20px;
-	border-radius:10px;
+	border-radius:7px;
 	-moz-box-shadow: 0 1px 0px #bebbb9 inset, 0 1px 0 #fcfcfc;
 	-webkit-box-shadow: 0 1px 0px #bebbb9 inset, 0 1px 0 #fcfcfc;
 	box-shadow: 0 1px 0px #bebbb9 inset, 0 1px 0 #fcfcfc;
@@ -27,13 +27,9 @@
 	top:-25px;
 }
 .bar {
-	height:18px;
-	margin:1px 2px;
+	height:20px;
 	position:absolute;
-	border-radius:10px;
-	-moz-box-shadow: 0 1px 0px #fcfcfc inset, 0 1px 0 #bebbb9;
-	-webkit-box-shadow: 0 1px 0px #fcfcfc inset, 0 1px 0 #bebbb9;
-	box-shadow: 0 1px 0px #fcfcfc inset, 0 1px 0 #bebbb9;
+	border-radius:7px;
 }
 
 .width-100 {
