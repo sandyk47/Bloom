@@ -35,17 +35,18 @@
 
               <%= link_to product_unfavorite_path(@product), method: :delete, remote: true do %>
                   <i class="fas fa-bookmark"></i>
+                  Unfavourite
                 <% end %>
           <% else %>
             <%= link_to product_favorite_path(@product), method: :patch, remote: true  do %>
                     <i class="far fa-bookmark"></i>
+                    Favourite
               <% end %>
           <% end %>
         <% else %>
           <%= link_to "Favourite", new_user_session_path, class: 'btn-primary' %>
         <% end %>
       </div>
-      <p> <%= @product.user_rating %>/5</p>
     </div>
   </div>
 </div>
@@ -160,7 +161,8 @@
       </div>
       <div class="product-ratings-right">
         <h2><span class="fa fa-star checked"></span> <%= @product.user_rating%> (<%= total_reviews %> Reviews)</h2>
-        <h3>Stars in here</h3>
+        <span class= "star-rating" data-score= <%= 3%> >Stars in here</span>
+        <div class=”review-rating” data-score = “<%= 3 %>”></div>
         <!-- Trigger/Open The Modal -->
         <button id="myBtn" class="btn-ghost">Leave A Review</button>
 
@@ -209,6 +211,7 @@
 </div>
 
 
+
 <script>
 // Get the modal
 var modal = document.getElementById("myModal");
@@ -235,4 +238,14 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+</script>
+
+<script>
+$(‘.review-rating’).raty({
+readOnly: true,
+score: function() {
+return $(this).attr(‘data-score’);
+},
+path: ‘/assets/’
+});
 </script>
