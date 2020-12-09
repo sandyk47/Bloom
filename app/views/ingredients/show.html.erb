@@ -16,14 +16,20 @@
     <div class="ingredient-reviews-header">
       <h2>Reviews</h2>
       <div class="ingredient-ratings-container">
-        <div class="ratings-consensus-flex">
-          <p>89%</p>
-          <p> Safety Consensus</p>
-        </div>
-        <div class="ratings-consensus-flex">
-          <p>79%</p>
-          <p> Efficacy Consensus</p>
-        </div>        
+          <div class="card-rating-container-flex">                        
+              <% rating = @ingredient.safety_rating %>
+              <% if rating != nil %>
+                  <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
+                  <p>Safety</p> 
+              <% end %>
+          </div>
+          <div class="card-rating-container-flex">
+              <% rating = @ingredient.efficacy_rating %>
+              <% if rating != nil %>
+                  <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
+                  <p>Efficacy</p>
+              <% end %>                    
+          </div>       
       </div>
     </div>
 
@@ -42,12 +48,20 @@
           <p> <%= ingredient_review.supporting_evidence %> </p>
         </div>
         <div class="ingredient-review-ratings">
-          <div class="ratings-consensus-flex">
-            <p> Safety: <%= ingredient_review.safety_rating %> </p>
+          <div class="card-rating-container-flex">          
+              <% rating = ingredient_review.safety_rating %>
+              <% if rating != nil %>
+                  <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
+                  <p>Safety</p> 
+              <% end %>
           </div>
-          <div class="ratings-consensus-flex">
-            <p> Efficacy: <%= ingredient_review.efficacy_rating %> </p>
-          </div>           
+          <div class="card-rating-container-flex">
+              <% rating = ingredient_review.efficacy_rating %>
+              <% if rating != nil %>
+                  <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
+                  <p>Efficacy</p>
+              <% end %>                    
+          </div>          
         </div>
       </div>
       <% end %>
