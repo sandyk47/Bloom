@@ -1,17 +1,25 @@
+.nav-breadcrumb {
+  color: $serenade;
+  text-decoration: none;
+
+}
+
 .bloom-breadcrumb {
     display: flex;
-
-    h1, h2, h3, h4, h5, p, a, li {
-        color: $white;
+    margin: 0;
+    h1, h2, h3, h4, h5, p, a {
+        color: $light-grey-2;
+        text-decoration: none;
     }
 }
-    
+
 .bloom-breadcrumb-item {
     display:block;
-    // margin:5px;
+    padding: 10px;
 
     .active {
         color: red;
     }
-
 }
+
+
