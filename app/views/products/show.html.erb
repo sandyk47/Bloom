@@ -8,12 +8,12 @@
       <p> <%= @product.description %> </p>
       <% unless @product.safety_rating == 0 %>
       <div class="ratings-flex">
-        <div class="product-show-rating-container">                   
+        <div class="product-show-rating-container">
             <% rating = @product.safety_rating %>
             <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
             <div class="h3-box">
               <h3>Ingredient</h3>
-              <h3>Safety</h3> 
+              <h3>Safety</h3>
             </div>
         </div>
         <div class="product-show-rating-container">
@@ -21,9 +21,9 @@
             <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
             <div class="h3-box">
               <h3>Ingredient</h3>
-              <h3>Efficacy</h3> 
+              <h3>Efficacy</h3>
             </div>
-        </div>  
+        </div>
       </div>
       <% end %>
     </div>
@@ -32,21 +32,23 @@
      <div>
         <% if user_signed_in? %>
           <% if @product.favorited_by?(current_user) %>
-            <div class="favorite-button">
-              <%= link_to "Unfavourite", product_unfavorite_path(@product), class: 'btn-ghost-small', method: :delete, remote: true %>
-            </div>
+
+              <%= link_to product_unfavorite_path(@product), method: :delete, remote: true do %>
+                  <i class="fas fa-heart"></i>
+                  Unfavourite
+                <% end %>
           <% else %>
-            <div class="favorite-button">
-              <%= link_to "Favourite", product_favorite_path(@product), class: 'btn-ghost-small', method: :patch, remote: true %>
-            </div>  
+            <%= link_to product_favorite_path(@product), method: :patch, remote: true  do %>
+                    <i class="far fa-heart"></i>
+                    Favourite
+              <% end %>
           <% end %>
         <% else %>
           <div class="favorite-button">
             <%= link_to "Favourite", new_user_session_path, class: 'btn-ghost-small' %>
-          </div>  
+          </div>
         <% end %>
       </div>
-      <p>User Consensus: <%= @product.user_rating %>/5</p>
     </div>
   </div>
 </div>
@@ -157,8 +159,13 @@
         </ul>
       </div>
       <div class="product-ratings-right">
-        <h2>Overall Consensus: <%= @product.user_rating %></h2>
-        <h3>Stars in here</h3>
+        <h2><span class="fa fa-star checked"></span> <%= @product.user_rating%> (<%= total_reviews %> Reviews)</h2>
+        <h2>
+          <% @product.user_rating.to_i.times do%>
+          <i class="fa fa-star checked"></i>
+          <% end %>
+        </h2>
+        <div class=”review-rating” data-score = “<%= 3 %>”></div>
         <!-- Trigger/Open The Modal -->
         <button id="myBtn" class="btn-ghost">Leave A Review</button>
 
@@ -195,7 +202,11 @@
           <p><b>Skin type:</b>
           <p><b>Skin concern:</b> <%= product_review.skin_concern %></p>
           <div class="reviews-and-ratings">
-            <p>Rating: <%= product_review.product_rating %></p>
+            <p>
+              <% product_review.product_rating.times do %>
+                <i class="fa fa-star checked"></i>
+              <% end %>
+            </p>
             <p style="margin-left: 10px"><b>Recommended?</b> <%= product_review.recommended %></p>
           </div>
           <hr>
@@ -205,6 +216,7 @@
     </div>
   </div>
 </div>
+
 
 
 <script>
@@ -233,4 +245,14 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+</script>
+
+<script>
+$(‘.review-rating’).raty({
+readOnly: true,
+score: function() {
+return $(this).attr(‘data-score’);
+},
+path: ‘/assets/’
+});
 </script>
