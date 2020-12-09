@@ -27,11 +27,11 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { drawProgressCircles } from "../components/progress-circle";
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  drawProgressCircles();
 });
 
-import { drawProgressCircles } from "../components/progress-circle";
-drawProgressCircles();
