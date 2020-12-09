@@ -161,11 +161,11 @@
       </div>
       <div class="product-ratings-right">
         <h2><span class="fa fa-star checked"></span> <%= @product.user_rating%> (<%= total_reviews %> Reviews)</h2>
-        <div class = "inline">
+        <h2>
           <% @product.user_rating.to_i.times do%>
           <i class="fa fa-star checked"></i>
           <% end %>
-        </div>
+        </h2>
         <div class=”review-rating” data-score = “<%= 3 %>”></div>
         <!-- Trigger/Open The Modal -->
         <button id="myBtn" class="btn-ghost">Leave A Review</button>
@@ -203,7 +203,11 @@
           <p><b>Skin type:</b>
           <p><b>Skin concern:</b> <%= product_review.skin_concern %></p>
           <div class="reviews-and-ratings">
-            <p>Rating: <%= product_review.product_rating %></p>
+            <p>
+              <% product_review.product_rating.times do %>
+                <i class="fa fa-star checked"></i>
+              <% end %>
+            </p>
             <p style="margin-left: 10px"><b>Recommended?</b> <%= product_review.recommended %></p>
           </div>
           <hr>
