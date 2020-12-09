@@ -133,10 +133,9 @@
 <div class="container" style="padding-top: 20px, padding-bottom: 30px">
   <h2>Popular Resources</h2>
   <ul style="text-align: left">
-    <li>link 1</li>
-    <li>link 1</li>
-    <li>link 1</li>
-    <li>link 1</li>
+    <% @ingredient.ingredient_reviews.each do |review| %>
+    <li><%= "#{review.supporting_evidence}" %></li>
+    <% end %>
   </ul>
 </div>
 
