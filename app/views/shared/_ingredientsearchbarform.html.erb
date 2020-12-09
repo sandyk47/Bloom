@@ -7,11 +7,12 @@
       placeholder: "Find an ingredient"
     %>
   </div>
-  <div class="search-button">
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-  </div>
-  <div class="clear-search-results">
-    <%= link_to "Clear Search", ingredients_path, class:"btn btn-primary" %>
+  <button type="submit" class="searchButton">
+      <i class="fa fa-search"></i>
+  </button>
+  <div class="d-flex align-items-center">
+    <%= link_to "Clear Search", ingredients_path, class: 'linkStyle', style: 'color:#8f8f8f', id: 'clearSearch' %>
+    <%= link_to "Search by Products/Brand", products_path, class: 'linkStyle', style: 'color:#8f8f8f', id: 'clearSearch' %>
   </div>
   <% end %>
 </div>
