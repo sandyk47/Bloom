@@ -8,12 +8,12 @@
       <p> <%= @product.description %> </p>
       <% unless @product.safety_rating == 0 %>
       <div class="ratings-flex">
-        <div class="product-show-rating-container">                   
+        <div class="product-show-rating-container">
             <% rating = @product.safety_rating %>
             <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
             <div class="h3-box">
               <h3>Ingredient</h3>
-              <h3>Safety</h3> 
+              <h3>Safety</h3>
             </div>
         </div>
         <div class="product-show-rating-container">
@@ -21,9 +21,9 @@
             <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
             <div class="h3-box">
               <h3>Ingredient</h3>
-              <h3>Efficacy</h3> 
+              <h3>Efficacy</h3>
             </div>
-        </div>  
+        </div>
       </div>
       <% end %>
     </div>
@@ -154,7 +154,7 @@
         </ul>
       </div>
       <div class="product-ratings-right">
-        <h2>Overall Consensus: <%= @product.user_rating %></h2>
+        <h2><span class="fa fa-star checked"></span> <%= @product.user_rating%>(<%= total_reviews %> Reviews)</h2>
         <h3>Stars in here</h3>
         <!-- Trigger/Open The Modal -->
         <button id="myBtn" class="btn-ghost">Leave A Review</button>
