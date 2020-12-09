@@ -4,13 +4,13 @@
       <h1> <%= @ingredient.name %> </h1>
       <hr>
       <p> <%= @ingredient.description %> </p>
-    </div> 
+    </div>
     <div class="ingredient-ratings-container">
         <div class="card-rating-container-show-flex">
             <% rating = @ingredient.safety_rating %>
             <% if rating != nil %>
                 <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
-                <h3>Safety <br> Consensus </h3> 
+                <h3>Safety <br> Consensus </h3>
             <% end %>
         </div>
         <div class="card-rating-container-show-flex">
@@ -18,8 +18,8 @@
             <% if rating != nil %>
                 <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
                 <h3>Efficacy <br> Consensus </h3>
-            <% end %>                    
-        </div>       
+            <% end %>
+        </div>
     </div>
   </div>
 </div>
@@ -45,7 +45,7 @@
                     <div class="ingredient-review-header">
                       <%= image_tag "#{ingredient_review.user.photo_url}", class:"avatar-large" %>
                       <div class="ingredient-reviewer-name">
-                        <H4><b><%= "#{ingredient_review.user.first_name} #{ingredient_review.user.last_name}"%></b></H2>      
+                        <H4><b><%= "#{ingredient_review.user.first_name} #{ingredient_review.user.last_name}"%></b></H2>
                       </div>
                     </div>
                     <div class="ingredient-review-body">
@@ -54,11 +54,11 @@
                       <p> <%= ingredient_review.supporting_evidence %> </p>
                     </div>
                     <div class="ingredient-review-ratings">
-                      <div class="card-rating-container-flex">          
+                      <div class="card-rating-container-flex">
                           <% rating = ingredient_review.safety_rating %>
                           <% if rating != nil %>
                               <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
-                              <p>Safety</p> 
+                              <p>Safety</p>
                           <% end %>
                       </div>
                       <div class="card-rating-container-flex">
@@ -66,25 +66,25 @@
                           <% if rating != nil %>
                               <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
                               <p>Efficacy</p>
-                          <% end %>                    
-                      </div>          
+                          <% end %>
+                      </div>
                     </div>
                   </div>
                 </div>
               <% end %>
             </div>
           </div>
-        <% end %>  
+        <% end %>
       </div>
       <!--/.Slides-->
       <div class="d-flex py-5">
          <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-         <ol class="carousel-indicators flex-grow-1"> 
+         <ol class="carousel-indicators flex-grow-1">
           <% ((@ingredient.ingredient_reviews.size / 2) + 1).times do |index|  %>
             <li data-target="#multi-item-example" data-slide-to="<%=index%>" class="<%= index.zero? ? 'active' : '' %>"></li>
           <% end %>
         </ol>
-        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>    
+        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
       </div>
     </div>
     <!--/.Carousel Wrapper-->
@@ -112,17 +112,17 @@
               <%= render product_slice %>
             </div>
           </div>
-        <% end %>  
+        <% end %>
       </div>
       <!--/.Slides-->
       <div class="d-flex py-5">
          <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-         <ol class="carousel-indicators flex-grow-1"> 
+         <ol class="carousel-indicators flex-grow-1">
           <% ((@ingredient.ingredient_reviews.size / 2) + 1).times do |index|  %>
             <li data-target="#multi-item-example" data-slide-to="<%=index%>" class="<%= index.zero? ? 'active' : '' %>"></li>
           <% end %>
         </ol>
-        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>    
+        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>
       </div>
     </div>
     <!--/.Carousel Wrapper-->
@@ -138,15 +138,51 @@
   </ul>
 </div>
 
-
 <% if current_user %>
-  <% if current_user.verified  %>
-    <div class="container">
-      <%= render partial: 'ingredient_reviews/form' %>
+  <% if current_user.verified?  %>
+<button id="myBtn" class="btn-ghost">Leave A Review</button>
+
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="close">&times;</span>
+        <div class="container">
+          <%= render partial: 'ingredient_reviews/form' %>
+        </div>
     </div>
+  </div>
+
   <% end %>
 <% end %>
 
+<script>
+// Get the modal
+var modal = document.getElementById("myModal");
 
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 
 
