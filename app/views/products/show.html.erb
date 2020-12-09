@@ -6,16 +6,26 @@
       <h1><%= @product.title %> </h1>
       <h2> <%= @product.brand.name %> </h2>
       <p> <%= @product.description %> </p>
+      <% unless @product.safety_rating == 0 %>
       <div class="ratings-flex">
-        <div class="rating">
-          <p>safety rating: <%= @product.safety_rating %></p>
-          <!-- calling instance method from Ingredient model, look inside model-->
+        <div class="product-show-rating-container">                   
+            <% rating = @product.safety_rating %>
+            <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
+            <div class="h3-box">
+              <h3>Ingredient</h3>
+              <h3>Safety</h3> 
+            </div>
         </div>
-        <div class="rating">
-          <p>efficacy rating: <%= @product.efficacy_rating %></p>
-          <!-- calling instance method from Ingredient model-->
-        </div>
+        <div class="product-show-rating-container">
+            <% rating = @product.efficacy_rating %>
+            <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
+            <div class="h3-box">
+              <h3>Ingredient</h3>
+              <h3>Efficacy</h3> 
+            </div>
+        </div>  
       </div>
+      <% end %>
     </div>
     <div class="product-bio-image">
       <img src= "<%=@product.img %>" style="width: 300px" />

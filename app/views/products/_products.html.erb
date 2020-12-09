@@ -3,13 +3,29 @@
 </div>
 
 <div class="product-card-grid">
-    <% products.each do |product| %>
-      <div class="product-details">
-        <img src= "<%=product.img %>" style="width: 300px" />
-        <div class="card-product-infos">
-            <h2><%= link_to "#{product.title} - #{product.brand.name}", product_path(product), class: 'card-link'%></h2>
-            <p><%= product.oneliner%></p>
-        </div>
+          <% products.each do |product| %>
+            <div class="product-details">
+              <img src= "<%=product.img %>" style="width: 250px" />
+              <div class="card-product-infos">
+                  <h2><%= link_to "#{product.title} - #{product.brand.name}", product_path(product), class: 'card-link'%></h2>
+                  <p><%= product.oneliner%></p>
+                  <% unless product.safety_rating == 0 %>
+                  <div class="ingredient-card-rating">
+                    <div class="card-rating-container">                        
+                        <% rating = product.safety_rating %>
+                        <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
+                        <p>Safety</p> 
+                    </div>
+                    <div class="card-rating-container">
+                        <% rating = product.efficacy_rating %>
+                        <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
+                        <p>Efficacy</p>
+                    </div>                            
+                  </div>
+                  <% end %>
+              </div>
+            </div>
+          <% end %>
       </div>
     <% end %>
 </div>
