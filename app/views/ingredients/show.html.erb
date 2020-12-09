@@ -24,6 +24,7 @@
   </div>
 </div>
 
+<!--Product Review Carousel-->
 <div class="light-grey-container">
   <div class="container">
     <div class="ingredient-reviews-header">
@@ -35,9 +36,7 @@
 
       <!--Slides-->
       <div class="carousel-inner" role="listbox">
-
         <% @ingredient.ingredient_reviews.each_slice(2).with_index do |review_slice, index| %>
-        <!--Second slide-->
           <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
             <div class="row">
               <% review_slice.each do |ingredient_review| %>
@@ -76,10 +75,8 @@
             </div>
           </div>
         <% end %>  
-        <!--/.Second slide-->
-
-      <!--/.Slides-->
       </div>
+      <!--/.Slides-->
       <div class="d-flex py-5">
          <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
          <ol class="carousel-indicators flex-grow-1"> 
@@ -89,7 +86,6 @@
         </ol>
         <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>    
       </div>
-
     </div>
     <!--/.Carousel Wrapper-->
     <div class="container" style="margin-top: 20px">
@@ -98,35 +94,38 @@
   </div>
 </div>
 
+<!-- Alternative ProductsCarousel Wrapper-->
 <div class="dark-blue-container">
   <div class="container">
-    <h3 style="text-align: left">Things that Contain <%= @ingredient.name %></h3>
-    <div class="product-alternative-flex">
-      <div class="product-details">
-        <img src= "https://res.cloudinary.com/dv27nsze8/image/upload/v1607129841/bloom_imagery/Product_uhki8f.jpg" style="width: 300px" />
-        <div class="card-product-infos">
-            <h2>Product Name</h2>
-            <p>Rating</p> 
-            <p>Efficacy and safety rating</p> 
-        </div>
-      </div>  
-      <div class="product-details">
-        <img src= "https://res.cloudinary.com/dv27nsze8/image/upload/v1607129841/bloom_imagery/Product_uhki8f.jpg" style="width: 300px" />
-        <div class="card-product-infos">
-            <h2>Product Name</h2>
-            <p>Rating</p> 
-            <p>Efficacy and safety rating</p> 
-        </div>
-      </div>   
-      <div class="product-details">
-        <img src= "https://res.cloudinary.com/dv27nsze8/image/upload/v1607129841/bloom_imagery/Product_uhki8f.jpg" style="width: 300px" />
-        <div class="card-product-infos">
-            <h2>Product Name</h2>
-            <p>Rating</p> 
-            <p>Efficacy and safety rating</p> 
-        </div>
-      </div>            
+    <div class="ingredient-reviews-header">
+      <h2>Reviews</h2>
     </div>
+
+    <!--Carousel Wrapper-->
+    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+        <% @ingredient.products.each_slice(3).with_index do |product_slice, index| %>
+          <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
+            <div class="product-grid">
+              <%= render product_slice %>
+            </div>
+          </div>
+        <% end %>  
+      </div>
+      <!--/.Slides-->
+      <div class="d-flex py-5">
+         <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+         <ol class="carousel-indicators flex-grow-1"> 
+          <% ((@ingredient.ingredient_reviews.size / 2) + 1).times do |index|  %>
+            <li data-target="#multi-item-example" data-slide-to="<%=index%>" class="<%= index.zero? ? 'active' : '' %>"></li>
+          <% end %>
+        </ol>
+        <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="fa fa-chevron-right"></i></a>    
+      </div>
+    </div>
+    <!--/.Carousel Wrapper-->
   </div>
 </div>
 
