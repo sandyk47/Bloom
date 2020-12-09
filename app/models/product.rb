@@ -70,8 +70,34 @@ class Product < ApplicationRecord
     self.update(average_product_rating_stars: user_rating)
     self.average_product_rating_stars
   end
-  def star_5
 
+  def star_5
+    product_reviews = ProductReview.where(product: self)
+    stars_5 = product_reviews.where(product_rating: 5)
+    starts_5_total = stars_5.count
+  end
+  def star_4
+    product_reviews = ProductReview.where(product: self)
+    stars_4 = product_reviews.where(product_rating: 4)
+    starts_4_total = stars_4.count
+  end
+
+  def star_3
+    product_reviews = ProductReview.where(product: self)
+    stars_3 = product_reviews.where(product_rating == 3)
+    starts_3_total = stars_3.count
+  end
+
+  def star_2
+    product_reviews = ProductReview.where(product: self)
+    stars_2 = product_reviews.where(product_rating == 2)
+    starts_2_total = stars_2.count
+  end
+
+  def star_1
+    product_reviews = ProductReview.where(product: self)
+    stars_1 = product_reviews.where(product_rating == 1)
+    starts_1_total = stars_1.count
   end
 
 
