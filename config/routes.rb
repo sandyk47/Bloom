@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   end
   patch "products/:id" => "products#favorite", as: :product_favorite
   delete "products/:id" => "products#unfavorite", as: :product_unfavorite
+  get "favorites" => "users#favorites", as: :users_favorites
 end
