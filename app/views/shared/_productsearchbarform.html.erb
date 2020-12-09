@@ -1,9 +1,19 @@
 <%= form_tag products_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Search by product or brand name"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-    <%= link_to "Clear Search", products_path, class:"btn btn-primary" %>
+  <div class="d-flex align-items-center">
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search by product/brand"
+    %>
+    <button type="submit" class="searchButton">
+      <i class="fa fa-search"></i>
+    </button>
+  </div>
+  <div class="d-flex align-items-center">
+    <% if controller_name == "pages" && action_name = "home" %>
+      <%= link_to "View All Products", products_path, class: 'linkStyle', style: 'color:#8f8f8f' %>
+    <% else %>
+      <%= link_to "Clear Search", products_path, class: 'linkStyle', style: 'color:#8f8f8f', id: 'clearSearch' %>
+    <% end %>
+  </div>
 <% end %>

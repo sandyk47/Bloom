@@ -8,22 +8,9 @@
         <%= render partial: 'shared/filterform' %>
     </div>
     <div class="search-results-container">
-      <div class="product-text-container">
-        <p> search for XX products </p>
-      </div>
+
       <%= render 'products', products: @products %>
-      <div>
-        <% if params[:product_search].nil? %>
-          <ul>
-            <li>
-                <%= link_to_if @page > 0, "<< Previous", products_path(page: @page - 1) %>
-            </li>
-            <li>
-                <%= link_to_if @page < (Product.count/12)  , "Next >>", products_path(page: @page + 1) %>
-            </li>
-          </ul>
-          <% end %>
-      </div>
+
     </div>
   </div>
   <div>
@@ -31,7 +18,7 @@
     <%= link_to "back to ingredient search", ingredients_path, class:"btn-primary" %>
   </div>
 </div>
-
+<!--
 <script type="text/javascript">
   var checkBoxes = document.querySelectorAll(".form-check-input");
   var form = document.querySelector('form');
@@ -42,5 +29,5 @@
   });
   }
 </script>
-
+ -->
 

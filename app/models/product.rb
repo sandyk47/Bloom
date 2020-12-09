@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  PRODUCTS_PER_PAGE = 12
   scope :by_category, ->(n = []) { where("category IN (?)", n) }
   scope :by_brand, ->(n = []) { where("brand_id IN (?)", n) }
 
@@ -24,7 +25,7 @@ class Product < ApplicationRecord
   end
 
   def self.brands
-    @brands = Brand.all.distinct
+    Brand.all
   end
 
   def safety_rating

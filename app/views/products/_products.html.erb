@@ -1,3 +1,7 @@
+<div class="product-text-container">
+  <p> search for XX products </p>
+</div>
+
 <div class="product-card-grid">
           <% products.each do |product| %>
             <div class="product-details">
@@ -23,3 +27,18 @@
             </div>
           <% end %>
       </div>
+    <% end %>
+</div>
+
+<div>
+  <% if params[:product_search].nil? %>
+    <ul>
+      <li>
+          <%= link_to_if @page > 0, "<< Previous", products_path(page: @page - 1) %>
+      </li>
+      <li>
+          <%= link_to_if @page < (Product.count/12)  , "Next >>", products_path(page: @page + 1) %>
+      </li>
+    </ul>
+    <% end %>
+</div>
