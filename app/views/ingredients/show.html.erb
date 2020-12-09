@@ -24,6 +24,7 @@
   </div>
 </div>
 
+<!--Product Review Carousel-->
 <div class="light-grey-container">
   <div class="container">
     <div class="ingredient-reviews-header">
@@ -94,7 +95,6 @@
 </div>
 
 <!-- Alternative ProductsCarousel Wrapper-->
-
 <div class="dark-blue-container">
   <div class="container">
     <div class="ingredient-reviews-header">
@@ -108,19 +108,8 @@
       <div class="carousel-inner" role="listbox">
         <% @ingredient.products.each_slice(3).with_index do |product_slice, index| %>
           <div class="carousel-item <%= index.zero? ? 'active' : '' %>">
-            <div class="row">
-              <% product_slice.each do |product| %>
-                <div class="col-4">
-                  <div class="product-details">
-                    <img src= "https://res.cloudinary.com/dv27nsze8/image/upload/v1607129841/bloom_imagery/Product_uhki8f.jpg" style="width: 300px" />
-                    <div class="card-product-infos">
-                        <h2>Product Name</h2>
-                        <p>Rating</p> 
-                        <p>Efficacy and safety rating</p> 
-                    </div>
-                  </div> 
-                </div>
-              <% end %>
+            <div class="product-grid">
+              <%= render product_slice %>
             </div>
           </div>
         <% end %>  
@@ -137,9 +126,6 @@
       </div>
     </div>
     <!--/.Carousel Wrapper-->
-    <div class="container" style="margin-top: 20px">
-      <%= link_to "Write a review", products_path, class: "btn-ghost" %>
-    </div>
   </div>
 </div>
 

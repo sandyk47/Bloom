@@ -1,5 +1,11 @@
 //heading stuff //
 
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, .333fr));
+    grid-gap: 16px;
+}
+
 .ingredient-show-flex {
     display: flex;
     justify-content: space-between;
