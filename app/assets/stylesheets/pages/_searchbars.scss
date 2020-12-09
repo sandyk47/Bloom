@@ -2,3 +2,24 @@
     display: flex;
     justify-content: space-between;
 }
+
+.linkStyle {
+    font-size: 10px;
+}
+
+.linkStyle:link { 
+    color: #8f8f8f;
+}
+.linkStyle:visited { 
+    color: #8f8f8f;
+}
+.linkStyle:hover { 
+    color: #8f8f8f;
+}
+.linkStyle:active { 
+    color: #8f8f8f;
+}
+
+#clearSearch {
+    font-size: 10px;
+}
