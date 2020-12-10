@@ -3,11 +3,34 @@
 <div class="container">
   <div class="flex-container-between">
     <div class="product-bio">
-      <h1><%= @product.title %> </h1>
-      <h2> <%= @product.brand.name %> </h2>
-      <p> <%= @product.description %> </p>
+      <div class=".d-inline-flex">
+        <h1 style="padding-right=5px"><%= @product.title %> </h1>
+        <div>
+          <% if user_signed_in? %>
+            <% if @product.favorited_by?(current_user) %>
+
+                <%= link_to product_unfavorite_path(@product), method: :delete, remote: true do %>
+                    <i class="fas fa-heart"></i>
+                    Unfavourite
+                  <% end %>
+            <% else %>
+              <%= link_to product_favorite_path(@product), method: :patch, remote: true  do %>
+                      <i class="far fa-heart"></i>
+                      Favourite
+                <% end %>
+            <% end %>
+          <% else %>
+            <div class="favorite-button">
+              <%= link_to ('<i class="far fa-heart heart"></i>').html_safe, new_user_session_path %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="colorstrip"></div>
+      <h2 class="pt-2 pb-2 font-weight-bold" > <%= @product.brand.name %> </h2>
+      <p class="pt-2 pb-2"> <%= @product.description %> </p>
       <% unless @product.safety_rating == 0 %>
-      <div class="ratings-flex">
+      <div class="ratings-flex pt-2 pb-4">
         <div class="product-show-rating-container">
             <% rating = @product.safety_rating %>
             <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
@@ -27,18 +50,18 @@
       </div>
       <% end %>
     </div>
-    <div class="product-bio-image">
+    <div class="product-bio">
       <img src= "<%=@product.img %>" style="width: 300px" />
      <div>
         <% if user_signed_in? %>
           <% if @product.favorited_by?(current_user) %>
 
-              <%= link_to product_unfavorite_path(@product), method: :delete, remote: true do %>
+              <%= link_to favorite_path(current_user.favorites.find_by(favoritable: @product)), method: :delete do %>
                   <i class="fas fa-heart"></i>
                   Unfavourite
                 <% end %>
           <% else %>
-            <%= link_to product_favorite_path(@product), method: :patch, remote: true  do %>
+            <%= link_to product_favorites_path(@product), method: :post  do %>
                     <i class="far fa-heart"></i>
                     Favourite
               <% end %>
@@ -56,29 +79,26 @@
 <div class="salmon-container">
   <div class="container">
     <div class="container-aligned-left">
-      <h2>What's In It?</h2>
-      <hr>
-      <h3>Ingredients</h3>
-      <div class="row">
+      <h2 class="pt-3 pb-2">What's In It?</h2>
+      <div class="colorstrip"></div>
+      <div class="row pt-2 pb-2">
           <% @product_ingredients.each do |product_ingredient| %>
             <div class="col-md-4">
               <%= link_to "#{product_ingredient.ingredient.name}",  ingredient_path(product_ingredient.ingredient.id) %>
             </div>
           <% end %>
       </div>
-    <hr>
     </div>
   </div>
 </div>
 
 <div class="container" style="padding-top: 20px; padding-bottom: 40px">
   <div class="container-aligned-left">
-    <h2>How the Users Feel</h2>
-    <hr>
+    <h2 class="pt-3 pb-2">How the Users Feel</h2>
+    <div class="colorstrip mt-2 mb-2"></div>
     <div class="product-rating-flex">
       <div class="product-ratings-left">
-        <h3>Ratings Overview</h3>
-        <p>Select or filter results</p>
+        <h3 class="pt-2 pb-2">Ratings Overview</h3>
         <ul id="prod-reviews">
           <% total_reviews =  @product.product_reviews.count%>
           <% star_reviews_5 = @product.star_5 %>
@@ -165,9 +185,8 @@
           <i class="fa fa-star checked"></i>
           <% end %>
         </h2>
-        <div class=”review-rating” data-score = “<%= 3 %>”></div>
         <!-- Trigger/Open The Modal -->
-        <button id="myBtn" class="btn-ghost">Leave A Review</button>
+        <button id="myBtn" class="btn-ghost mt-4">Leave A Review</button>
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
@@ -182,11 +201,11 @@
         </div>
       </div>
     </div>
-    <div class="ind-product-reviews">
-      <h2>User Reviews</h2>
-      <hr>
+  <div class="ind-product-reviews">
+    <h2 class="pt-3 pb-3">User Reviews</h2>
+    <div class="colorstrip mt-2 mb-2"></div>
       <% @product.product_reviews.each do |product_review| %>
-      <div class="product-review-card">
+      <div class="product-review-card pt-4 pb-4">
         <div class="avatar-placeholder">
           <div style="border-radius: 50%">
             <%= image_tag "#{product_review.user.photo_url}" %>
@@ -194,7 +213,7 @@
         </div>
         <div class="review-body">
           <div class="product-review-header">
-            <h3><%= product_review.title %></h3>
+            <h3 class="font-weight-bold"><%= product_review.title %></h3>
             <p style="color: $mid-gray; margin-left: 7px">-5 days ago</p>
           </div>
           <p><%= product_review.content %></p>
@@ -206,8 +225,8 @@
               <% product_review.product_rating.times do %>
                 <i class="fa fa-star checked"></i>
               <% end %>
+               <%= product_review.product_rating %> /5
             </p>
-            <p style="margin-left: 10px"><b>Recommended?</b> <%= product_review.recommended %></p>
           </div>
           <hr>
         </div>
@@ -216,8 +235,6 @@
     </div>
   </div>
 </div>
-
-
 
 <script>
 // Get the modal
