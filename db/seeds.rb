@@ -1,4 +1,5 @@
 require "open-uri"
+require 'faker'
 
 IngredientReview.delete_all
 ProductReview.delete_all
@@ -79,7 +80,7 @@ skin_type: "Normal"
 user_6 = User.create!(
 username: "drmichelle.saluja",
 email: "dr.michelle.saluja@bloom.com",
-first_name: "Michelle",
+first_name: "Dr. Michelle",
 last_name: "Saluja",
 age: 32,
 password: "password",
@@ -89,6 +90,57 @@ photo_url: 'https://puu.sh/GUWRs/486c00ed1d.png',
 skin_type: "Normal"
 )
 
+user_7 = User.create!(
+username: "Dr.BertS",
+email: "dr.bert.schaider@bloom.com",
+first_name: "Dr. Bert",
+last_name: "Schaider",
+age: 55,
+password: "password",
+verified: true,
+gender: "Male",
+photo_url: 'https://puu.sh/GVXkq/d48fbfe6b6.png',
+skin_type: "Normal"
+)
+
+user_8 = User.create!(
+username: "dr.luxian.gan",
+email: "dr.luxian.gan@bloom.com",
+first_name: "Dr. Lu Xian",
+last_name: "Gan",
+age: 32,
+password: "password",
+verified: true,
+gender: "Male",
+photo_url: 'https://puu.sh/GVXow/0e2d02140c.png',
+skin_type: "Normal"
+)
+
+user_9 = User.create!(
+username: "drxiaolee",
+email: "dr.xiao.chuan.lee@bloom.com",
+first_name: "Dr. Xiao Chuan",
+last_name: "Lee",
+age: 37,
+password: "password",
+verified: true,
+gender: "Female",
+photo_url: 'https://puu.sh/GVXvL/15f2559d24.png',
+skin_type: "Normal"
+)
+
+user_10 = User.create!(
+username: "drsunilap",
+email: "dr.sunila.padmawar@bloom.com",
+first_name: "Sunila",
+last_name: "Padmawar",
+age: 44,
+password: "password",
+verified: true,
+gender: "Female",
+photo_url: 'https://puu.sh/GVXz2/7050385cac.png',
+skin_type: "Normal"
+)
 puts "Creating your index..."
 %x[rake load_csv:products]
 
@@ -113,7 +165,7 @@ product_6 = Product.find(6)
 product_7 = Product.find(7)
 product_8 = Product.find(8)
 product_9 = Product.find(9)
-product_10 = Product.find(10)
+product_10 = Product.find_by_title("Face Moisturizer")
 product_11 = Product.find(11)
 product_12 = Product.find(12)
 product_13 = Product.find(13)
@@ -128,7 +180,7 @@ product_21 = Product.find(21)
 product_22 = Product.find(22)
 product_23 = Product.find(23)
 product_24 = Product.find(24)
-product_25 = Product.find(25)
+product_25 = Product.find_by_title("GOOPGENES All-In-One Nourishing Face Cream")
 product_26 = Product.find(26)
 product_27 = Product.find(27)
 product_28 = Product.find(28)
@@ -138,7 +190,7 @@ product_31 = Product.find(31)
 product_32 = Product.find(32)
 product_33 = Product.find(33)
 product_34 = Product.find(34)
-product_35 = Product.find(35)
+product_35 = Product.find_by_title("Pink Drink Firming Resurfacing Essence")
 
 skin_concerns = %w(Blemishes Dark\ circles Dehydration Dullness Fine\ lines Loss\ of\ firmness Pigmentation Puffiness Redness Sun\ damage Uneven\ skin\ texture Uneven\ skin\ tone Visible\ pores Wrinkles)
 
@@ -206,6 +258,18 @@ Product.all.each do |product|
   product.skin_type_list.add(skin_types.sample)
   product.save
 end
+users_array = [user_1, user_2, user_3, user_4, user_5, user_6, user_7, user_8, user_9, user_10]
+
+5.times do
+  Product.where.not(id:[product_10, product_25, product_35]).each do |product|
+    product.product_reviews.create!(
+      user: users_array.sample,
+      title: Faker::TvShows::Community.quotes,
+      content: Faker::TvShows::Simpsons.quote,
+      product_rating: rand(1..5),
+    )
+  end
+end
 
 pro_rev_1 = ProductReview.create!(
 user: user_2,
@@ -246,9 +310,24 @@ title: "Not my first choice, but a very close second",
 content: "A beautiful mix that left my skin feeling moisturized, firm and even-toned. As an all in one solution for someone on a budget, you can't go wrong with this! ",
 product_rating: 4,
 )
-ingredient_1 = Ingredient.find(250)
-ingredient_2 = Ingredient.find(965)
-ingredient_3 = Ingredient.find(583)
+ingredient_1 = Ingredient.find_by_name("Avena Sativa (Oat) Bran Extract")
+ingredient_2 = Ingredient.find_by_name("Yeast Ferment (Pink Yeast) Extract")
+ingredient_3 = Ingredient.find_by_name("Oryza Sativa (Rice) Bran Extract")
+
+users_verified = [user_4, user_5, user_6, user_7, user_8, user_9, user_10]
+
+5.times do
+  Ingredient.where.not(id:[ingredient_1, ingredient_2, ingredient_3]).each do |ingredient|
+    ingredient.ingredient_reviews.create!(
+      user: users_verified.sample,
+      title: Faker::TvShows::Community.quotes,
+      content: Faker::TvShows::Simpsons.quote,
+      safety_rating: rand(1..10),
+      efficacy_rating: rand(1..10),
+      supporting_evidence: Faker::TvShows::GameOfThrones.quote,
+    )
+  end
+end
 
 ing_rev_1 = IngredientReview.create!(
 user: user_4,
@@ -257,37 +336,118 @@ title: "Good for cleansing skin, however Coeliacs beware",
 content: "Avena Sativa (Oat) Bran Extract is good at leaving your skin looking clean and fresh! It's super gentle too, love it to bits! However coeliacs be safeeeeeee, this stuff ain't good for you!",
 safety_rating: 8,
 efficacy_rating: 9,
-supporting_evidence: "Journal of Zhejiang University Science B, 2013, issue 2, pages 97-105"
+supporting_evidence: "Journal of Zhejiang University Science B, 2013, issue 2, pages 97-105",
 )
 
 ing_rev_2 = IngredientReview.create!(
 user: user_5,
-ingredient: ingredient_2,
-title: "Antioxidant, Moisturizer and Soothener",
-content: "Yeast extract is a mixture of flavonoids, sugars, vitamins, and amino acids. This unique derivative of fungi also contains a high concentration of antioxidants, which are capable of neutralizing harmful free-radicals that are present in the environment. The protective mechanism not only helps to maintain the skin’s overall quality and appearance but also allows additional skin care advantages such as increased moisturizing and soothing properties. However, skincare companies do not have to divulge the source of their yeast extract, so coeliacs should keep that in mind.",
+ingredient: ingredient_1,
+title: "An all around superstar!",
+content: "It turns out oats are more than just the breakfast of champions, they also have superstar skin benefits. One of the unique abilities of oat bran extract, also know as avena sativa, is to form a barrier between you and the aggressive environment. Oat bran coats skin, helping to prevent external toxins from being absorbed. With less toxins on your skin, your true glow shines through. Oat bran also helps to combat irritants on the skin that cause eczema, rashes, and more. A wonderful source of antioxidants, oat bran is your daily defense against free radical damage.",
 safety_rating: 9,
-efficacy_rating: 10,
-supporting_evidence: "Lods, L. M. et al. The future of enzymes in cosmetics. International journal of cosmetic science 22.2, 85-94 (2000)"
+efficacy_rating: 9,
+supporting_evidence: "Kurtz E, Wallo W. Colloidal oatmeal: history, chemistry and clinical properties. J Drugs Dermatol. 2007;6(2):167-170",
 )
 
 ing_rev_3 = IngredientReview.create!(
 user: user_6,
+ingredient: ingredient_1,
+title: "Thousands of years of safe use",
+content: "Oat bran extract is obtained from oats. Oats are fruits of plant Avena sativa. It is a type of cereal grain, best grown in temperate regions. Its most common use is in the food industry as oatmeal or rolled oats. Its use on skin dates back to 2000 BC in Europe. It also has some medicinal properties.",
+safety_rating: 10,
+efficacy_rating: 10,
+supporting_evidence: "NLM (National Library of Medicine). 2012. PubMed online scientific bibliography data",
+)
+
+ing_rev_4 = IngredientReview.create!(
+user: user_9,
+ingredient: ingredient_1,
+title: "Long history of excellent safety records",
+content: "Oatmeal is a natural product which has an excellent safety record and a long history in the treatment of dermatologic disorders. Oatmeal possesses antioxidant and anti-inflammatory properties. Colloidal oatmeal produced by finely grinding the oat and boiling it to extract the colloidal material and became available in 1945. It is noteworthy that many clinical properties of colloidal oatmeal result from its chemical polymorphism. Oatmeal possesses different types of phenols which exert the antioxidant and anti-inflammatory activity. Avenanthramides are phenolic compounds present in oats and they are responsible for the potent anti-inflammatory effect of oatmeal that appears to mediate the anti-irritant effects of oats.",
+safety_rating: 10,
+efficacy_rating: 9,
+supporting_evidence: "Pazyar N, Yaghoobi R, Kazerouni A, Feily A. Oatmeal in dermatology: a brief review. Indian J Dermatol Venereol Leprol. 2012;78(2):142-145",
+)
+
+ing_rev_5 = IngredientReview.create!(
+user: user_10,
+ingredient: ingredient_2,
+title: "Antioxidant, Moisturizer and Soothener",
+content: "Yeast extract is a mixture of flavonoids, sugars, vitamins, and amino acids. This unique derivative of fungi also contains a high concentration of antioxidants, which are capable of neutralizing harmful free-radicals that are present in the environment. The protective mechanism not only helps to maintain the skin’s overall quality and appearance but also allows additional skin care advantages such as increased moisturizing and soothing properties. However, skincare companies do not have to divulge the source of their yeast extract, so coeliacs should keep that in mind.",
+safety_rating: 6,
+efficacy_rating: 10,
+supporting_evidence: "Lods, L. M. et al. The future of enzymes in cosmetics. International journal of cosmetic science 22.2, 85-94 (2000)",
+)
+
+ing_rev_6 = IngredientReview.create!(
+user: user_5,
+ingredient: ingredient_2,
+title: "Fantastic fungi!",
+content: "Large group of fungi that ferment sugars; yeast is a source of beta-glucan, which is a good antioxidant. The types of yeast used in cosmetic products are not harmful and in fact likely contribute to creating a healthier-looking skin surface due to their softening and conditioning action.",
+safety_rating: 8,
+efficacy_rating: 8,
+supporting_evidence: "International Journal of Molecular Sciences, September 2015, pages 21,575-21,590
+Annals of Surgery, November 1994, pages 601-609",
+)
+
+ing_rev_7 = IngredientReview.create!(
+user: user_6,
+ingredient: ingredient_2,
+title: "Good in the kitchen, and on your face",
+content: "You probably know yeast from the kitchen where you put it into milk with a little sugar and then after a couple of minutes brownish bubbles form. That is the fungi fermenting the sugar. As for skin care, yeast contains beta-glucan that is a great soothing ingredient and also a mild antioxidant. The yeast extract itself is a silky clear liquid that has some great moisturizing, skin protecting and film-forming properties on the skin.",
+safety_rating: 8,
+efficacy_rating: 10,
+supporting_evidence: "R.Gaspar, F.B.Camargo, Jr.M.D.Gianeti, P.M.B.G.Maia Campos. Evaluation of dermatological effects of cosmetic formulations containing Saccharomyces cerevisiae extract and vitamins",
+)
+
+ing_rev_8 = IngredientReview.create!(
+user: user_8,
+ingredient: ingredient_2,
+title: "Relatively untested, but promising results",
+content: "The main negative surrounding the use of yeast in skincare is the relative lack of scientific research into its effects. However it is not thought to irritate skin, so its use is unlikely to cause side effects in users, and the anecdotal evidence of its effects is compelling. Skincare brand SK-II was developed in the Seventies after observing that workers in a Japanese sake brewery had remarkably smooth hands due to years of submerging them into fermented yeast through their work. They identified a specific strain of yeast, Pitera, as the source and include it in their products in high concentrations. Yeast is also believed to tighten, brighten and hydrate the skin as well as tackling pigmentation by inhibiting melanin production.",
+safety_rating: 7,
+efficacy_rating: 8,
+supporting_evidence: "K. D. Hyde, A. H. Bahkali & M. A. Moslem. Fungi—an unusual source for cosmetics",
+)
+
+ing_rev_9 = IngredientReview.create!(
+user: user_5,
 ingredient: ingredient_3,
 title: "Good source of necessary antioxidants and vitamin E",
 content: "Oryza sativa (rice) bran extract is a plant ingredient used in cosmetics to condition and soften skin. It’s also a chelating agent. The bran is the brown outer layer of the rice kernel. It’s a by-product from milling of rice, but don’t take that to mean it’s a throwaway ingredient: rice bran is a rich source of over 100 antioxidant compounds, including vitamin E, ferulic acid, and oryzanol.",
 safety_rating: 10,
 efficacy_rating: 8,
-supporting_evidence: "Critical Reviews in Food Science and Nutrition, November 2017, pages 3,771-3,780"
+supporting_evidence: "Critical Reviews in Food Science and Nutrition, November 2017, pages 3,771-3,780",
 )
 
-ing_rev_4 = IngredientReview.create!(
+ing_rev_10 = IngredientReview.create!(
 user: user_4,
 ingredient: ingredient_3,
 title: "Conditions and Softens",
 content: "Rice bran extract is used to help moisturize and cleanse skin, and also happens to be coeliac friendly! There might be concerns if you have reactions to pesticides though so choose your brand carefully or you gonna get all that bad stuff up in your system.",
-safety_rating: 8,
-efficacy_rating: 7,
-supporting_evidence: "CIR (Cosmetic Ingredient Review). 2006. CIR Compendium, containing abstracts, discussions, and conclusions of CIR cosmetic ingredient safety assessments. Washington DC."
+safety_rating: 10,
+efficacy_rating: 10,
+supporting_evidence: "CIR (Cosmetic Ingredient Review). 2006. CIR Compendium, containing abstracts, discussions, and conclusions of CIR cosmetic ingredient safety assessments. Washington DC",
+)
+
+ing_rev_11 = IngredientReview.create!(
+user: user_10,
+ingredient: ingredient_3,
+title: "A good source of antioxidants and free radicals",
+content: "Oryza sativa (rice) bran extract is a good source of strong antioxidant and free radical scavenger compounds. These compounds can contribute to protecting the skin from damaging action of free radicals that are formed under UV and premature skin aging. Rice bran oil antioxidants have the capability of penetrating the skin and providing antioxidant protection for the epidermis and dermis against free radical attack. Rice bran oil also contains a high proportion of short-chain fatty acids. These are natural emollients and provide good hydration and occlusion for the skin as well as protecting the skin.",
+safety_rating: 10,
+efficacy_rating: 9,
+supporting_evidence: "Chotimarkorn C, Benjakul S, Silalai N. Antioxidant components and properties of five long-grained rice bran extracts from commercial available cultivars in Thailand. Food Chemistry. 2008;111(3):636-641",
+)
+
+ing_rev_12 = IngredientReview.create!(
+user: user_9,
+ingredient: ingredient_3,
+title: "Conditions and Softens",
+content: "Rice bran oil moisturises with anti-aging nutrients. Also known as rice bran extract, rice bran oil is simply the oil extracted from the germ and inner husk of rice. It’s similar to peanut oil, with high percentages of fatty acids, which is why it makes it a perfect skin moisturiser. The main benefit of rice bran oil to the skin is its wonderful deep-moisturizing capability and fabulous natural emollients. This is due to its combination of antioxidants, vitamin B and E and fatty acids, which go deep into skin to hydrate. With all its natural components, rice bran oil is considered an anti-aging secret in Japan. It’s actually a high compliment to tell a Japanese woman that she is a “rice bran beauty.” The natural vitamin E plus vitamin B help firm and tighten your look, maintaining hydration, which helps to reduce the appearance of fine lines and wrinkles.",
+safety_rating: 10,
+efficacy_rating: 10,
+supporting_evidence: "Gopala Kriskna K, Hemakumar S, Khatoon S. Study on the composition of rice bran oil and its higher free fatty acids value. American Journal of  Oil Chemists’ Society. 2006;83(2):117-120",
 )
 
 puts "Seeding done!!!"
