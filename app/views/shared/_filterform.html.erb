@@ -1,18 +1,42 @@
+<div class="d-flex align-items-center">
+  <i class="fas fa-sliders-h fa-lg"></i>
+  <h3 class="pl-3 mt-2">Refine Search</h2>
+</div>
+
 <% accreditations = %w(Alcohol-free Fragrance-free Gluten-free Oil-free Parabens-free Sulphate-free Vegan) %>
+
 <% skin_concerns = %w(Blemishes Dark\ circles Dehydration Dullness Fine\ lines Loss\ of\ firmness Pigmentation Puffiness Redness Sun\ damage Uneven\ skin\ texture Uneven\ skin\ tone Visible\ pores Wrinkles) %>
+
 <% skin_types = ["All", "Extra Oily", "Oily", "Combination", "Dry", "Extra Dry", "Sensitive", "Normal"] %>
 <% form = %w(Balm Cream Gel Lotion Powder Sheet) %>
 
-<%= simple_form_for @product_search, url: products_path, method: "get", remote: true do |f| %>
 
-<%= f.input :tag, label: "Accreditations", as: :check_boxes, collection: accreditations, include_hidden: false %>
+
+<div class="colorstrip-small"></div>
+
+
+<%= simple_form_for @product_search, url: products_path, method: "get", remote: true do |f| %>
+<%= f.input :tag, label: "Accreditations", as: :check_boxes, collection: accreditations, :class => ' font-weight-bold', include_hidden: false %>
+<div class="colorstrip-small"></div>
+
 <%= f.input :tag, label: "Skin Concerns", as: :check_boxes, collection: skin_concerns, include_hidden: false %>
+<div class="colorstrip-small"></div>
+
 <%= f.input :tag, label: "Skin Types", as: :check_boxes, collection: skin_types, include_hidden: false %>
+<div class="colorstrip-small"></div>
+
 <%= f.input :tag, label: "Form", as: :check_boxes, collection: form, include_hidden: false %>
+<div class="colorstrip-small"></div>
+
+
 <%= f.input :category, label: "Categories", as: :check_boxes, collection: Product.categories, include_hidden: false %>
+<div class="colorstrip-small"></div>
+
+
 <%= f.input :brand, label: "Brands", as: :check_boxes, collection: Product.brands, include_hidden: false %>
 
 <%= f.submit %>
+
 <% end %>
 
 

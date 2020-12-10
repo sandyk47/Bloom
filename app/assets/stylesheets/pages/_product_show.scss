@@ -31,7 +31,7 @@
     }
     
     .heart-empty:hover {
-        color: $light-blue;
+        color: $red;
         
     }
 }
@@ -89,6 +89,13 @@
     background-color: $red;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.colorstrip-small {
+    background-color: #9c3c24;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 1px;
 }
 
 .colorstrip-white{

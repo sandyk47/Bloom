@@ -24,14 +24,14 @@
 
 .search-results-container {
     background-color: $serenade;
-    padding: 10px;
+    padding: 32px;
     border-radius: 8px;
 }
 
 .product-card-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 16px;
+    grid-gap: 32px;
 }
 
 .product-text-container {
