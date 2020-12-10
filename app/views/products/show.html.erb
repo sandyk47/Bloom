@@ -52,6 +52,26 @@
     </div>
     <div class="product-bio">
       <img src= "<%=@product.img %>" style="width: 300px" />
+     <div>
+        <% if user_signed_in? %>
+          <% if @product.favorited_by?(current_user) %>
+
+              <%= link_to favorite_path(current_user.favorites.find_by(favoritable: @product)), method: :delete do %>
+                  <i class="fas fa-heart"></i>
+                  Unfavourite
+                <% end %>
+          <% else %>
+            <%= link_to product_favorites_path(@product), method: :post  do %>
+                    <i class="far fa-heart"></i>
+                    Favourite
+              <% end %>
+          <% end %>
+        <% else %>
+          <div class="favorite-button">
+            <%= link_to "Favourite", new_user_session_path, class: 'btn-ghost-small' %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
@@ -159,15 +179,12 @@
         </ul>
       </div>
       <div class="product-ratings-right">
-        <div class="container">
-          <h2><span class="fa fa-star checked"></span> <%= @product.user_rating%> (<%= total_reviews %> Reviews)</h2>
-          <h2 class="pt-2">
-            <% @product.user_rating.to_i.times do%>
-            <i class="fa fa-star checked"></i>
-            <% end %>
-          </h2>
-        </div> 
-        <div class=”review-rating” data-score = “<%= 3 %>”></div>
+        <h2><span class="fa fa-star checked"></span> <%= @product.user_rating%> (<%= total_reviews %> Reviews)</h2>
+        <h2>
+          <% @product.user_rating.to_i.times do%>
+          <i class="fa fa-star checked"></i>
+          <% end %>
+        </h2>
         <!-- Trigger/Open The Modal -->
         <button id="myBtn" class="btn-ghost mt-4">Leave A Review</button>
 
