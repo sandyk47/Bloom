@@ -3,7 +3,6 @@
   justify-content: space-between;
   background: $dark-blue;
   align-items: center;
-  margin-bottom: 30px;
 
   li, a, h1, h2, h3, h4, h5, p {
     // color: black;
@@ -23,3 +22,10 @@
   }
 }
 
+.card-product-infos > h2 > a {
+  font-size: 20px;
+}
+
+.card-product-infos > h2 > a:hover {
+  font-size: 20px;
+}

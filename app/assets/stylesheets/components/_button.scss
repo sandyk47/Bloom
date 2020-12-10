@@ -17,6 +17,22 @@
   transition: 0.8s;
 }
 
+.btn-redboi {
+  background-color: $red;
+  color: $white;
+  border: 1px solid $white;
+  padding: 8px 24px;
+  font-weight: lighter;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  transition-duration: .7s;
+}
+
+.btn-redboi:hover {
+  background-color: $dark-blue;
+}
+
+
 .searchButton {
   width: 40px;
   height: 37.5px;
