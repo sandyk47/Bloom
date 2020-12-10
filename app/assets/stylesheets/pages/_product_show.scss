@@ -6,9 +6,33 @@
 
 .product-bio {
     text-align: left;
+    position: relative;
 
     img {
         padding-left: 20px;
+    }
+
+    .heart-solid {
+        font-size: 30px;
+        transition-duration: 0.5s;
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: $red;
+    }
+
+    .heart-empty {
+        font-size: 30px;
+        transition-duration: 0.5s;
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: $mid-gray;
+    }
+    
+    .heart-empty:hover {
+        color: $light-blue;
+        
     }
 }
 
@@ -74,14 +98,4 @@
     background-color: $white;
     margin-top: 10px;
     margin-bottom: 10px;
-}
-
-.heart {
-    font-size: 24;
-    transition-duration: 0.5s;
-}
-
-.heart:hover {
-    color: $light-blue;
-    
 }
