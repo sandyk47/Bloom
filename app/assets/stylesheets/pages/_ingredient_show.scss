@@ -50,8 +50,9 @@
 }
 
 .ingredient-review-card {
-    background-color: $white;
-    border-radius: 5px;
+  background-color: $white;
+  box-shadow: 0 0 2px 2px #dbdad7;
+  margin: 5px;
 }
 
 .ingredient-review-header {
@@ -87,15 +88,29 @@
 // Here are all the components for the 'things that contain ingredient section
 
 .dark-blue-container {
-    width: 100vw;
-    background-color: $dark-blue;
-    padding-top: 20px;
-    padding-bottom: 30px;
+  width: 100vw;
+  background-color: $dark-blue;
+  padding-top: 20px;
+  padding-bottom: 30px;
 
-    h3 {
-        color: $white;
-    }
+  h3 {
+      color: $white;
+  }
 }
+
+.resources-container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  h2 {
+    text-align: left;
+    padding-bottom: 50px;
+    font-weight: 500;
+    padding-left: 22px;
+
+  }
+}
+
 
 .product-alternative-flex {
     display: flex;
