@@ -1,33 +1,11 @@
-
-
-<div class="container">
-  <div class="flex-container-between">
+<div class="container mt-5">
+  <div class="d-flex">
     <div class="product-bio">
-      <div class=".d-inline-flex">
-        <h1 style="padding-right=5px"><%= @product.title %> </h1>
-        <div>
-          <% if user_signed_in? %>
-            <% if @product.favorited_by?(current_user) %>
-
-                <%= link_to product_unfavorite_path(@product), method: :delete, remote: true do %>
-                    <i class="fas fa-heart"></i>
-                    Unfavourite
-                  <% end %>
-            <% else %>
-              <%= link_to product_favorite_path(@product), method: :patch, remote: true  do %>
-                      <i class="far fa-heart"></i>
-                      Favourite
-                <% end %>
-            <% end %>
-          <% else %>
-            <div class="favorite-button">
-              <%= link_to ('<i class="far fa-heart heart"></i>').html_safe, new_user_session_path %>
-            </div>
-          <% end %>
-        </div>
-      </div>
+      <h1 style="padding-right=5px"><%= @product.title %> </h1>
       <div class="colorstrip"></div>
-      <h2 class="pt-2 pb-2 font-weight-bold" > <%= @product.brand.name %> </h2>
+      <h2 class="pt-2 pb-2 font-weight-bold" > 
+        <%= @product.brand.name %> 
+      </h2>
       <p class="pt-2 pb-2"> <%= @product.description %> </p>
       <% unless @product.safety_rating == 0 %>
       <div class="ratings-flex pt-2 pb-4">
@@ -52,29 +30,35 @@
     </div>
     <div class="product-bio">
       <img src= "<%=@product.img %>" style="width: 300px" />
-     <div>
-        <% if user_signed_in? %>
-          <% if @product.favorited_by?(current_user) %>
-
-              <%= link_to favorite_path(current_user.favorites.find_by(favoritable: @product)), method: :delete do %>
-                  <i class="fas fa-heart"></i>
-                  Unfavourite
-                <% end %>
+      <% if user_signed_in? %>
+        <% if @product.favorited_by?(current_user) %>
+            <%= link_to favorite_path(current_user.favorites.find_by(favoritable: @product)), method: :delete do %>
+              <i class="fas fa-heart heart-solid"></i>
+            <% end %>
           <% else %>
             <%= link_to product_favorites_path(@product), method: :post  do %>
-                    <i class="far fa-heart"></i>
-                    Favourite
-              <% end %>
+              <i class="far fa-heart heart-empty"></i>
           <% end %>
-        <% else %>
-          <div class="favorite-button">
-            <%= link_to "Favourite", new_user_session_path, class: 'btn-ghost-small' %>
-          </div>
         <% end %>
+      <% else %>
+        <div class="favorite-button">
+          <%= link_to "Favourite", new_user_session_path, class: 'btn-ghost-small' %>
+        </div>
+      <% end %>
+      <div class="text-center mt-2">
+        <h3>
+          <% @product.user_rating.to_i.times do%>
+          <i class="fa fa-star checked"></i>
+          <% end %>
+        </h3>
+        <h4>User consensus: <%= @product.user_rating %> / 5</h4>
+
       </div>
+      
     </div>
   </div>
 </div>
+
 
 <div class="salmon-container">
   <div class="container">
@@ -178,15 +162,15 @@
 
         </ul>
       </div>
-      <div class="product-ratings-right">
-        <h2><span class="fa fa-star checked"></span> <%= @product.user_rating%> (<%= total_reviews %> Reviews)</h2>
+      <div class="product-ratings-right text-center pt-3 pr-5">
         <h2>
           <% @product.user_rating.to_i.times do%>
           <i class="fa fa-star checked"></i>
           <% end %>
         </h2>
+        <h3></span> <%= @product.user_rating%> (<%= total_reviews %> Reviews)</h3>
         <!-- Trigger/Open The Modal -->
-        <button id="myBtn" class="btn-ghost mt-4">Leave A Review</button>
+        <button id="myBtn" class="btn-redboi mt-4">Leave A Review</button>
 
         <!-- The Modal -->
         <div id="myModal" class="modal">

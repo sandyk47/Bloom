@@ -1,23 +1,25 @@
-<div class="container">
+<div class="container mt-4">
+  <div class="text-left">
+    <h1 class="pt-2 pb-2"> <%= @ingredient.name %> </h1>
+    <div class="colorstrip mt-2 mb-2"></div>
+  </div>
   <div class="ingredient-show-flex">
     <div class="ingredient-show-details">
-      <h1> <%= @ingredient.name %> </h1>
-      <div class="colorstrip"></div>
-      <p> <%= @ingredient.description %> </p>
+      <p class="pt-3 pb-5"> <%= @ingredient.description %> </p>
     </div>
     <div class="ingredient-ratings-container">
-        <div class="card-rating-container-show-flex">
+        <div class="card-rating-container-show-flex pl-4">
             <% rating = @ingredient.safety_rating %>
             <% if rating != nil %>
                 <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
-                <h3>Safety <br> Consensus </h3>
+                <h3 class="text-left pl-3">Safety <br> Consensus </h3>
             <% end %>
         </div>
         <div class="card-rating-container-show-flex">
             <% rating = @ingredient.efficacy_rating %>
             <% if rating != nil %>
                 <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
-                <h3>Efficacy <br> Consensus </h3>
+                <h3 class="text-left pl-3">Efficacy <br> Consensus </h3>
             <% end %>
         </div>
     </div>
@@ -27,9 +29,9 @@
 <!--Product Review Carousel-->
 <div class="light-grey-container">
   <div class="container">
-    <div class="ingredient-reviews-header">
-      <h2>Reviews</h2>
-      <div class="colorstrip"></div>
+    <div class="text-left">
+      <h2 class="mt-3">Reviews</h2>
+      <div class="colorstrip mt-3 mb-3"></div>
     </div>
 
     <!--Carousel Wrapper-->
@@ -43,30 +45,33 @@
               <% review_slice.each do |ingredient_review| %>
                 <div class="col-6">
                   <div class="ingredient-review-card">
-                    <div class="ingredient-review-header">
-                      <%= image_tag "#{ingredient_review.user.photo_url}", class:"avatar-large" %>
-                      <div class="ingredient-reviewer-name">
-                        <H4><b><%= "#{ingredient_review.user.first_name} #{ingredient_review.user.last_name}"%></b></H2>
+                    <div class="text-center test">
+                      <div class="ingredient-review-header">
+                        <%= image_tag "#{ingredient_review.user.photo_url}", class:"avatar-large pl-2 pt-2" %>
+                        <div class="ingredient-reviewer-name">
+                          <H3 class="pl-2 pt-2"><b><%= "#{ingredient_review.user.first_name} #{ingredient_review.user.last_name}"%></b></H3>
+                        </div>
                       </div>
                     </div>
-                    <div class="ingredient-review-body">
+                    <div class="ingredient-review-body p-3">
                       <h3> <%= ingredient_review.title.truncate(45) %> </h3>
+
                       <p> <%= ingredient_review.content %> </p>
                       <p> <%= ingredient_review.supporting_evidence.truncate(100) %> </p>
                     </div>
-                    <div class="ingredient-review-ratings">
+                    <div class="ingredient-review-ratings pt-3 pb-3">
                       <div class="card-rating-container-flex">
                           <% rating = ingredient_review.safety_rating %>
                           <% if rating != nil %>
                               <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
-                              <p>Safety</p>
+                              <p class="pl-2 pt-2">Safety</p>
                           <% end %>
                       </div>
                       <div class="card-rating-container-flex">
                           <% rating = ingredient_review.efficacy_rating %>
                           <% if rating != nil %>
                               <%= render 'shared/progresscircle', :locals => {"value" => rating} unless rating == nil %>
-                              <p>Efficacy</p>
+                              <p class="pl-2 pt-2">Efficacy</p>
                           <% end %>
                       </div>
                     </div>
@@ -110,16 +115,15 @@
 </div>
 
 <!-- Alternative ProductsCarousel Wrapper-->
-<div class="dark-blue-container">
+<div class="dark-blue-container pt-5">
   <div class="container">
-    <div class="ingredient-reviews-header">
-      <h2 id="white-me" class="pb-5 py-5 mb-3 my-3"><%= "Products that contain #{@ingredient.name}" %></h2>
-    <div class="colorstrip-white"></div>
-
+    <div class="text-left">
+      <h2 id="white-me"><%= "Things that contain #{@ingredient.name}" %></h2>
+      <div class="colorstrip-white mt-4 mb-3"></div>
     </div>
 
     <!--Carousel Wrapper-->
-    <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+    <div id="multi-item-example" class="carousel slide carousel-multi-item pt-2" data-ride="carousel">
 
       <!--Slides-->
       <div class="carousel-inner" role="listbox">
@@ -146,17 +150,15 @@
   </div>
 </div>
 
-<div class="container resources-container" style="padding-top: 20px, padding-bottom: 30px">
-  <h2>Popular Resources</h2>
-  <div class="colorstrip"></div>
-  <ul style="text-align: left">
+<div class="container text-left">
+  <h2 class="pt-5 pb-2">Popular Resources</h2>
+  <div class="colorstrip mt-3 mb-3"></div>
+  <ul class="text-left mt-3 mb-5">
     <% @ingredient.ingredient_reviews.each do |review| %>
     <li><%= "#{review.supporting_evidence}" %></li>
     <% end %>
   </ul>
 </div>
-
-
 
 <script>
 // Get the modal

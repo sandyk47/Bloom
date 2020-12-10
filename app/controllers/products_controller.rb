@@ -36,20 +36,6 @@ class ProductsController < ApplicationController
     add_breadcrumb("#{@product.title}", nil, true)
   end
 
-  def favorite
-    @product = Product.find(params[:id])
-    @user = current_user
-    @user.favorite(@product)
-    redirect_to @product
-  end
-
-  def unfavorite
-    @product = Product.find(params[:id])
-    @user = current_user
-    @user.unfavorite(@product)
-    redirect_to @product
-  end
-
   private
 
 

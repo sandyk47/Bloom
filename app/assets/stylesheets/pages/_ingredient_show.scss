@@ -30,11 +30,6 @@
     height: 200px;
 }
 
-.ingredient-reviews-header {
-    display: flex;
-    justify-content: space-between;
-}
-
 .ingredient-ratings-container {
     align-items: left;
 }
@@ -61,10 +56,14 @@
 
 .ingredient-review-header {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     padding-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.test {
+    align-items: center;
 }
 
 .ingredient-review-body {
@@ -108,20 +107,6 @@
   }
 }
 
-.resources-container {
-  padding-top: 50px;
-  padding-bottom: 50px;
-
-  h2 {
-    text-align: left;
-    padding-bottom: 50px;
-    font-weight: 500;
-    padding-left: 22px;
-
-  }
-}
-
-
 .product-alternative-flex {
     display: flex;
     justify-content: space-between;
@@ -130,6 +115,10 @@
 .product-details {
     background-color: white;
     border-radius: 5px;
+    box-shadow: 2px 2px 5px #beb2b0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #white-me {
