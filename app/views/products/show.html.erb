@@ -196,7 +196,7 @@
         </div>
         <div class="review-body">
           <div class="product-review-header">
-            <h3><%= product_review.title %></h3>
+            <h3 class="font-weight-bold"><%= product_review.title %></h3>
             <p style="color: $mid-gray; margin-left: 7px">-5 days ago</p>
           </div>
           <p><%= product_review.content %></p>
@@ -208,8 +208,8 @@
               <% product_review.product_rating.times do %>
                 <i class="fa fa-star checked"></i>
               <% end %>
+               <%= product_review.product_rating %> /5
             </p>
-            <p style="margin-left: 10px"><b>Recommended?</b> <%= product_review.recommended %></p>
           </div>
           <hr>
         </div>
