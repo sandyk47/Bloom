@@ -9,11 +9,12 @@
 .ingredient-show-flex {
     display: flex;
     justify-content: space-between;
+    padding: 70px 0;
 }
 
 .ingredient-show-details {
-    text-align: left;
-    padding-right: 20px;
+    text-align: justify;
+    padding-right: 100px;
 }
 
 .light-grey-container {
@@ -48,6 +49,10 @@
   background-color: $white;
   box-shadow: 0 0 2px 2px #dbdad7;
   margin: 5px;
+  max-height: 500px;
+  width: 530px;
+  height: 500px;
+  position: relative;
 }
 
 .ingredient-review-header {
@@ -64,17 +69,38 @@
 
 .ingredient-review-body {
     margin-left: 25px;
-    text-align: left;
+    margin-right: 25px;
+    text-align: justify;
+    position: absolute;
+    top: 70px;
 }
 
 .ingredient-reviewer-name {
     text-align: left;
+    position: absolute;
+    top: 23px;
+    left: 75px;
+}
+
+#evidence {
+  position: absolute;
+  top: 270px;
+  font-style: italic;
+  color: $mid-gray;
+  font-weight: 100;
+  text-align: justify;
+  max-width: 446px;
 }
 
 .ingredient-review-ratings {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     background-color: $serenade;
+    position: absolute;
+    bottom: 0;
+    width: 530px;
+
+    padding: 5px 0;
 }
 
 .card-rating-container-show-flex {
@@ -93,7 +119,7 @@
   padding-bottom: 30px;
 
   h3 {
-      color: $white;
+      color: $black;
   }
 }
 
@@ -115,6 +141,25 @@
     color: $white;
 }
 
+#ing-rev-title {
+  position: absolute;
+  top: 5px;
+  color: $red;
+}
+
+#ing-rev-content {
+  padding-top: 25px;
+}
+
+
+.text-truncate {
+   display: inline-block;
+   max-width: 480px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   overflow: scroll;
+}
 //// Carousel ///
 
 

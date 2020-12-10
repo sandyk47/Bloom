@@ -1,6 +1,32 @@
 require "open-uri"
 require 'faker'
 
+ FAKE_ARTICLES = [
+  "Schneider, Günther et al (2005). 'Skin Cosmetics' in Ullmann's Encyclopedia of Industrial Chemistry, Wiley-VCH, Weinheim. doi:10.1002/14356007.a24_219",
+ "Cosmetics and Your Health – FAQs. Womenshealth.gov. November 2004. Archived from the original on 2013-03-12.",
+ "Cosmetics Overview. U.S. Food & Drug Administration. Retrieved 30 March 2019.",
+ "Liddell, Henry George and Scott, Robert. κόσμος in A Greek-English Lexicon",
+ "Johnson, Rita (1999). 'What's That Stuff? Lipstick'. Chemical and Engineering News. 77 (28): 31. doi:10.1021/cen-v077n028.p031.",
+ "Sindya N. Bhanoo (18 January 2010). 'Ancient Egypt's Toxic Makeup Fought Infection, Researchers Say'. The New York Times.",
+ "Schaffer, Sarah (2006), Reading Our Lips: The History of Lipstick Regulation in Western Seats of Power, Digital Access to Scholarship at Harvard, retrieved 2014-06-05",
+ "The History of Lipstick And It's Slightly Gross Origins. InventorSpot. Retrieved 2010-02-09.",
+ "Williams, Yona . Ancient Indus Valley: Food, Clothing & Transportation. unexplainable.net",
+"Adkins, Lesley and Adkins, Roy A. (1998) Handbook to life in Ancient Greece, Oxford University Press",
+"Burlando, Bruno; Verotta, Luisella; Cornara, Laura and Bottini-Massa, Elisa (2010) Herbal Principles in Cosmetics, CRC Press",
+ "Angeloglou, Maggie. The History of Make-up. First ed. Great Britain: The Macmillan Company, 1970. 41–42. Print.",
+ "Pallingston, J (1998). Lipstick: A Celebration of the World's Favorite Cosmetic. St. Martin's Press. ISBN 978-0-312-19914-2.",
+ "Dow, Bonnie J. (Spring 2003). 'Feminism, Miss America, and Media Mythology'. Rhetoric & Public Affairs. 6 (1): 127–149. doi:10.1353/rap.2003.0028.",
+ "Duffett, Judith (October 1968). WLM vs. Miss America. Voice of the Women's Liberation Movement. p. 4.",
+ "Webster, Emma Sarran. 'This Is the Real Difference Between Natural and Synthetic Makeup Brushes'. Teen Vogue. Retrieved 2018-05-07.",
+ "Kessler R. More than Cosmetic Changes: Taking Stock of Personal Care Product Safety. Environ Health Perspect; DOI:10.1289/ehp.123-A120 [1]",
+ "FDA. Cosmetics: Guidance & Regulation; Laws & Regulations. Prohibited & Restricted Ingredients. [website]. U.S. Food and Drug Administration, Silver Spring, MD. Updated 26 January 2015. [2]",
+ "Singer, Natasha (2007-11-01). 'Natural, Organic Beauty'. The New York Times.",
+ "'The Lowdown on Mineral Makeup'. WebMD. p. 2. Retrieved 29 October 2018.",
+ "Administration, Australian Government Department of Health. Therapeutic Goods (2017-01-11). 'Literature review on the safety of titanium dioxide and zinc oxide nanoparticles in sunscreens'. Therapeutic Goods Administration (TGA). Retrieved 2018-07-17.",
+ "Anderson, Heather. 'Ten Benefits of Mineral Makeup (and Why You Should Make Your Own)'.",
+ "'Understanding the Cosmetics Regulation'. Cosmetics Europe Association. Retrieved 3 November 2016.",
+ "International Organization for Standardization. 'ISO 22715:2006 Cosmetics – Packaging and labelling'. ISO.org. Retrieved 2 November 2016." ]
+
 IngredientReview.delete_all
 ProductReview.delete_all
 ProductIngredient.delete_all
@@ -324,7 +350,7 @@ users_verified = [user_4, user_5, user_6, user_7, user_8, user_9, user_10]
       content: Faker::TvShows::Simpsons.quote,
       safety_rating: rand(1..10),
       efficacy_rating: rand(1..10),
-      supporting_evidence: Faker::TvShows::GameOfThrones.quote,
+      supporting_evidence: FAKE_ARTICLES.sample,
     )
   end
 end

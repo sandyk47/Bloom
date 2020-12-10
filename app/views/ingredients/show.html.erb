@@ -47,16 +47,17 @@
                   <div class="ingredient-review-card">
                     <div class="text-center test">
                       <div class="ingredient-review-header">
-                        <%= image_tag "#{ingredient_review.user.photo_url}", class:"avatar-large pl-2 pt-2" %>
-                        <div class="ingredient-reviewer-name">
+                        <%= image_tag "#{ingredient_review.user.photo_url}", class:"avatar pl-2 pt-2 ing-rev-avatar" %>
+                        <div class="ingredient-reviewer-name" id="reviewer-name">
                           <H3 class="pl-2 pt-2"><b><%= "#{ingredient_review.user.first_name} #{ingredient_review.user.last_name}"%></b></H3>
                         </div>
                       </div>
                     </div>
                     <div class="ingredient-review-body p-3">
-                      <h4><b> <%= ingredient_review.title %> </b></h3>
-                      <p> <%= ingredient_review.content %> </p>
-                      <p> <%= ingredient_review.supporting_evidence %> </p>
+                      <h3 id="ing-rev-title"> <%= ingredient_review.title.truncate(45) %> </h3>
+
+                      <p id="ing-rev-content"> <%= ingredient_review.content.truncate(450) %> </p>
+                      <p id="evidence"> <%= ingredient_review.supporting_evidence.truncate(100) %> </p>
                     </div>
                     <div class="ingredient-review-ratings pt-3 pb-3">
                       <div class="card-rating-container-flex">
@@ -82,7 +83,7 @@
         <% end %>
       </div>
       <!--/.Slides-->
-      <div class="d-flex py-5">
+      <div class="d-flex pt-5 pb-2">
          <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
          <ol class="carousel-indicators flex-grow-1">
           <% ((@ingredient.ingredient_reviews.size / 2) + 1).times do |index|  %>
@@ -118,7 +119,7 @@
   <div class="container">
     <div class="text-left">
       <h2 id="white-me"><%= "Things that contain #{@ingredient.name}" %></h2>
-      <div class="colorstrip-white mt-4 mb-3"></div>  
+      <div class="colorstrip-white mt-4 mb-3"></div>
     </div>
 
     <!--Carousel Wrapper-->
