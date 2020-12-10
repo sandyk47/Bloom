@@ -36,7 +36,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'acts_as_favoritor'
 
 gem 'cloudinary', '~> 1.16.0'
-
+gem 'faker'
 
 gem 'pg_search', '~> 2.3.0'
 

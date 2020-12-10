@@ -104,6 +104,8 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.7.0)
+    faker (2.15.1)
+      i18n (>= 1.6, < 2)
     ffi (1.13.1)
     ffi (1.13.1-java)
     ffi (1.13.1-x64-mingw32)
@@ -333,6 +335,7 @@ DEPENDENCIES
   csv
   devise
   dotenv-rails
+  faker
   font-awesome-sass
   jbuilder (~> 2.7)
   jquery-rails
