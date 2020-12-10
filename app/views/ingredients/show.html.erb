@@ -2,7 +2,7 @@
   <div class="ingredient-show-flex">
     <div class="ingredient-show-details">
       <h1> <%= @ingredient.name %> </h1>
-      <hr>
+      <div class="colorstrip"></div>
       <p> <%= @ingredient.description %> </p>
     </div>
     <div class="ingredient-ratings-container">
@@ -29,6 +29,7 @@
   <div class="container">
     <div class="ingredient-reviews-header">
       <h2>Reviews</h2>
+      <div class="colorstrip"></div>
     </div>
 
     <!--Carousel Wrapper-->
@@ -112,8 +113,8 @@
 <div class="dark-blue-container">
   <div class="container">
     <div class="ingredient-reviews-header">
-
-      <h2 id="white-me"><%= "Products that contain #{@ingredient.name}" %></h2>
+      <h2 id="white-me"><%= "Things that contain #{@ingredient.name}" %></h2>
+      <div class="colorstrip-white"></div>  
     </div>
 
     <!--Carousel Wrapper-->
@@ -146,6 +147,7 @@
 
 <div class="container resources-container" style="padding-top: 20px, padding-bottom: 30px">
   <h2>Popular Resources</h2>
+  <div class="colorstrip"></div>
   <ul style="text-align: left">
     <% @ingredient.ingredient_reviews.each do |review| %>
     <li><%= "#{review.supporting_evidence}" %></li>

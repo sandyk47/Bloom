@@ -6,6 +6,10 @@
 
 .product-bio {
     text-align: left;
+
+    img {
+        padding-left: 20px;
+    }
 }
 
 .ratings-flex {
@@ -28,9 +32,7 @@
 }
 
 .product-ratings-right {
-    display:flex;
-    flex-flow:column;
-    justify-content:space-around;
+
 }
 
 .product-review-header {
@@ -54,4 +56,32 @@
 
 .favorite-button {
     margin-bottom: 20px;
+}
+
+.colorstrip{
+    width: 90px; height: 2px;
+    border-style: solid;
+    border-color: $red;
+    background-color: $red;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.colorstrip-white{
+    width: 90px; height: 2px;
+    border-style: solid;
+    border-color: $white;
+    background-color: $white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.heart {
+    font-size: 24;
+    transition-duration: 0.5s;
+}
+
+.heart:hover {
+    color: $light-blue;
+    
 }
