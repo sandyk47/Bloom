@@ -8,6 +8,6 @@
         <span class="progress-bar border-primary" ></span>
     </span>
     <div class="progress-text">
-        <h3><%= locals["value"] %></sup></h3>
+        <h3><%= locals["value"].round(2) unless locals["value"].nil? %></sup></h3>
     </div>
 </div>
