@@ -49,9 +49,9 @@
                       </div>
                     </div>
                     <div class="ingredient-review-body">
-                      <h4> <%= ingredient_review.title %> </h3>
-                      <p> <%= ingredient_review.content %> </p>
-                      <p> <%= ingredient_review.supporting_evidence %> </p>
+                      <h3> <%= ingredient_review.title.truncate(45) %> </h3>
+                      <p> <%= ingredient_review.content.truncate(150) %> </p>
+                      <p> <%= ingredient_review.supporting_evidence.truncate(100) %> </p>
                     </div>
                     <div class="ingredient-review-ratings">
                       <div class="card-rating-container-flex">
@@ -113,7 +113,7 @@
   <div class="container">
     <div class="ingredient-reviews-header">
 
-      <h2 id="white-me"><%= "Products that contain #{@ingredient.name}" %></h2>
+      <h2 id="white-me" class="pb-5 py-5 mb-3 my-3"><%= "Products that contain #{@ingredient.name}" %></h2>
     </div>
 
     <!--Carousel Wrapper-->
