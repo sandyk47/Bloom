@@ -35,7 +35,7 @@
 
 <%= f.input :brand, label: "Brands", as: :check_boxes, collection: Product.brands, include_hidden: false %>
 
-<%= f.submit %>
+<%= f.submit "Filter Products", :id => "filter-btn" %>
 
 <% end %>
 

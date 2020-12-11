@@ -64,3 +64,25 @@
   background-color: $red;
   transition: 0.8s;
 }
+
+#filter-btn {
+  color: $red;
+  border: 1px solid $red;
+  padding: 4px 12px;
+  font-weight: lighter;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+#filter-btn:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: $white;
+  background-color: $red;
+  transition: 0.8s;
+}
+

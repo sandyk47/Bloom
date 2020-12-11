@@ -29,10 +29,10 @@
         top: 0;
         color: $mid-gray;
     }
-    
+
     .heart-empty:hover {
         color: $red;
-        
+
     }
 }
 
@@ -105,4 +105,9 @@
     background-color: $white;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+#fav-strip {
+  margin-top: -4px;
+  margin-bottom: 30px;
 }
