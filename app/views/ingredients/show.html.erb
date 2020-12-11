@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <div class="text-left">
-    <h1 class="pt-2 pb-2"> <%= @ingredient.name %> </h1>
+    <h1 class="pt-3 pb-2"> <%= @ingredient.name %> </h1>
     <div class="colorstrip mt-2 mb-2"></div>
   </div>
   <div class="ingredient-show-flex">
@@ -54,7 +54,7 @@
                       </div>
                     </div>
                     <div class="ingredient-review-body p-3">
-                      <h3 id="ing-rev-title"> <%= ingredient_review.title.truncate(45) %> </h3>
+                      <h3 id="ing-rev-title"> <%= ingredient_review.title.truncate(44) %> </h3>
 
                       <p id="ing-rev-content"> <%= ingredient_review.content.truncate(450) %> </p>
                       <p id="evidence"> <%= ingredient_review.supporting_evidence.truncate(100) %> </p>
