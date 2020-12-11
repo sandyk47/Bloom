@@ -25,7 +25,8 @@
 .search-results-container {
     background-color: $serenade;
     padding: 32px;
-    border-radius: 8px;
+    min-width: 46.18vw;
+    margin-bottom: 100px;
 }
 
 .product-card-grid {
