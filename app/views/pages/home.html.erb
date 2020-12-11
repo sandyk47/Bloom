@@ -6,9 +6,9 @@
     <div class="flex-object">
       <div class="home-content-box">
         <h2>Bloom</h2>
-        <div class="colorstrip mt-4 mb-4"></div>
-        <h4>Self-care just got a little easier</h4>
-        <p mt-4 mb-4>We analyse the the safety and efficacy of your favourite skincare products so that you don’t have to.</p>
+        <div class="colorstrip mt-2 mb-4"></div>
+        <h4 style="text-align: justify">Self-care just got a little easier</h4>
+        <p mt-4 mb-4>We analyse the safety and efficacy of your favourite skincare products so that you don’t have to</p>
         <%= render 'shared/productsearchbarform' %>
       </div>
     </div>
@@ -23,7 +23,7 @@
     </div>
     <div class="home-content-box">
         <h3>Search by Product</h3>
-        <p>We analyse the the safety and efficacy of your favourite skincare products so that you don’t have to.</p>
+        <p style="text-align: justify">Looking for cosmetics? Lets us help you find the best products that will work for you!</p>
         <div class ="button-container">
           <%= link_to "Search by Products", products_path, class: "btn-ghost" %>
         </div>
@@ -33,10 +33,10 @@
   <div class="fold-container-right gray-background">
     <div class="home-content-box">
         <h3>Search by Health or Skin Condition</h3>
-        <p>Do you have an underlying health or skin problems which makes purchasing cosmetics difficult? We’re here for you.</p>
+        <p style="text-align: justify">Do you have an underlying health or skin problems which makes purchasing cosmetics difficult? We’re here for you</p>
         <div class ="button-container">
           <%= link_to "Search by Conditions", products_path, class: "btn-ghost" %>
-        </div>  
+        </div>
       </div>
     <div class="content-container">
       <div class="image-container">
@@ -53,17 +53,17 @@
     </div>
     <div class="home-content-box">
         <h3>Search by Ingredient</h3>
-        <p>Analysing ingredients is complicated. We analyse the the safety of your favourite products so that you don’t have to.</p>
+        <p style="text-align: justify">Analysing ingredients is complicated. We analyse the safety of your favourite products so that you don’t have to</p>
         <div class ="button-container">
           <%= link_to "Search by Ingredients", ingredients_path, class: "btn-ghost" %>
-        </div>  
+        </div>
       </div>
   </div>
 
 <div class="fold-container-right warm-background">
     <div class="home-content-box">
         <h3>Search by Accreditation</h3>
-        <p>Already know what you're looking for? Our filtering system allows you to quickly identify the products that best suit your</p>
+        <p style="text-align: justify">Already know what you're looking for? Our filtering system allows you to quickly identify the products that meet your needs</p>
         <div class ="button-container">
           <%= link_to "Search by Accreditations", products_path, class: "btn-ghost" %>
         </div>
