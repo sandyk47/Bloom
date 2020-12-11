@@ -358,7 +358,7 @@ end
 ing_rev_1 = IngredientReview.create!(
 user: user_4,
 ingredient: ingredient_1,
-title: "Good for cleansing skin, however Coeliacs beware",
+title: "Coeliacs watch out!",
 content: "Avena Sativa (Oat) Bran Extract is good at leaving your skin looking clean and fresh! It's super gentle too, love it to bits! However coeliacs be safeeeeeee, this stuff ain't good for you!",
 safety_rating: 8,
 efficacy_rating: 9,
