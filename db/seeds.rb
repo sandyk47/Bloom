@@ -297,20 +297,20 @@ users_array = [user_1, user_2, user_3, user_4, user_5, user_6, user_7, user_8, u
   end
 end
 
+pro_rev_2 = ProductReview.create!(
+user: user_3,
+product: product_10,
+title: "COELIACS BEWARE!!!!!!!",
+content: "I'm a coeliac and this moisturizer turned my face from a vision of beauty to a rash ridden mess! Unfortunately I noticed it contained OATS way too late, if only there was an easier way to figure out these cosmetic ingredients.",
+product_rating: 1,
+)
+
 pro_rev_1 = ProductReview.create!(
 user: user_2,
 product: product_10,
 title: "Left dry skin feeling refreshed",
 content: "Amazing product! I normally suffer from dry and easily irritated skin... but with Kylie Skin's face moisturizer I could feel the effects almost immediately, and its kept my skin nice and hydrated throughout the day.",
 product_rating: 5,
-)
-
-pro_rev_2 = ProductReview.create!(
-user: user_3,
-product: product_35,
-title: "COELIACS BEWARE!!!!!!!",
-content: "This skin company is nasty, and not in the good kind of way. I'm a coeliac and this Resurfacing Essence turned my face from a vision of beauty to a rash ridden mess! Clearly the yeast extract comes from barley or something, WHICH THE COMPANY SHOULD DISCLOSE!!!! ",
-product_rating: 1,
 )
 
 pro_rev_2 = ProductReview.create!(
