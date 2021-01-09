@@ -3,7 +3,7 @@ Did you ever buy a skin product which gave you an adverse reaction? Buying skin 
 Bloom is a rating platform that takes the guess work out of your skin care product purchases. On average, one skin care product has more than 30 ingredients. With the help of dermatologists, we review every single ingredient and then calculate efficacy and safety rating of each ingredient. Based on that we calculate efficacy and safety rating of a single product.
 
 **Test the desktop app here:**
-[Bloom](www.thebloom.org.au)
+(www.thebloom.org.au)
 
 
 
